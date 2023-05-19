@@ -13,4 +13,4 @@ import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/fre
 library.add(faSearch, faFileLines, faMugSaucer, faCubes, faLaptop,
     faWrench, faAppleWhole, faDesktop, faRobot, faRightLong, faAngleRight,)
 
-createApp(App).mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
