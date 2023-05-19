@@ -11,6 +11,6 @@ import { faAppleWhole, faWrench, faMugSaucer, faCubes, faLaptop, faFileLines } f
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faSearch, faFileLines, faMugSaucer, faCubes, faLaptop,
-    faWrench, faAppleWhole, faDesktop, faRobot, faRightLong, faAngleRight,)
+    faWrench, faAppleWhole, faDesktop, faFacebookF, faInstagram, faTwitter)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
