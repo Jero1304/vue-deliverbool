@@ -21,8 +21,8 @@ export default {
                 { text: 'RESTORANTI' },
                 { text: 'TIPOLOGIE' },
                 { text: 'PIATTI' },
-                { text: 'ORDERS' },
-                { text: 'ORDERS' },
+                { text: 'RISTORATORE' },
+                { text: 'IMPOSTAZIONI' },
             ],
             activeButton: null
         };
