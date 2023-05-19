@@ -50,8 +50,7 @@
                             </a>
                             <a href="https://www.instagram.com/" target="_blank" class="icon insta">
                                 <font-awesome-icon :icon="['fab', 'instagram']" />
-                            </a>
-                            
+                            </a>                            
                         </li>
                     </ul>
                 </div>
