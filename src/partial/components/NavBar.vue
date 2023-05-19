@@ -18,9 +18,9 @@ export default {
         return {
             buttons: [
                 { text: 'HOME' },
-                { text: 'RESTOURANTS' },
-                { text: 'TYPE' },
-                { text: 'ORDERS' },
+                { text: 'RESTORANTI' },
+                { text: 'TIPOLOGIE' },
+                { text: 'PIATTI' },
                 { text: 'ORDERS' },
                 { text: 'ORDERS' },
             ],
@@ -58,17 +58,33 @@ export default {
     transition: all 0.3s ease;
     margin-right: 10px;
     cursor: pointer;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .navbar-button.active {
     background-color: $orange;
     color: #fff;
-    transform: translateX(10px);
+    animation-name: bounce;
 }
 
 .nav-container {
     background-color: $yellow_light;
     margin-top: -5px;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 </style>
   
