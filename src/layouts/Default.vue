@@ -6,7 +6,7 @@
     <main class="h-screen">
         <!-- <slot/> -->
         <Delivery></Delivery>
-        <!-- <Main></Main> -->
+        <Main></Main>
     </main>
 
     <footer>
