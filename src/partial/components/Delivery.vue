@@ -159,8 +159,6 @@ h5{
    background-color:rgb(153, 0, 0); 
    border: 1px solid rgb(153, 0, 0);;
    
-    display: flex;
-    padding: 50px 50px 50px 50px;
 } 
 
 .sezione-card p{
