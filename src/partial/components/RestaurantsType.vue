@@ -6,54 +6,19 @@
                 <button>Pizza</button>
                 <button>Pizza</button>
                 <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                <button>Pizza</button>
-                
+                <button>Pizza</button>                
             </div>
         </div>
 
         <div class="restaurants col-11">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" v-for="(restaurant,index) in restaurants">
                         <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
+                        {{ restaurant.name }} <br>
+                        {{ restaurant.type }}
                     </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
-                    <div class="col-3">
-                        <img src="https://picsum.photos/200/300" alt="">
-                        pizzeria
-                    </div>
+                    
                     
                     
                 </div>
@@ -63,8 +28,52 @@
 </template>
 
 <script>
+const restaurants=[
+    {
+        name:'Da Dario',
+        type:'pizzeria'
+    },
+    {
+        name:'Da Luigi',
+        type:'italiano'
+    },
+    {
+        name:'Genki Sushi',
+        type:'sushi'
+    },
+    {
+        name:'Hola Hola',
+        type:'messicano'
+    },
+    {
+        name:'Pizza a Pezzi',
+        type:'pizzeria'
+    },
+    {
+        name:'Dalla nonna',
+        type:'italiano'
+    },
+    {
+        name:'Chico',
+        type:'messicano'
+    },
+    {
+        name:'Ghoan',
+        type:'sushi'
+    },
+]
+
+
+
 export default {
-    name: 'name'
+    data() {
+        return {
+            restaurants:restaurants,
+        }
+    },
+    methods: {
+        
+    },
 
 }
 </script>
@@ -106,6 +115,7 @@ export default {
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding-bottom: 20px;
             img{
                 width: 100px;
                 height: 100px;
