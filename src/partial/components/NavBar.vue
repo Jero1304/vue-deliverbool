@@ -21,6 +21,8 @@ export default {
                 { text: 'RESTOURANTS' },
                 { text: 'TYPE' },
                 { text: 'ORDERS' },
+                { text: 'ORDERS' },
+                { text: 'ORDERS' },
             ],
             activeButton: null
         };
