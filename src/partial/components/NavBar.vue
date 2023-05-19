@@ -45,6 +45,7 @@ export default {
 .navbar-button {
     border: none;
     font-size: 12px;
+    font-weight: 900;
     padding: 5px 10px;
     background-color: $yellow;
     color: #555;
