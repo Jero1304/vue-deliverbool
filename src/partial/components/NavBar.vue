@@ -1,11 +1,13 @@
 <template>
-    <div class="container-md">
-        <div class="navbar">
-            <button v-for="(button, index) in buttons" :key="index" class="navbar-button"
-                :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
-                @mouseleave="resetActiveButton">
-                {{ button.text }}
-            </button>
+    <div class="nav-container">
+        <div class="container-md">
+            <div class="navbar">
+                <button v-for="(button, index) in buttons" :key="index" class="navbar-button"
+                    :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
+                    @mouseleave="resetActiveButton">
+                    {{ button.text }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -39,6 +41,7 @@ export default {
 
 .navbar {
     display: flex;
+    margin-top: 5px;
     justify-content: space-around;
 }
 
@@ -59,6 +62,11 @@ export default {
     background-color: $orange;
     color: #fff;
     transform: translateX(10px);
+}
+
+.nav-container {
+    background-color: $yellow_light;
+    margin-top: -5px;
 }
 </style>
   
