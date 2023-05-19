@@ -54,7 +54,7 @@
                 </div>
                 <div class="col">
                     <figure>
-                        <img src="" alt="">
+                        <img src="/images/hamburger-logo.png" alt="">
                     </figure>
                 </div>
             </div>
