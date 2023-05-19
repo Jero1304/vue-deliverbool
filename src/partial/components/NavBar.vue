@@ -1,9 +1,14 @@
 <template>
-    <div class="navbar">
-        <button v-for="(button, index) in buttons" :key="index" class="navbar-button"
-            :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton">
-            {{ button.text }}
-        </button>
+    <div class="nav-container">
+        <div class="container-md">
+            <div class="navbar">
+                <button v-for="(button, index) in buttons" :key="index" class="navbar-button"
+                    :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
+                    @mouseleave="resetActiveButton">
+                    {{ button.text }}
+                </button>
+            </div>
+        </div>
     </div>
 </template>
   
@@ -12,11 +17,12 @@ export default {
     data() {
         return {
             buttons: [
-                { text: 'Button 1' },
-                { text: 'Button 2' },
-                { text: 'Button 3' },
-                { text: 'Button 4' },
-                { text: 'Button 5' }
+                { text: 'HOME' },
+                { text: 'RESTOURANTS' },
+                { text: 'TYPE' },
+                { text: 'ORDERS' },
+                { text: 'ORDERS' },
+                { text: 'ORDERS' },
             ],
             activeButton: null
         };
@@ -32,15 +38,21 @@ export default {
 };
 </script>
   
-<style>
+<style lang="scss">
+@import '../src/scss/variables.scss';
+
 .navbar {
     display: flex;
+    margin-top: 5px;
+    justify-content: space-around;
 }
 
 .navbar-button {
     border: none;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 5px 10px;
+    background-color: $yellow;
     color: #555;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -49,9 +61,14 @@ export default {
 }
 
 .navbar-button.active {
-    background-color: #555;
+    background-color: $orange;
     color: #fff;
     transform: translateX(10px);
+}
+
+.nav-container {
+    background-color: $yellow_light;
+    margin-top: -5px;
 }
 </style>
   
