@@ -3,37 +3,58 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h3>scopri deliveboo</h3>
+                    <figure class="thumb">
+                        <img src="/images/hamburger-logo.png" alt="">
+                    </figure>
+                </div>                
+                <div class="col">                    
                     <ul class="menu">
-                        <li class="menu_item">Chi siamo</li>
-                        <li class="menu_item">Lavora con noi</li>
-                        <li class="menu_item">Diventa nostro partner</li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>note legali</h3>
-                    <ul class="menu">
-                        <li class="menu_item">Termini & condizioni</li>
-                        <li class="menu_item">Informativa sulla privacy</li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>contatti</h3>
-                    <ul class="menu">
-                        <li class="menu_item">e-mail: info@deliveboo.it</li>
-                        <li class="menu_item social_icon">
-                            <a href="https://www.facebook.com/" target="_blank" class="fb">
-                                <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" class="insta">
-                                <font-awesome-icon :icon="['fab', 'instagram']" />
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" class="tw">
-                                <font-awesome-icon :icon="['fab', 'twitter']" />
-                            </a>
+                        <li>
+                            <h4>scopri deliveboo</h4>
+                        </li>
+                        <li class="menu_item">
+                            <span>Chi siamo</span> 
+                        </li>
+                        <li class="menu_item">
+                            <span>Lavora con noi</span>
+                        </li>
+                        <li class="menu_item">
+                            <span>Diventa nostro partner</span>
                         </li>
                     </ul>
                 </div>
+                <div class="col">
+                    <ul class="menu">
+                        <li>
+                            <h4>note legali</h4>
+                        </li>
+                        <li class="menu_item">
+                            <span>Termini & condizioni</span>
+                        </li>
+                        <li class="menu_item">
+                            <span>Informativa sulla privacy</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="menu">
+                        <li>
+                            <h4>follow us</h4>
+                        </li>
+                        <li class="menu_item social_icon">
+                            <a href="https://www.facebook.com/" target="_blank" class="icon fb">
+                                <font-awesome-icon :icon="['fab', 'facebook']" />
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="icon tw">
+                                <font-awesome-icon :icon="['fab', 'twitter']" />
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="icon insta">
+                                <font-awesome-icon :icon="['fab', 'instagram']" />
+                            </a>                            
+                        </li>
+                    </ul>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -49,18 +70,60 @@ export default {
 @use '../src/scss/variables' as *;
 
 .nav-footer{
-    background-color: $azur;
+    background-color: $orange;
+    color: white;
+    padding-top: 25px;
 
     .row{
         display: flex;
     }
 
-    .social_icon{
-        display: flex;
-        gap: 1rem;
-        font-size: 24px;
+    .menu_item{
+        cursor:pointer;
+        line-height: 2.8rem;
+        
+        span{
+            transition: transform 0.3s ease;
+            transition: text-shadow 0.3s ease;
+            &:hover {
+                text-shadow: 0 0 10px yellowgreen;
+                font-weight: 600;
+                color: $bordeaux;
+                transform: scale(1.2);
+            }
+        }
+      }
+    }
+    
+
+    h4{
+        text-transform: uppercase;
+        padding: 5px 0;
+        color: $bordeaux;
     }
 
+    .social_icon{
+        font-size: 34px;
+        display: flex;
+        gap: 0.5rem;
+
+        .fb{
+            color: blue;
+        }
+        .insta{
+            color: rgb(255, 3, 87);
+        }
+        
+        .icon{  
+            
+            border-radius: 999px ;
+            padding: 0 8px;
+            transition: box-shadow 0.3s ease;
+            &:hover {
+                box-shadow: 0 0 10px $yellow;
+        }
+        
+    }
 }
 
 
