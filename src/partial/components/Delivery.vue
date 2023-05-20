@@ -8,41 +8,74 @@
 
 
        
-       <div class="sezione-card col-12">
+       <div class="sezione-card col-12 mb-5">
 
                <!-- prima card -->
 
-               <div class="card" style="width: 18rem;" id="card1">
-                       <img class="card-img-top" src="https://www.exportiamo.it/thumb/1200x800/public/settori/379/street-food1.jpg" alt="Card image cap">
-                   <div class="card-body">
-                       <h5 class="card-title text-uppercase">Food street irresistibile!</h5>
-                       <p class="card-text">Scopri una vasta selezione di cibi di strada provenienti da tutto il mondo, dai deliziosi panini ai gustosi falafel. Goditi il sapore autentico e l'atmosfera unica dello street food comodamente a casa tua.</p>
+               <!-- card hover -->
+               <div class="card" :class="{ 'card-hover': hoveredCard === 'card1' }" style="width: 18rem;" id="card1" @mouseover="hoveredCard = 'card1'"  @mouseout="hoveredCard = null">
+                
+                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2013/07/13/09/37/cheeseburger-155804_960_720.png">
+                   
+                <!-- IMG HOVER  -->
+
+                <img class="img-hover" src="https://cdn.pixabay.com/photo/2017/09/18/16/53/burger-2762371_960_720.jpg" alt="Street Food">
+                
+                <div class="card-body">
+                       <h5 class="card-title text-uppercase mt-4">Food street irresistibile!</h5>
+                       <p>Scopri una vasta selezione di cibi di strada provenienti da tutto il mondo, dai deliziosi panini ai gustosi falafel. Goditi il sapore autentico e l'atmosfera unica dello street food comodamente a casa tua.</p>
+                       
                    </div>
-               </div>
+                </div>
 
                
 
                <!-- seconda card -->
 
-               <div class="card" style="width: 18rem;" id="card2">
-                       <img class="card-img-top" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3VzaGl8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Card image cap">
-                   <div class="card-body">
-                       <h5 class="card-title text-uppercase">Cucina orientale ricercata!</h5>
-                       <p class="card-text">Esplora i sapori esotici dell'Oriente con la nostra selezione di piatti della cucina asiatica e orientale. Dai sushi giapponesi alle spezie piccanti della cucina thailandese, lasciati trasportare in un viaggio culinario emozionante.</p>
-                       
-                   </div>
-               </div>
+
+               <div class="card" :class="{ 'card-hover': hoveredCard === 'card2' }" style="width: 18rem;" id="card2" @mouseover="hoveredCard = 'card2'"  @mouseout="hoveredCard = null">
+                    
+                    
+                            <img class="card-img-top mt-5" src="https://cdn.pixabay.com/photo/2013/07/12/19/18/sushi-154528_960_720.png" alt="Cucina orientale">
+                            
+                             <!-- IMG HOVER  -->
+
+                             <img class="img-hover" src="https://cdn.pixabay.com/photo/2020/04/04/15/07/sushi-5002639_960_720.jpg" alt="Street Food">
+                            
+                            
+                            <div class="card-body">
+                                <h5 class="card-title text-uppercase">Cucina orientale ricercata!</h5>
+                                <p class="card-text">Esplora i sapori esotici dell'Oriente con la nostra selezione di piatti della cucina asiatica e orientale. Dai sushi giapponesi alle spezie piccanti della cucina thailandese, lasciati trasportare in un viaggio culinario emozionante.</p>
+                                
+                            </div>
+                        
+                </div>
+
+            
+
+
+
+
+               
 
                <!-- terza card -->
+                <div class="card" :class="{ 'card-hover': hoveredCard === 'card3' }" style="width: 18rem;" id="card3" @mouseover="hoveredCard = 'card3'"  @mouseout="hoveredCard = null">
+                    
+                    
+                        <img class="card-img-top mt-2" src="https://cdn.pixabay.com/photo/2021/02/07/13/07/pizza-5991179_960_720.png" alt="Pizza">
 
-               <div class="card" style="width: 18rem;" id="card3">
-                       <img class="card-img-top" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80" alt="Card image cap">
-                   <div class="card-body">
-                       <h5 class="card-title text-uppercase">Pizza: orgoglio italiano!</h5>
-                       <p class="card-text">Ordina la pizza perfetta che stavi desiderando da tanto tempo. Dai classici come la Margherita ai gusti più audaci, la nostra selezione di pizze ti farà scoprire un mondo di sapore.</p>
-                       
-                   </div>
-               </div>
+                        <!-- IMG HOVER  -->
+
+                        <img class="img-hover" src="https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg" alt="Street Food">
+                            
+                        
+                        <div class="card-body">
+                                <h5 class="card-title text-uppercase">Pizza: orgoglio italiano!</h5>
+                                <p class="card-text">Ordina la pizza perfetta che stavi desiderando da tanto tempo. Dai classici come la Margherita ai gusti più audaci, la nostra selezione di pizze ti farà scoprire un mondo di sapore.</p>
+                                
+                        </div>
+                    
+                </div>
 
            </div> 
 
@@ -85,7 +118,11 @@
 
 <script>
 export default {
-
+    data() {
+    return {
+      hoveredCard: null
+    };
+  }
 }
 </script>
 
@@ -104,7 +141,10 @@ export default {
    justify-content: center;
    gap: 30px;
    padding: 50px 50px 50px 50px;
+   height: 400px;
 } 
+
+
 
  p{
    font-size: 12px;
@@ -124,13 +164,71 @@ h5{
    font-weight: bold;
 }
 
+
+/* CARD RULES */
 .card-img-top{
-    border-radius: 80%;
+    border-radius: 10%;
+    height: 240px;
+    
 }
 
 .card{
     background-color:rgb(255, 204, 29);
     border: 1px solid rgb(255, 204, 29);
+    position: relative;
+    
+}
+
+.card p{
+    display: none;
+}
+
+.card .img-hover{
+    display: none;
+}
+
+.card-hover {
+  position: relative;
+  z-index: 1;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color:white;
+  height: 350px;
+  
+}
+
+.card-hover p{
+    display: block;
+}
+
+.card-hover h5{
+    display: none;
+}
+
+.card-hover .card-img-top{
+    display: none;
+}
+
+.card-hover .img-hover{
+    display: block;
+
+}
+
+/* .card-hover img {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+} */
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(238, 192, 142, 0.5);
+  z-index: -1;
 }
 
 /* BUTTON RULES */
