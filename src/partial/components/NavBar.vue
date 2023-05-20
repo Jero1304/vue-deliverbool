@@ -11,6 +11,16 @@
                     {{ button.text }}
                 </button>
                 <button v-else class="navbar-button" :class="{ active: activeButton === index }"
+                    @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton" @click="toggleDropdown">
+                    Menu
+                </button>
+                <ul v-show="isDropdownOpen" class="dropdown-menu">
+                    <li v-for="(button, index) in buttons" :key="index" class="dropdown-menu-item"
+                        :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
+                        @mouseleave="resetActiveButton">
+                        {{ button.text }}
+                    </li>
+                </ul>
                     @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton">
                     Menu
                 </button>
@@ -30,6 +40,8 @@ export default {
                 { text: 'PIATTI' },
             ],
             activeButton: null,
+            isMobile: false,
+            isDropdownOpen: false,
             isMobile: false
         };
     },
@@ -49,6 +61,10 @@ export default {
         },
         checkMobile() {
             this.isMobile = window.innerWidth < 576;
+        },
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
+            console.log("click")
         }
     }
 };
