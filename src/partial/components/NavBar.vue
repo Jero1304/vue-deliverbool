@@ -21,9 +21,6 @@
                         {{ button.text }}
                     </li>
                 </ul>
-                    @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton">
-                    Menu
-                </button>
             </div>
         </div>
     </div>
@@ -42,7 +39,6 @@ export default {
             activeButton: null,
             isMobile: false,
             isDropdownOpen: false,
-            isMobile: false
         };
     },
     created() {
