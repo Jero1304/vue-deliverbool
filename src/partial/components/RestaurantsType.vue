@@ -16,13 +16,13 @@
         <div class="restaurants col-11">
             <div class="container">
                 <div class="row restaurants_grid">
-                    <div v-for="(restaurant, i) in restaurants">
+                    <template v-for="(restaurant, i) in restaurants">
                         <div class="col-3" v-if="restaurant.type === currentType">
                             <img src="https://picsum.photos/200/300" alt="">
                             {{ restaurant.name }}
                             {{ restaurant.type }}
                         </div>
-                    </div>
+                    </template>
 
 
                 </div>

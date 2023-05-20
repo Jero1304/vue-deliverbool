@@ -21,6 +21,9 @@
                         {{ button.text }}
                     </li>
                 </ul>
+                <button @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton">
+                    Menu
+                </button>
             </div>
         </div>
     </div>
