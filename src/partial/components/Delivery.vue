@@ -142,6 +142,7 @@ h5{
    font-size: 18px;
    margin-bottom: 10px;
    background-color: rgb(255, 91, 0);
+   box-shadow: 0 0 10px rgb(117, 38, 4);
 }
 
 .btn:hover{
@@ -175,13 +176,14 @@ padding: 50px;
    font-size: 18px;
    background-color: rgb(255, 91, 0);
    color: white;
+   box-shadow: 0 0 10px rgb(166, 52, 3);
 }
 
 .form-consegna button:hover{
-   background-color:rgb(2, 214, 196);; 
-   border: 1px solid rgb(2, 214, 196);;
+   background-color:rgb(2, 214, 196);
+   border: 1px solid rgb(2, 214, 196);
    cursor:pointer;
-   box-shadow: 0 0 10px rgb(2, 214, 196);;
+   box-shadow: 0 0 10px rgb(2, 214, 196);
 } 
 
 
@@ -199,10 +201,41 @@ padding: 50px;
    
    /* BUTTON RULES */
    .btn {
-      padding: 15px;
-      font-size: 16px;
+      padding: 13px;
+      font-size: 13px;
    }
+
+   /* form-consegna RULES */
+  .form-consegna {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-consegna h3 {
+    font-size: 18px;
+  }
+
+  .form-consegna h6 {
+    font-size: 13px;
+  }
+
+   h7 {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .form-consegna button {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .form-outline{
+    width: 250px;
+  }
 }
+
 
 
 
