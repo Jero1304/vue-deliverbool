@@ -326,7 +326,8 @@ export default {
                     font-weight: 800;
                     color: $yellow;
                 }
-
+ 
+                
                 img {
                     width: 100px;
                     height: 100px;
