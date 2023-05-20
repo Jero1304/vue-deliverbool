@@ -54,75 +54,31 @@
 
 
    <!-- Sezione form-consegna -->
+   <div class="form-consegna d-flex">
 
-   <div class="form-consegna">
+    <div class="col-7">
+        <h3>I tuoi piatti preferiti a casa tua!</h3>
 
-    <div class="row mt-3 mx-3" style="margin-top:25px ;">
-
-        <div class="col-md-3">
-            <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
-            <i id="animationDemo" data-mdb-animation="slide-right" data-mdb-toggle="animation"
-                data-mdb-animation-reset="true" data-mdb-animation-start="onScroll"
-                data-mdb-animation-on-scroll="repeat" class="fas fa-3x fa-shipping-fast text-white"></i>
-            <h3 class="mt-3 text-white">Welcome</h3>
-            <p class="white-text">You are 30 seconds away from compleating your order!</p>
+        <div class="input-group mb-4">
+            <h6>Inserisci il tuo indirizzo per scoprire i ristoranti intorno a te.</h6>
+            <div class="form-outline col-10 d-flex">
+                <input type="search" id="form1" class="form-control"/>
+                <label class="form-label" for="form1"></label>
+                <button>Cerca</button>
             </div>
-            <div class="text-center">
-            <button type="submit" class="btn btn-white btn-rounded back-button">Go back</button>
-            </div>
-
 
         </div>
-        <div class="col-md-9 justify-content-center">
-            <div class="card card-custom pb-4">
-            <div class="card-body mt-0 mx-5">
-                <div class="text-center mb-3 pb-2 mt-3">
-                <h4 style="color: #495057 ;">Delivery Details</h4>
-                </div>
 
-                <form class="mb-0">
-
-                <div class="row mb-4">
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form9Example1" class="form-control input-custom" />
-                        <label class="form-label" for="form9Example1">First name</label>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form9Example2" class="form-control input-custom" />
-                        <label class="form-label" for="form9Example2">Last name</label>
-                    </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form9Example3" class="form-control input-custom" />
-                        <label class="form-label" for="form9Example3">City</label>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form9Example4" class="form-control input-custom" />
-                        <label class="form-label" for="form9Example4">Address</label>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="float-end ">
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-rounded"
-                    style="background-color: #0062CC ;">Place order</button>
-                </div>
-
-                </form>
-            </div>
-            </div>
-        </div>
-        </div>
+        <h7> <a href="#">Accedi</a> per scorprire i tuoi indirizzi recenti.</h7>
+        
     </div>
+
+
+    <div class="col-4">
+     <img src="https://cdn.pixabay.com/photo/2016/05/30/14/10/delivery-guy-1424808_960_720.png" alt="Delivery">
+    </div> 
+
+    </div> 
      
 
 </template>
@@ -196,6 +152,38 @@ h5{
 } 
 
 
+/* form-consegna RULES */
+
+.form-consegna{
+padding: 50px;
+   background-color: rgb(255, 204, 0); /* Colore arancione */
+   background-image: linear-gradient(rgb(255, 204, 0), rgb(255, 123, 0)); /* Colore a metà tra arancione e giallo */
+   padding-bottom: 20px;
+}
+
+.form-consegna h3{
+   color:rgb(255, 85, 0); 
+   font-size: 30px;
+   text-transform: uppercase;
+   margin-bottom: 30px;
+
+}
+.form-consegna button{
+   border-radius: 10px;
+   padding: 10px;
+   border: 1px solid rgb(255, 91, 0);;
+   font-size: 18px;
+   background-color: rgb(255, 91, 0);
+   color: white;
+}
+
+.form-consegna button:hover{
+   background-color:rgb(2, 214, 196);; 
+   border: 1px solid rgb(2, 214, 196);;
+   cursor:pointer;
+   box-shadow: 0 0 10px rgb(2, 214, 196);;
+} 
+
 
 /* RESPONSIVE STYLES */
 @media (max-width: 450px) {
@@ -215,5 +203,8 @@ h5{
       font-size: 16px;
    }
 }
+
+
+
 
 </style>
