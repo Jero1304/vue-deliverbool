@@ -8,7 +8,7 @@
 
 
        
-       <div class="sezione-card col-12 mb-5">
+       <div class="sezione-card col-12 mb-5 pb-5">
 
                <!-- prima card -->
 
@@ -81,13 +81,13 @@
 
            <!-- Call to action -->
 
-           <button type="button" class="btn btn-secondary btn-sm text-uppercase">Ordina ora ed esplora i locali intorno a te!</button>
+           <button type="button" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-3">Ordina ora ed esplora i locali intorno a te!</button>
 
    </div> 
 
 
    <!-- Sezione form-consegna -->
-   <div class="form-consegna d-flex">
+   <div class="form-consegna d-flex pt-5">
 
     <div class="col-7">
         <h3>I tuoi piatti preferiti a casa tua!</h3>
@@ -256,7 +256,7 @@ h5{
 .form-consegna{
 padding: 50px;
    background-color: rgb(255, 204, 0); /* Colore arancione */
-   background-image: linear-gradient(rgb(255, 204, 0), rgb(255, 123, 0)); /* Colore a metà tra arancione e giallo */
+   background-image: linear-gradient(rgb(255, 204, 0),rgb(251, 71, 0)); /* Colore a metà tra arancione e giallo */
    padding-bottom: 20px;
 }
 
