@@ -1,29 +1,26 @@
 <template>
     <div class="nav-container d-flex align-items-center">
-        <div class="container-sm ">
-            <img src="" alt="logo">
+        <div class="container-sm">
+            <img src="logo.png" alt="logo" />
         </div>
-        <div class="container-md ">
+        <div class="container-md">
             <div class="navbar align-items-center justify-content-end">
                 <button v-if="!isMobile" v-for="(button, index) in buttons" :key="index" class="navbar-button"
                     :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
                     @mouseleave="resetActiveButton">
                     {{ button.text }}
                 </button>
-                <button v-else class="navbar-button" :class="{ active: activeButton === index }"
-                    @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton" @click="toggleDropdown">
-                    Menu
-                </button>
-                <ul v-show="isDropdownOpen" class="dropdown-menu">
-                    <li v-for="(button, index) in buttons" :key="index" class="dropdown-menu-item"
-                        :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
-                        @mouseleave="resetActiveButton">
-                        {{ button.text }}
-                    </li>
-                </ul>
-                <button @mouseover="setActiveButton(index)" @mouseleave="resetActiveButton">
-                    Menu
-                </button>
+                <div v-else>
+                    <button class="navbar-button" :class="{ active: isDropdownOpen }" @click="toggleDropdown">
+                        Menu
+                    </button>
+                    <ul v-show="isMobile && isDropdownOpen" class="dropdown-menu">
+                        <li v-for="(button, index) in buttons" :key="index" class="dropdown-menu-item"
+                            :class="{ active: activeButton === index }" @click="selectDropdownItem(index)">
+                            {{ button.text }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -35,7 +32,7 @@ export default {
         return {
             buttons: [
                 { text: 'HOME' },
-                { text: 'RESTORANTI' },
+                { text: 'RESTAURANTI' },
                 { text: 'TIPOLOGIE' },
                 { text: 'PIATTI' },
             ],
@@ -44,11 +41,11 @@ export default {
             isDropdownOpen: false,
         };
     },
-    created() {
+    mounted() {
         window.addEventListener('resize', this.checkMobile);
         this.checkMobile();
     },
-    destroyed() {
+    beforeDestroy() {
         window.removeEventListener('resize', this.checkMobile);
     },
     methods: {
@@ -59,16 +56,22 @@ export default {
             this.activeButton = null;
         },
         checkMobile() {
-            this.isMobile = window.innerWidth < 576;
+            this.isMobile = window.innerWidth < 768;
+            if (!this.isMobile) {
+                this.isDropdownOpen = false;
+            }
         },
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
-            console.log("click")
-        }
-    }
+        },
+        selectDropdownItem(index) {
+            this.activeButton = index;
+            this.isDropdownOpen = false;
+        },
+    },
 };
 </script>
-  
+
 <style lang="scss">
 @import '../src/scss/variables.scss';
 
@@ -138,7 +141,7 @@ export default {
     }
 }
 
-@media (max-width: 576) {
+@media (max-width: 768) {
     .navbar {
         flex-wrap: nowrap;
         overflow-x: auto;
