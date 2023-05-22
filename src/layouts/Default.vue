@@ -23,7 +23,6 @@ import Delivery from '../partial/components/Delivery.vue'
 import Card from '../partial/components/Card.vue'
 import Download from '../partial/components/Download.vue'
 
-
 export default {
     components:{
         NavBar,
