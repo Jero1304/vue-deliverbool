@@ -40,7 +40,7 @@
 @import '../src/scss/variables.scss';
 
 .nav-main {
-    background-color: $yellow_light;
+    background-color: $yellow;
 }
 
 .nav-btn {
