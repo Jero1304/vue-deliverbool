@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid justify-content-between">
                 <div>
-                    <a class="navbar-brand" href="#"><img src="logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="#"><img src="../public/img/logo-navbar.png.png" alt="logo"></a>
                 </div>
                 <div>
                     <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import 'bootstrap/dist/js/bootstrap.bundle'
 </script>
 
 <style lang="scss">
