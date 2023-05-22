@@ -176,6 +176,7 @@ h5{
     background-color:rgb(255, 204, 29);
     border: 1px solid rgb(255, 204, 29);
     position: relative;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
     
 }
 
@@ -190,12 +191,17 @@ h5{
 .card-hover {
   position: relative;
   z-index: 1;
-  transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color:white;
   height: 350px;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(153, 0, 0);
+ 
   
 }
+
+
 
 .card-hover p{
     display: block;
@@ -229,6 +235,16 @@ h5{
   bottom: 0;
   background-color: rgba(238, 192, 142, 0.5);
   z-index: -1;
+  transition: opacity 0.5s ease-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-hover:hover::before {
+  opacity: 0;
 }
 
 /* BUTTON RULES */
