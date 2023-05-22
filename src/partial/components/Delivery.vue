@@ -45,7 +45,7 @@
                             
                             <div class="card-body">
                                 <h5 class="card-title text-uppercase">Cucina orientale ricercata!</h5>
-                                <p class="card-text">Esplora i sapori esotici dell'Oriente con la nostra selezione di piatti della cucina asiatica e orientale. Dai sushi giapponesi alle spezie piccanti della cucina thailandese, lasciati trasportare in un viaggio culinario emozionante.</p>
+                                <p class="card-text">Esplora i sapori esotici dell'Oriente con la nostra selezione di piatti della cucina asiatica e orientale.</p>
                                 
                             </div>
                         
@@ -260,10 +260,10 @@ h5{
 }
 
 .btn:hover{
-   background-color:rgb(2, 214, 196);; 
-   border: 1px solid rgb(2, 214, 196);;
+   background-color:rgb(2, 214, 196); 
+   border: 1px solid rgb(2, 214, 196);
    cursor:pointer;
-   box-shadow: 0 0 10px rgb(2, 214, 196);;
+   box-shadow: 0 0 10px rgb(2, 214, 196);
 } 
 
 
