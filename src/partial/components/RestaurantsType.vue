@@ -3,11 +3,19 @@
 
         <div class="aside col-2">
             <div class="aside_type">
+                <!-- <div>
+                    ^<br>
+                    I
+                </div> -->
                 <div class="aside_card" v-for="(type, index) in types" @click="typeSelection(index, type)"
-                    :class="{ 'active': index === currentIndex }">
+                    :class="{ 'active': index === currentIndexType }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
                 </div>
+                <!-- <div>
+                    I <br>
+                    V
+                </div> -->
 
 
             </div>
@@ -20,6 +28,7 @@
                         <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
                             <img src="https://picsum.photos/200/300" alt="">
                             <p class="restaurant-title">{{ restaurant.name }}</p>
+                            <!-- {{ restaurant.type }} -->
                         </div>
                     </template>
                 </div>
@@ -45,41 +54,41 @@ const restaurants = [
         ]
     },
     {
-        name: 'Genki Sushi',
+        name: 'Genki Sushi 2',
         type: [
             'pizzeria',
             'sushi'
         ]
     },
     {
-        name: 'Hola Hola',
+        name: 'Hola Hola 2',
         type: [
             'messicano',
             'pizzeria'
         ]
     },
     {
-        name: 'Pizza a Pezzi',
+        name: 'Pizza a Pezzi 2',
         type: [
             'pizzeria',
             'fastFood'
         ]
     },
     {
-        name: 'Dalla nonna',
+        name: 'Dalla nonna 2',
         type: [
             'pizzeria',
             'italiano'
         ]
     },
     {
-        name: 'Chico',
+        name: 'Chico 2',
         type: [
             'messicano',
         ]
     },
     {
-        name: 'Ghoan',
+        name: 'Ghoan 2',
         type: [
             'pizzeria',
             'sushi',
@@ -87,13 +96,13 @@ const restaurants = [
         ]
     },
     {
-        name: 'MC Donald\'s',
+        name: 'MC Donald\'s 2',
         type: [
             'FastFood',
         ]
     },
     {
-        name: 'Burgerz',
+        name: 'Burgerz 2',
         type: [
             'pizzeria',
             'fastFood',
@@ -101,14 +110,14 @@ const restaurants = [
         ]
     },
     {
-        name: 'Da Dario 2',
+        name: 'Da Dario',
         type: [
             'pizzeria',
             'italiano'
         ]
     },
     {
-        name: 'Da Luigi 2',
+        name: 'Da Luigi',
         type: [
             'pizzeria',
             'italiano'
@@ -171,7 +180,7 @@ const restaurants = [
         ]
     },
 
-    
+
 
 ];
 
@@ -192,15 +201,15 @@ export default {
         return {
             restaurants: restaurants,
             types: restaurantType,
-            currentIndex: 0,
+            currentIndexType: 0,
             currentType: '',
         }
     },
     methods: {
         typeSelection(index, type) {
-            this.currentIndex = index
+            this.currentIndexType = index
             this.currentType = type
-            console.log(this.currentIndex);
+            console.log(this.currentIndexType);
             // console.log(this.currentType);
         },
     },
@@ -251,30 +260,30 @@ export default {
                 }
             }
 
-            // .active {
-            //     background-color: rgb(214, 24, 24);
-            //     border-radius: 20px;
-            //     box-shadow: 70px 10px 5px rgb(214, 24, 24),
-            //         -10px -10px 5px rgb(214, 24, 24),
-            //         70px -10px 5px rgb(214, 24, 24),
-            //         -10px 10px 5px rgb(214, 24, 24);
-            //     text-decoration-color: white;
-            //     transition: transform 0.3s ease;
-            //     transition: text-shadow 0.3s ease;
-            //     text-shadow: 0 0 5px white;
-            //     font-weight: 600;
-            //     color: white;
-            //     margin: 40px;
+            .active {
+                background-color: rgb(214, 24, 24);
+                border-radius: 20px;
+                box-shadow: 70px 10px 5px rgb(214, 24, 24),
+                    -10px -10px 5px rgb(214, 24, 24),
+                    70px -10px 5px rgb(214, 24, 24),
+                    -10px 10px 5px rgb(214, 24, 24);
+                text-decoration-color: white;
+                transition: transform 0.3s ease;
+                transition: text-shadow 0.3s ease;
+                text-shadow: 0 0 5px white;
+                font-weight: 600;
+                color: white;
+                margin: 40px;
 
-            //     img {
-            //         max-width: 70%;
-            //     }
+                img {
+                    max-width: 70%;
+                }
 
-            //     img,
-            //     p {
-            //         transform: scale(1.2);
-            //     }
-            // }
+                img,
+                p {
+                    transform: scale(1.2);
+                }
+            }
 
             button {
                 padding: 20px;
@@ -328,7 +337,7 @@ export default {
 
         .aside {
             background: rgb(214, 24, 24);
-            background: linear-gradient(0deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
+            background: linear-gradient(0deg, rgba(214, 24, 24, 1) 43%, rgba(107, 0, 0, 1) 100%);
             margin: 0;
             display: flex;
             justify-content: center;
@@ -346,8 +355,8 @@ export default {
 
 
                 .aside_card {
-                    width: 170px;
-                    height: 170px;
+                    width: 200px;
+                    height: 100px;
                     color: rgb(187, 184, 184);
                     display: flex;
                     justify-content: center;
@@ -359,30 +368,28 @@ export default {
                     }
                 }
 
-                // .active-sm {
-                //     background-color: rgb(214, 24, 24);
-                //     border-radius: 20px;
-                //     box-shadow: 70px 10px 5px rgb(214, 24, 24),
-                //         -10px -10px 5px rgb(214, 24, 24),
-                //         70px -10px 5px rgb(214, 24, 24),
-                //         -10px 10px 5px rgb(214, 24, 24);
-                //     text-decoration-color: white;
-                //     transition: transform 0.3s ease;
-                //     transition: text-shadow 0.3s ease;
-                //     text-shadow: 0 0 5px white;
-                //     font-weight: 600;
-                //     color: white;
-                //     margin: 40px;
+                .active {
+                    background-color: rgb(214, 24, 24);
+                    border-radius: 20px 20px 0 0;
+                    box-shadow: none;
+                    text-decoration-color: white;
+                    transition: transform 0.3s ease;
+                    transition: text-shadow 0.3s ease;
+                    text-shadow: 0 0 5px white;
+                    font-weight: 600;
+                    color: white;
+                    margin: 0 5px;
+                    padding: 10px;
 
-                //     img {
-                //         max-width: 70%;
-                //     }
+                    img {
+                        max-width: 80%;
+                    }
 
-                //     img,
-                //     p {
-                //         transform: scale(1.2);
-                //     }
-                // }
+                    img,
+                    p {
+                        transform: scale(1.2);
+                    }
+                }
 
                 button {
                     padding: 20px;
