@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import 'bootstrap/dist/js/bootstrap.bundle'
 </script>
 
 <style lang="scss">
