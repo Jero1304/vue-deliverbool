@@ -1,13 +1,13 @@
 <template>
     <section class="nav-footer">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex">
                 <div class="col">
-                    <figure class="thumb">
+                    <figure class="thumb img-fluid flex-shrink-0">
                         <img src="/images/hamburger-logo.png" alt="">
                     </figure>
                 </div>                
-                <div class="col">                    
+                <div class="col flex-md-wrap">                    
                     <ul class="menu">
                         <li>
                             <h4>scopri deliveboo</h4>
@@ -23,7 +23,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
                             <h4>note legali</h4>
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
                             <h4>follow us</h4>
@@ -57,6 +57,14 @@
                 
             </div>
         </div>
+    </section>
+    <section class="copy">
+        <div class="container text-center">
+            <span>
+                <i>DeliveBoo 2023&copy; created by <strong>Team 6</strong> of Boolean #Class86</i>
+            </span>
+        </div>
+
     </section>
 </template>
 
@@ -124,7 +132,11 @@ export default {
         }
         
     }
+    
 }
+.copy{
+        background-color: grey;
+    }
 
 
 </style>
