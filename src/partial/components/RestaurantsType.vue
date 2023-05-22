@@ -22,15 +22,22 @@
         </div>
 
         <div class="restaurants col-10">
-            <div class="container">
-                <div class="row restaurants_grid">
-                    <template v-for="(restaurant, i) in restaurants">
-                        <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
-                            <img src="https://picsum.photos/200/300" alt="">
-                            <p class="restaurant-title">{{ restaurant.name }}</p>
-                            <!-- {{ restaurant.type }} -->
-                        </div>
-                    </template>
+            <div class="container mx-3">
+                <div class="row">
+
+                    <!-- <div class="col-1">sinistra</div> -->
+
+                    <div class="row justify-content-center restaurants_grid">
+                        <template v-for="(restaurant, i) in restaurants">
+                            <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
+                                <img src="https://picsum.photos/200/300" alt="">
+                                <p class="restaurant-title">{{ restaurant.name }}</p>
+                                <!-- {{ restaurant.type }} -->
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- <div class="col-1">destra</div> -->
                 </div>
             </div>
         </div>
@@ -193,7 +200,7 @@ const restaurantType = [
     'messicano',
     'thai',
     'eee',
-    '33333'
+    '33333',
 ];
 
 export default {
@@ -213,6 +220,16 @@ export default {
             // console.log(this.currentType);
         },
     },
+
+
+
+
+    /*
+        const array
+        const itemXpage= x
+        const pages = Math.ceil(array.lenght/item)
+
+    */
 
 }
 </script>
