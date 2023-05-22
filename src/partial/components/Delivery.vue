@@ -36,7 +36,7 @@
                <div class="card" :class="{ 'card-hover': hoveredCard === 'card2' }" style="width: 18rem;" id="card2" @mouseover="hoveredCard = 'card2'"  @mouseout="hoveredCard = null">
                     
                     
-                            <img class="card-img-top mt-5" src="https://cdn.pixabay.com/photo/2013/07/12/19/18/sushi-154528_960_720.png" alt="Cucina orientale">
+                            <img class="card-img-top mt-5 pt-2" src="https://cdn.pixabay.com/photo/2013/07/12/19/18/sushi-154528_960_720.png" alt="Cucina orientale">
                             
                              <!-- IMG HOVER  -->
 
@@ -62,7 +62,7 @@
                 <div class="card" :class="{ 'card-hover': hoveredCard === 'card3' }" style="width: 18rem;" id="card3" @mouseover="hoveredCard = 'card3'"  @mouseout="hoveredCard = null">
                     
                     
-                        <img class="card-img-top mt-2" src="https://cdn.pixabay.com/photo/2021/02/07/13/07/pizza-5991179_960_720.png" alt="Pizza">
+                        <img class="card-img-top mt-3" src="https://cdn.pixabay.com/photo/2021/02/07/13/07/pizza-5991179_960_720.png" alt="Pizza">
 
                         <!-- IMG HOVER  -->
 
@@ -176,6 +176,7 @@ h5{
     background-color:rgb(255, 204, 29);
     border: 1px solid rgb(255, 204, 29);
     position: relative;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; 
     
 }
 
@@ -190,12 +191,17 @@ h5{
 .card-hover {
   position: relative;
   z-index: 1;
-  transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color:white;
   height: 350px;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(153, 0, 0);
+ 
   
 }
+
+
 
 .card-hover p{
     display: block;
@@ -229,6 +235,16 @@ h5{
   bottom: 0;
   background-color: rgba(238, 192, 142, 0.5);
   z-index: -1;
+  transition: opacity 0.5s ease-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-hover:hover::before {
+  opacity: 0;
 }
 
 /* BUTTON RULES */
@@ -254,10 +270,11 @@ h5{
 /* form-consegna RULES */
 
 .form-consegna{
-padding: 50px;
+  padding: 50px;
    background-color: rgb(255, 204, 0); /* Colore arancione */
    background-image: linear-gradient(rgb(255, 204, 0),rgb(251, 71, 0)); /* Colore a metà tra arancione e giallo */
    padding-bottom: 20px;
+   min-height: auto;
 }
 
 .form-consegna h3{
@@ -285,11 +302,14 @@ padding: 50px;
 } 
 
 
+
+
 /* RESPONSIVE STYLES */
 @media (max-width: 450px) {
    /* CARD RULES */
    .sezione-card {
       flex-wrap: wrap;
+      height: 1200px;
    }
    
    .card {
@@ -301,18 +321,20 @@ padding: 50px;
    .btn {
       padding: 13px;
       font-size: 13px;
+      
    }
 
    /* form-consegna RULES */
   .form-consegna {
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+   justify-content: center;
+    width: 400px;
   }
 
   .form-consegna h3 {
-    font-size: 18px;
+    font-size: 20px;
+    align-items: center;
   }
 
   .form-consegna h6 {
@@ -332,6 +354,11 @@ padding: 50px;
   .form-outline{
     width: 250px;
   }
+
+  .form-consegna img {
+    display: none;
+  }
+
 }
 
 
