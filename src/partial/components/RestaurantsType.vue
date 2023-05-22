@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row restaurants_grid">
                     <template v-for="(restaurant, i) in restaurants">
-                        <div class="col-2" v-if="restaurant.type === currentType">
+                        <div class="col-sm-4 col-md-2" v-if="restaurant.type === currentType">
                             <img src="https://picsum.photos/200/300" alt="">
                             <p class="restaurant-title">{{ restaurant.name }}</p>
                             <!-- <p>{{ restaurant.type }}</p> -->
@@ -202,6 +202,9 @@ const restaurantType = [
     'italiano',
     'pizzeria',
     'messicano',
+    'thai',
+    'eee',
+    '33333'
 ];
 
 export default {
@@ -244,6 +247,7 @@ export default {
         display: flex;
         justify-content: center;
 
+
         .aside_type {
             padding: 10px 0;
             margin: 0;
@@ -252,7 +256,6 @@ export default {
             flex-direction: column;
             text-align: center;
             justify-content: end;
-
 
             .aside_card {
                 width: 170px;
@@ -268,30 +271,30 @@ export default {
                 }
             }
 
-            .active {
-                background-color: rgb(214, 24, 24);
-                border-radius: 20px;
-                box-shadow: 70px 10px 5px rgb(214, 24, 24),
-                    -10px -10px 5px rgb(214, 24, 24),
-                    70px -10px 5px rgb(214, 24, 24),
-                    -10px 10px 5px rgb(214, 24, 24);
-                text-decoration-color: white;
-                transition: transform 0.3s ease;
-                transition: text-shadow 0.3s ease;
-                text-shadow: 0 0 5px white;
-                font-weight: 600;
-                color: white;
-                margin: 40px;
+            // .active {
+            //     background-color: rgb(214, 24, 24);
+            //     border-radius: 20px;
+            //     box-shadow: 70px 10px 5px rgb(214, 24, 24),
+            //         -10px -10px 5px rgb(214, 24, 24),
+            //         70px -10px 5px rgb(214, 24, 24),
+            //         -10px 10px 5px rgb(214, 24, 24);
+            //     text-decoration-color: white;
+            //     transition: transform 0.3s ease;
+            //     transition: text-shadow 0.3s ease;
+            //     text-shadow: 0 0 5px white;
+            //     font-weight: 600;
+            //     color: white;
+            //     margin: 40px;
 
-                img {
-                    max-width: 70%;
-                }
+            //     img {
+            //         max-width: 70%;
+            //     }
 
-                img,
-                p {
-                    transform: scale(1.2);
-                }
-            }
+            //     img,
+            //     p {
+            //         transform: scale(1.2);
+            //     }
+            // }
 
             button {
                 padding: 20px;
@@ -306,7 +309,7 @@ export default {
         padding: 50px 0;
 
         .restaurants_grid {
-            .col-2 {
+            .col-md-2 {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -315,9 +318,6 @@ export default {
                 margin: 0;
                 color: white;
 
-                .restaurant-title {
-
-                }
                 &:hover {
                     text-decoration-color: white;
                     transition: transform 0.3s ease;
@@ -326,16 +326,125 @@ export default {
                     font-weight: 800;
                     color: $yellow;
                 }
- 
-                
+
                 img {
                     width: 100px;
                     height: 100px;
                     border-radius: 30px;
                     margin: 20px 0;
                 }
-
             }
         }
     }
-}</style>
+}
+
+@media screen and (max-width:768px) {
+    .restaurant-type {
+        flex-direction: column;
+        margin: 0;
+        flex-wrap: nowrap;
+        flex-shrink: 1;
+        height: auto;
+
+        .aside {
+            background: rgb(214, 24, 24);
+            background: linear-gradient(0deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            .aside_type {
+                padding: 10px 0;
+                margin: 0;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+                justify-content: end;
+                overflow-x: auto;
+
+
+                .aside_card {
+                    width: 170px;
+                    height: 170px;
+                    color: rgb(187, 184, 184);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    img {
+                        max-width: 60%;
+                    }
+                }
+
+                // .active-sm {
+                //     background-color: rgb(214, 24, 24);
+                //     border-radius: 20px;
+                //     box-shadow: 70px 10px 5px rgb(214, 24, 24),
+                //         -10px -10px 5px rgb(214, 24, 24),
+                //         70px -10px 5px rgb(214, 24, 24),
+                //         -10px 10px 5px rgb(214, 24, 24);
+                //     text-decoration-color: white;
+                //     transition: transform 0.3s ease;
+                //     transition: text-shadow 0.3s ease;
+                //     text-shadow: 0 0 5px white;
+                //     font-weight: 600;
+                //     color: white;
+                //     margin: 40px;
+
+                //     img {
+                //         max-width: 70%;
+                //     }
+
+                //     img,
+                //     p {
+                //         transform: scale(1.2);
+                //     }
+                // }
+
+                button {
+                    padding: 20px;
+                    margin: 10px 0;
+                }
+            }
+        }
+
+        .restaurants {
+            background-color: rgb(214, 24, 24);
+            margin: 0;
+            padding: 50px 0;
+            width: 100%;
+
+            .restaurants_grid {
+                .col-md-2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    padding-bottom: 20px;
+                    margin: 0;
+                    color: white;
+
+                    &:hover {
+                        text-decoration-color: white;
+                        transition: transform 0.3s ease;
+                        transition: text-shadow 0.3s ease;
+                        text-shadow: 0 0 5px $yellow;
+                        font-weight: 800;
+                        color: $yellow;
+                    }
+
+                    img {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 30px;
+                        margin: 20px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
