@@ -7,6 +7,7 @@
         <!-- <slot/> -->
         <Delivery></Delivery>
         <Main></Main>
+        <Download></Download>
     </main>
 
     <footer>
@@ -20,6 +21,8 @@ import Footer from '../partial/components/Footer.vue'
 import Main from '../partial/components/Main.vue'
 import Delivery from '../partial/components/Delivery.vue'
 import Card from '../partial/components/Card.vue'
+import Download from '../partial/components/Download.vue'
+
 
 export default {
     components:{
@@ -27,7 +30,8 @@ export default {
         Footer,
         Main,
         Delivery,
-        Card
+        Card,
+        Download
     }
 }
 </script>
