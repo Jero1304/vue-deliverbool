@@ -1,90 +1,66 @@
 <template>
-    <div class="nav-container">
-        <div class="container-md">
-            <div class="navbar">
-                <button v-for="(button, index) in buttons" :key="index" class="navbar-button"
-                    :class="{ active: activeButton === index }" @mouseover="setActiveButton(index)"
-                    @mouseleave="resetActiveButton">
-                    {{ button.text }}
-                </button>
+    <div class="nav-main">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid justify-content-between">
+                <div>
+                    <a class="navbar-brand" href="#"><img src="logo.png" alt="logo"></a>
+                </div>
+                <div>
+                    <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" aria-current="page" href="#">home</a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">ristoranti</a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">tipologia</a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">piatti</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </nav>
     </div>
 </template>
-  
+
 <script>
-export default {
-    data() {
-        return {
-            buttons: [
-                { text: 'HOME' },
-                { text: 'RESTORANTI' },
-                { text: 'TIPOLOGIE' },
-                { text: 'PIATTI' },
-                { text: 'ORDERS' },
-                { text: 'ORDERS' },
-            ],
-            activeButton: null
-        };
-    },
-    methods: {
-        setActiveButton(index) {
-            this.activeButton = index;
-        },
-        resetActiveButton() {
-            this.activeButton = null;
-        }
-    }
-};
 </script>
-  
+
 <style lang="scss">
 @import '../src/scss/variables.scss';
 
-.navbar {
-    display: flex;
-    margin-top: 5px;
-    justify-content: space-around;
-}
-
-.navbar-button {
-    border: none;
-    font-size: 12px;
-    font-weight: 900;
-    padding: 5px 10px;
+.nav-main {
     background-color: $yellow;
-    color: #555;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    margin-right: 10px;
-    cursor: pointer;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
 }
 
-.navbar-button.active {
-    background-color: $orange;
-    color: #fff;
-    animation-name: bounce;
+.nav-btn {
+    background-color: $orange !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    color: white !important;
+    padding: 5px 10px !important;
 }
 
-.nav-container {
-    background-color: $yellow_light;
-    margin-top: -5px;
+.nav-btn:hover {
+    background-color: $azur !important;
+    box-shadow: 0 0 10px $azur;
 }
 
-@keyframes bounce {
-    0% {
-        transform: translateX(0);
-    }
-
-    50% {
-        transform: translateX(10px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+.nav-icon {
+    border: 0px !important;
+    color: $orange;
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>
-  
