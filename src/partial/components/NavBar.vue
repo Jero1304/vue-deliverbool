@@ -13,17 +13,17 @@
                     </button>
                     <div class="collapse navbar-collapse " id="navbarNavDropdown">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item">
-                                <a class="nav-link nav-btn" aria-current="page" href="#">HOME</a>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" aria-current="page" href="#">home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-btn" href="#">RISTORANTI</a>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">ristoranti</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-btn" href="#">TIPOLOGIA</a>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">tipologia</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-btn" href="#">PIATTI</a>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">piatti</a>
                             </li>
                         </ul>
                     </div>
