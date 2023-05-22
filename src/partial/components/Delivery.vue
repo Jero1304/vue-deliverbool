@@ -139,7 +139,7 @@ export default {
 .sezione-card{
    display: flex;
    justify-content: center;
-   gap: 30px;
+   gap: 70px;
    padding: 50px 50px 50px 50px;
    height: 400px;
 } 
