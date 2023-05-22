@@ -6,23 +6,23 @@
                     <a class="navbar-brand" href="#"><img src="logo.png" alt="logo"></a>
                 </div>
                 <div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse " id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item btn text-uppercase">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item">
                                 <a class="nav-link nav-btn" aria-current="page" href="#">HOME</a>
                             </li>
-                            <li class="nav-item btn text-uppercase">
+                            <li class="nav-item">
                                 <a class="nav-link nav-btn" href="#">RISTORANTI</a>
                             </li>
-                            <li class="nav-item btn text-uppercase">
+                            <li class="nav-item">
                                 <a class="nav-link nav-btn" href="#">TIPOLOGIA</a>
                             </li>
-                            <li class="nav-item btn text-uppercase">
+                            <li class="nav-item">
                                 <a class="nav-link nav-btn" href="#">PIATTI</a>
                             </li>
                         </ul>
@@ -50,5 +50,17 @@
     font-weight: 900 !important;
     color: white !important;
     padding: 5px 10px !important;
+}
+
+.nav-btn:hover {
+    background-color: $azur !important;
+    box-shadow: 0 0 10px $azur;
+}
+
+.nav-icon {
+    border: 0px !important;
+    color: $orange;
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>
