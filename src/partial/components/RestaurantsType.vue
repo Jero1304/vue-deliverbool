@@ -17,14 +17,11 @@
             <div class="container">
                 <div class="row restaurants_grid">
                     <template v-for="(restaurant, i) in restaurants">
-                        <div class="col-sm-4 col-md-2" v-if="restaurant.type === currentType">
+                        <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
                             <img src="https://picsum.photos/200/300" alt="">
                             <p class="restaurant-title">{{ restaurant.name }}</p>
-                            <!-- <p>{{ restaurant.type }}</p> -->
                         </div>
                     </template>
-
-
                 </div>
             </div>
         </div>
@@ -34,165 +31,148 @@
 <script>
 const restaurants = [
     {
-        name: 'Da Dario',
-        type: 'pizzeria'
+        name: 'Da Dario 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
-        name: 'Da Luigi',
-        type: 'italiano'
-    },
-    {
-        name: 'Genki Sushi',
-        type: 'sushi'
-    },
-    {
-        name: 'Hola Hola',
-        type: 'messicano'
-    },
-    {
-        name: 'Pizza a Pezzi',
-        type: 'pizzeria'
-    },
-    {
-        name: 'Dalla nonna',
-        type: 'italiano'
-    },
-    {
-        name: 'Chico',
-        type: 'messicano'
-    },
-    {
-        name: 'Ghoan',
-        type: 'sushi'
-    },
-    {
-        name: 'MC Donald\'s',
-        type: 'fastFood'
-    },
-    {
-        name: 'Burgerz',
-        type: 'fastFood'
-    },
-    {
-        name: 'Da Dario',
-        type: 'pizzeria'
-    },
-    {
-        name: 'Da Luigi',
-        type: 'italiano'
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
         name: 'Genki Sushi',
-        type: 'sushi'
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
     },
     {
         name: 'Hola Hola',
-        type: 'messicano'
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
     },
     {
         name: 'Pizza a Pezzi',
-        type: 'pizzeria'
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
     },
     {
         name: 'Dalla nonna',
-        type: 'italiano'
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
         name: 'Chico',
-        type: 'messicano'
+        type: [
+            'messicano',
+        ]
     },
     {
         name: 'Ghoan',
-        type: 'sushi'
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
     },
     {
         name: 'MC Donald\'s',
-        type: 'fastFood'
+        type: [
+            'FastFood',
+        ]
     },
     {
         name: 'Burgerz',
-        type: 'fastFood'
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
     },
     {
-        name: 'Da Dario',
-        type: 'pizzeria'
+        name: 'Da Dario 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
-        name: 'Da Luigi',
-        type: 'italiano'
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
         name: 'Genki Sushi',
-        type: 'sushi'
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
     },
     {
         name: 'Hola Hola',
-        type: 'messicano'
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
     },
     {
         name: 'Pizza a Pezzi',
-        type: 'pizzeria'
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
     },
     {
         name: 'Dalla nonna',
-        type: 'italiano'
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
     },
     {
         name: 'Chico',
-        type: 'messicano'
+        type: [
+            'messicano',
+        ]
     },
     {
         name: 'Ghoan',
-        type: 'sushi'
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
     },
     {
         name: 'MC Donald\'s',
-        type: 'fastFood'
+        type: [
+            'FastFood',
+        ]
     },
     {
         name: 'Burgerz',
-        type: 'fastFood'
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
     },
-    {
-        name: 'Da Dario',
-        type: 'pizzeria'
-    },
-    {
-        name: 'Da Luigi',
-        type: 'italiano'
-    },
-    {
-        name: 'Genki Sushi',
-        type: 'sushi'
-    },
-    {
-        name: 'Hola Hola',
-        type: 'messicano'
-    },
-    {
-        name: 'Pizza a Pezzi',
-        type: 'pizzeria'
-    },
-    {
-        name: 'Dalla nonna',
-        type: 'italiano'
-    },
-    {
-        name: 'Chico',
-        type: 'messicano'
-    },
-    {
-        name: 'Ghoan',
-        type: 'sushi'
-    },
-    {
-        name: 'MC Donald\'s',
-        type: 'fastFood'
-    },
-    {
-        name: 'Burgerz',
-        type: 'fastFood'
-    },
+
+    
+
 ];
 
 const restaurantType = [
