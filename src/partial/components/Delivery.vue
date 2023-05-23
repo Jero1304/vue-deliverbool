@@ -81,7 +81,7 @@
 
            <!-- Call to action -->
 
-           <button type="button" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-3">Ordina ora ed esplora i locali intorno a te!</button>
+           <button type="button" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3">Ordina ora ed esplora i locali intorno a te!</button>
 
    </div> 
 
@@ -305,7 +305,7 @@ h5{
 
 
 /* RESPONSIVE STYLES */
-@media (max-width: 450px) {
+@media (max-width: 768px) {
    /* CARD RULES */
    .sezione-card {
       flex-wrap: wrap;
@@ -321,6 +321,7 @@ h5{
    .btn {
       padding: 13px;
       font-size: 13px;
+      margin-top: 50px;
       
    }
 
