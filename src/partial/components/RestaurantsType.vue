@@ -7,9 +7,11 @@
                     ^<br>
                     I
                 </div> -->
-                <div class="aside_card" v-for="(type, index) in types" @click="typeSelection(index, type)"
+                <div class="aside_card" v-for="(type, index) in types"
+                    @click="typeSelection(index, type), currentTypeRest()"
                     :class="{ 'active': index === currentIndexType }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
+                    <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
                 </div>
                 <!-- <div>
@@ -21,23 +23,27 @@
             </div>
         </div>
 
+
         <div class="restaurants col-10">
             <div class="container mx-3">
                 <div class="row">
 
-                    <!-- <div class="col-1">sinistra</div> -->
+                    <div class="col-1" @click="previousPage" :disabled="currentPage === 1">sinistra</div>
 
-                    <div class="row justify-content-center restaurants_grid">
-                        <template v-for="(restaurant, i) in restaurants">
+                    <div class="row col-10 justify-content-center restaurants_grid">
+                        <template v-for="(restaurant, i) in paginateRestaurants" :key="i">
+
                             <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
                                 <img src="https://picsum.photos/200/300" alt="">
                                 <p class="restaurant-title">{{ restaurant.name }}</p>
-                                <!-- {{ restaurant.type }} -->
+                                <!-- <p>{{ restaurant.type.join(', ') }}</p> -->
+
                             </div>
                         </template>
                     </div>
 
-                    <!-- <div class="col-1">destra</div> -->
+                    <div class="col-1" @click="nextPage" :disabled="currentPage === totalPages">destra</div>
+
                 </div>
             </div>
         </div>
@@ -200,7 +206,7 @@ const restaurantType = [
     'messicano',
     'thai',
     'eee',
-    '33333',
+    '33333'
 ];
 
 export default {
@@ -210,6 +216,9 @@ export default {
             types: restaurantType,
             currentIndexType: 0,
             currentType: '',
+            currentPage: 1,
+            itemsPerPage: 5,
+            currentRest: 0,
         }
     },
     methods: {
@@ -219,17 +228,47 @@ export default {
             console.log(this.currentIndexType);
             // console.log(this.currentType);
         },
+
+        // restaurants carusel
+        previousPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        },
+        currentTypeRest() {
+            const restaurant = []
+            for (const res of this.restaurants) {
+                if (res.type.includes(this.currentType)) {
+                    restaurant.push(res)
+                }
+            }
+            console.log(restaurant);
+            return restaurant
+        }
+        //_________________________________
+
+
+    },
+    computed: {
+        // restaurants carusel
+
+        paginateRestaurants() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = start + this.itemsPerPage;
+            return this.currentTypeRest().slice(start, end);
+        },
+        totalPages() {
+            return Math.ceil(this.currentTypeRest().length / this.itemsPerPage);
+        }
+        //_________________________________
+
     },
 
-
-
-
-    /*
-        const array
-        const itemXpage= x
-        const pages = Math.ceil(array.lenght/item)
-
-    */
 
 }
 </script>
