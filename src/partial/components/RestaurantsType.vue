@@ -3,21 +3,20 @@
 
         <div class="aside col-2">
             <div class="aside_type">
-                <!-- <div>
-                    ^<br>
-                    I
-                </div> -->
-                <div class="aside_card" v-for="(type, index) in types"
-                    @click="typeSelection(index, type), currentTypeRest()"
+                <div @click="previousPageType" :disabled="currentPageType === 1">
+                    SU
+                </div>
+                <div class="aside_card" v-for="(type, index) in paginateType"
+                    @click="typeSelection(index, type), currentTypeRest(),pagesResest()"
                     :class="{ 'active': index === currentIndexType }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
                     <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
                 </div>
-                <!-- <div>
-                    I <br>
-                    V
-                </div> -->
+
+                <div @click="nextPageType" :disabled="currentPageType === totalPagesType">
+                    GIU
+                </div>
 
 
             </div>
@@ -28,7 +27,8 @@
             <div class="container mx-3">
                 <div class="row">
 
-                    <div class="col-1" @click="previousPage" :disabled="currentPage === 1">sinistra</div>
+                    <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">sinistra
+                    </div>
 
                     <div class="row col-10 justify-content-center restaurants_grid">
                         <template v-for="(restaurant, i) in paginateRestaurants" :key="i">
@@ -42,7 +42,8 @@
                         </template>
                     </div>
 
-                    <div class="col-1" @click="nextPage" :disabled="currentPage === totalPages">destra</div>
+                    <div class="col-1" @click="nextPageRestaurant"
+                        :disabled="currentPageRestaurant === totalPagesRestaurant">destra</div>
 
                 </div>
             </div>
@@ -214,30 +215,51 @@ export default {
         return {
             restaurants: restaurants,
             types: restaurantType,
+
             currentIndexType: 0,
             currentType: '',
-            currentPage: 1,
-            itemsPerPage: 5,
-            currentRest: 0,
+
+            currentPageRestaurant: 1,
+            itemsPerPageRestaurant: 5,
+
+            currentPageType: 1,
+            itemsPerPageType: 4,
         }
     },
     methods: {
         typeSelection(index, type) {
             this.currentIndexType = index
             this.currentType = type
-            console.log(this.currentIndexType);
-            // console.log(this.currentType);
+        },
+        pagesResest(){
+            this.currentPageRestaurant = 1
         },
 
+        //type carusell
+        previousPageType() {
+            if (this.currentPageType > 1) {
+                this.currentPageType--;
+            }
+            console.log(this.currentPageType);
+        },
+        nextPageType() {
+            if (this.currentPageType < this.totalPagesType) {
+                this.currentPageType++;
+            }
+            console.log(this.currentPageType);
+        },
+
+
+
         // restaurants carusel
-        previousPage() {
-            if (this.currentPage > 1) {
-                this.currentPage--;
+        previousPageRestaurant() {
+            if (this.currentPageRestaurant > 1) {
+                this.currentPageRestaurant--;
             }
         },
-        nextPage() {
-            if (this.currentPage < this.totalPages) {
-                this.currentPage++;
+        nextPageRestaurant() {
+            if (this.currentPageRestaurant < this.totalPagesRestaurant) {
+                this.currentPageRestaurant++;
             }
         },
         currentTypeRest() {
@@ -247,25 +269,36 @@ export default {
                     restaurant.push(res)
                 }
             }
-            console.log(restaurant);
             return restaurant
         }
         //_________________________________
 
 
+
+
     },
     computed: {
         // restaurants carusel
-
         paginateRestaurants() {
-            const start = (this.currentPage - 1) * this.itemsPerPage;
-            const end = start + this.itemsPerPage;
+            const start = (this.currentPageRestaurant - 1) * this.itemsPerPageRestaurant;
+            const end = start + this.itemsPerPageRestaurant;
             return this.currentTypeRest().slice(start, end);
         },
-        totalPages() {
-            return Math.ceil(this.currentTypeRest().length / this.itemsPerPage);
-        }
+        totalPagesRestaurant() {
+            return Math.ceil(this.currentTypeRest().length / this.itemsPerPageRestaurant);
+        },
         //_________________________________
+
+        //type carusel
+        paginateType() {
+            const start = (this.currentPageType - 1) * this.itemsPerPageType;
+            const end = start + this.itemsPerPageType;
+            return this.types.slice(start, end);
+        },
+        totalPagesType() {
+            return Math.ceil(this.types.length / this.itemsPerPageType);
+        },
+
 
     },
 
