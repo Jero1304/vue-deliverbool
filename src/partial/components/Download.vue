@@ -12,9 +12,11 @@
 
       <div class="col-6 img-phone">
 
-        <img src="./img/app-1.png.png" alt="app-deliveboo" class="img-logo-responsive">
+        <img src="./img/app-1.png.png" alt="app-deliveboo">
         <img src="./img/app-2.png.png" alt="app-deliveboo" class="img-logo">
         <img src="./img/app-3.png.png" alt="app-deliveboo">
+
+        <img src="./img/app-1.png.png" alt="app-deliveboo" class="img-responsive">
         
        
         
@@ -85,6 +87,9 @@
     
   }
 
+  .img-responsive{
+    display: none;
+  }
 
   /* RESPONSIVE RULES */
   @media screen and (max-width: 1680px) {
@@ -107,9 +112,10 @@
     display: none;
   }
 
-  .img-logo-responsive{
+  .img-responsive{
     display: block;
   }
+
 }
 
 

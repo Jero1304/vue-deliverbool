@@ -102,7 +102,7 @@
 
         </div>
 
-        <h7> <a href="#">Accedi</a> per scorprire i tuoi indirizzi recenti.</h7>
+        <p> <a href="#">Accedi</a> per scorprire i tuoi indirizzi recenti.</p>
         
     </div>
 
@@ -341,7 +341,7 @@ h5{
     font-size: 13px;
   }
 
-   h7 {
+   .input-group p {
     font-size: 12px;
     margin-bottom: 20px;
   }
