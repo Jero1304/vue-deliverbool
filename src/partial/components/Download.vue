@@ -93,7 +93,13 @@
 
   /* RESPONSIVE RULES */
   @media screen and (max-width: 1680px) {
-  .list-downloand {
+  
+  .download {
+    height: 900px;
+
+  }
+  
+    .list-downloand {
     padding-left: 0;
   }
 
