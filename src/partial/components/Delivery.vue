@@ -378,7 +378,6 @@ h5 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 400px;
   }
 
   .form-consegna h3 {
@@ -407,6 +406,5 @@ h5 {
   .form-consegna img {
     display: none;
   }
-
 }
 </style>
