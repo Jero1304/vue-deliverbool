@@ -3,41 +3,48 @@
 
         <div class="aside col-2">
             <div class="aside_type">
-                <!-- <div>
-                    ^<br>
-                    I
-                </div> -->
-                <div class="aside_card" v-for="(type, index) in types" @click="typeSelection(index, type)"
+                <div @click="previousPageType" :disabled="currentPageType === 1">
+                    SU
+                </div>
+                <div class="aside_card" v-for="(type, index) in paginateType"
+                    @click="typeSelection(index, type), currentTypeRest(),pagesResest()"
                     :class="{ 'active': index === currentIndexType }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
+                    <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
                 </div>
-                <!-- <div>
-                    I <br>
-                    V
-                </div> -->
+
+                <div @click="nextPageType" :disabled="currentPageType === totalPagesType">
+                    GIU
+                </div>
 
 
             </div>
         </div>
 
+
         <div class="restaurants col-10">
             <div class="container mx-3">
                 <div class="row">
 
-                    <!-- <div class="col-1">sinistra</div> -->
+                    <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">sinistra
+                    </div>
 
-                    <div class="row justify-content-center restaurants_grid">
-                        <template v-for="(restaurant, i) in restaurants">
+                    <div class="row col-10 justify-content-center restaurants_grid">
+                        <template v-for="(restaurant, i) in paginateRestaurants" :key="i">
+
                             <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
                                 <img src="https://picsum.photos/200/300" alt="">
                                 <p class="restaurant-title">{{ restaurant.name }}</p>
-                                <!-- {{ restaurant.type }} -->
+                                <!-- <p>{{ restaurant.type.join(', ') }}</p> -->
+
                             </div>
                         </template>
                     </div>
 
-                    <!-- <div class="col-1">destra</div> -->
+                    <div class="col-1" @click="nextPageRestaurant"
+                        :disabled="currentPageRestaurant === totalPagesRestaurant">destra</div>
+
                 </div>
             </div>
         </div>
@@ -200,7 +207,7 @@ const restaurantType = [
     'messicano',
     'thai',
     'eee',
-    '33333',
+    '33333'
 ];
 
 export default {
@@ -208,28 +215,93 @@ export default {
         return {
             restaurants: restaurants,
             types: restaurantType,
+
             currentIndexType: 0,
             currentType: '',
+
+            currentPageRestaurant: 1,
+            itemsPerPageRestaurant: 5,
+
+            currentPageType: 1,
+            itemsPerPageType: 4,
         }
     },
     methods: {
         typeSelection(index, type) {
             this.currentIndexType = index
             this.currentType = type
-            console.log(this.currentIndexType);
-            // console.log(this.currentType);
         },
+        pagesResest(){
+            this.currentPageRestaurant = 1
+        },
+
+        //type carusell
+        previousPageType() {
+            if (this.currentPageType > 1) {
+                this.currentPageType--;
+            }
+            console.log(this.currentPageType);
+        },
+        nextPageType() {
+            if (this.currentPageType < this.totalPagesType) {
+                this.currentPageType++;
+            }
+            console.log(this.currentPageType);
+        },
+
+
+
+        // restaurants carusel
+        previousPageRestaurant() {
+            if (this.currentPageRestaurant > 1) {
+                this.currentPageRestaurant--;
+            }
+        },
+        nextPageRestaurant() {
+            if (this.currentPageRestaurant < this.totalPagesRestaurant) {
+                this.currentPageRestaurant++;
+            }
+        },
+        currentTypeRest() {
+            const restaurant = []
+            for (const res of this.restaurants) {
+                if (res.type.includes(this.currentType)) {
+                    restaurant.push(res)
+                }
+            }
+            return restaurant
+        }
+        //_________________________________
+
+
+
+
+    },
+    computed: {
+        // restaurants carusel
+        paginateRestaurants() {
+            const start = (this.currentPageRestaurant - 1) * this.itemsPerPageRestaurant;
+            const end = start + this.itemsPerPageRestaurant;
+            return this.currentTypeRest().slice(start, end);
+        },
+        totalPagesRestaurant() {
+            return Math.ceil(this.currentTypeRest().length / this.itemsPerPageRestaurant);
+        },
+        //_________________________________
+
+        //type carusel
+        paginateType() {
+            const start = (this.currentPageType - 1) * this.itemsPerPageType;
+            const end = start + this.itemsPerPageType;
+            return this.types.slice(start, end);
+        },
+        totalPagesType() {
+            return Math.ceil(this.types.length / this.itemsPerPageType);
+        },
+
+
     },
 
-
-
-
-    /*
-        const array
-        const itemXpage= x
-        const pages = Math.ceil(array.lenght/item)
-
-    */
 
 }
 </script>
