@@ -234,8 +234,6 @@ h5 {
 
 }
 
-
-
 .card-hover p {
   display: block;
 }
@@ -252,12 +250,6 @@ h5 {
   display: block;
 
 }
-
-/* .card-hover img {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-} */
 
 .card-hover::before {
   content: '';
@@ -378,7 +370,6 @@ h5 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 400px;
   }
 
   .form-consegna h3 {
@@ -407,6 +398,5 @@ h5 {
   .form-consegna img {
     display: none;
   }
-
 }
 </style>
