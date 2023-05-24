@@ -108,19 +108,16 @@
         <div class="container">
           <form @submit.prevent="submitForm" class="gap-3">
             <div class="row">
-              <div class="col-6 ">
-                <label for="street" class="form-label">Via</label>
-                <input type="text" class="form-control search_bar" id="street" v-model="address.street" required>
-              </div>
-              <div class="col-6 ">
-                <label for="city" class="form-label">Città</label>
-                <input type="text" class="form-control search_bar" id="city" v-model="address.city" required>
+              <div class="col-12 d-flex flex-column gap-3">
+                <input type="text" class="form-control search_bar" id="street" v-model="address.street"
+                  placeholder="Via..." required>
+                <input type="text" class="form-control search_bar" id="city" v-model="address.city" placeholder="Città..."
+                  required>
               </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3 mt-3">Invia</button>
           </form>
         </div>
-        <p> <a class="" href="#"> Accedi</a> per scorprire i tuoi indirizzi recenti.</p>
       </div>
     </div>
 
