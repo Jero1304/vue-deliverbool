@@ -1,8 +1,9 @@
 <template>
     main
 
+    <!-- <RestaurantsType></RestaurantsType> -->
+    
 
-    <RestaurantsType></RestaurantsType>
 </template>
 
 <script>
