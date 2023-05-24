@@ -98,9 +98,9 @@
 
 
   <!-- Sezione form-consegna -->
-  <div class="form-consegna d-flex pt-5" id="formEl">
+  <div class="form-consegna d-flex pt-5">
 
-    <div :class="elClass">
+    <div class="col-8">
       <h3>I tuoi piatti preferiti a casa tua!</h3>
 
       <div class="input-group mb-4 gap-3">
@@ -117,7 +117,7 @@
                 <input type="text" class="form-control search_bar" id="city" v-model="address.city" required>
               </div>
             </div>
-            <button type="submit" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3 mt-3 ">Invia</button>
+            <button type="submit" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3 mt-3">Invia</button>
           </form>
         </div>
         <p> <a class="" href="#"> Accedi</a> per scorprire i tuoi indirizzi recenti.</p>
@@ -139,17 +139,11 @@ export default {
       address: {
         street: '',
         city: '',
+        zip: '',
+        country: ''
       },
-      elClass: "col-8",
       hoveredCard: null
     };
-  },
-  mounted() {
-    this.handleResize(); // Chiamata iniziale alla funzione handleResize al momento del montaggio del componente
-    window.addEventListener("resize", this.handleResize); // Aggiunta del listener per l'evento resize
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.handleResize); // Rimozione del listener per l'evento resize prima dello smontaggio del componente
   },
   methods: {
     submitForm() {
@@ -157,17 +151,12 @@ export default {
       this.address = {
         street: '',
         city: '',
-      }
-    },
-    handleResize() {
-      if (window.innerWidth < 768) {
-        this.elClass = "col-12";
-      } else {
-        this.elClass = "col-8";
-      }
+        zip: '',
+        country: ''
+      };
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -264,6 +253,12 @@ h5 {
 
 }
 
+/* .card-hover img {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+} */
+
 .card-hover::before {
   content: '';
   position: absolute;
@@ -291,6 +286,7 @@ h5 {
   padding: 20px;
   border-radius: 50px;
   border: 1px solid rgb(255, 91, 0);
+  ;
   font-size: 18px;
   margin-bottom: 10px;
   background-color: rgb(255, 91, 0);
@@ -322,12 +318,14 @@ h5 {
   font-size: 30px;
   text-transform: uppercase;
   margin-bottom: 30px;
+
 }
 
 .form-consegna button {
   border-radius: 10px;
   padding: 10px;
   border: 1px solid rgb(255, 91, 0);
+  ;
   font-size: 18px;
   background-color: rgb(255, 91, 0);
   color: white;
@@ -380,6 +378,7 @@ h5 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 400px;
   }
 
   .form-consegna h3 {
