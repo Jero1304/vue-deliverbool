@@ -4,16 +4,16 @@
             <div class="row">
                 <div class="col">
                     <figure class="thumb">
-                        <img src="/images/hamburger-logo.png" alt="">
+                        <img class="burger_img" src="/images/hamburger-logo.png" alt="Burger">
                     </figure>
-                </div>                
-                <div class="col">                    
+                </div>
+                <div class="col">
                     <ul class="menu">
                         <li>
                             <h4>scopri deliveboo</h4>
                         </li>
                         <li class="menu_item">
-                            <span>Chi siamo</span> 
+                            <span>Chi siamo</span>
                         </li>
                         <li class="menu_item">
                             <span>Lavora con noi</span>
@@ -50,11 +50,11 @@
                             </a>
                             <a href="https://www.instagram.com/" target="_blank" class="icon insta">
                                 <font-awesome-icon :icon="['fab', 'instagram']" />
-                            </a>                            
+                            </a>
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -69,22 +69,23 @@ export default {
 <style lang="scss" scoped>
 @use '../src/scss/variables' as *;
 
-.nav-footer{
+.nav-footer {
     background-color: $orange;
     color: white;
     padding-top: 25px;
 
-    .row{
+    .row {
         display: flex;
     }
 
-    .menu_item{
-        cursor:pointer;
+    .menu_item {
+        cursor: pointer;
         line-height: 2.8rem;
-        
-        span{
+
+        span {
             transition: transform 0.3s ease;
             transition: text-shadow 0.3s ease;
+
             &:hover {
                 text-shadow: 0 0 10px yellowgreen;
                 font-weight: 600;
@@ -92,39 +93,45 @@ export default {
                 transform: scale(1.2);
             }
         }
-      }
-    }
-    
-
-    h4{
-        text-transform: uppercase;
-        padding: 5px 0;
-        color: $bordeaux;
-    }
-
-    .social_icon{
-        font-size: 34px;
-        display: flex;
-        gap: 0.5rem;
-
-        .fb{
-            color: blue;
-        }
-        .insta{
-            color: rgb(255, 3, 87);
-        }
-        
-        .icon{  
-            
-            border-radius: 999px ;
-            padding: 0 8px;
-            transition: box-shadow 0.3s ease;
-            &:hover {
-                box-shadow: 0 0 10px $yellow;
-        }
-        
     }
 }
 
 
+h4 {
+    text-transform: uppercase;
+    padding: 5px 0;
+    color: $bordeaux;
+}
+
+.social_icon {
+    font-size: 34px;
+    display: flex;
+    gap: 0.5rem;
+
+    .fb {
+        color: blue;
+    }
+
+    .insta {
+        color: rgb(255, 3, 87);
+    }
+
+    .icon {
+
+        border-radius: 999px;
+        padding: 0 8px;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 10px $yellow;
+        }
+
+    }
+}
+
+@media (max-width: 768px) {
+    .burger_img {
+        display: none;
+    }
+}
 </style>
