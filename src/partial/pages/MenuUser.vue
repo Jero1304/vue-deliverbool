@@ -22,7 +22,8 @@
 
                         <div> sinistra</div>
 
-                        <div class="aside-card" v-for="(plateType, index) in plateTypes">
+                        <div class="aside-card" v-for="(plateType, index) in plateTypes"
+                            @click="typeSelection(index, plateType)">
                             <img src="../../../public/images/plate.webp" alt="">
                             <p>{{ plateType }}</p>
                         </div>
@@ -37,7 +38,7 @@
 
                         <div class="row col-10 justify-content-center">
                             <template v-for="(plate, index) in plateMenu">
-                                <div class="col-2">
+                                <div class="col-2" v-if="plate.type.includes(currentType)">
                                     <img src="../../../public/images/cibo.webp" alt="">
                                     <p>{{ plate.name }}</p>
                                 </div>
@@ -55,6 +56,7 @@
 
 <script>
 const restaurantMenu = [
+    // PRIMI
     {
         name: 'primo#1',
         type: 'primi',
@@ -88,6 +90,7 @@ const restaurantMenu = [
         type: 'primi',
     },
 
+    // SECONDI
     {
         name: 'secondo#1',
         type: 'secondi',
@@ -121,6 +124,7 @@ const restaurantMenu = [
         type: 'secondi',
     },
 
+    // BEVANDE
     {
         name: 'bevanda#1',
         type: 'bevande',
@@ -154,6 +158,41 @@ const restaurantMenu = [
         type: 'bevande',
     },
 
+    // VINO
+    {
+        name: 'vino#1',
+        type: 'vini',
+    },
+    {
+        name: 'vino#2',
+        type: 'vini',
+    },
+    {
+        name: 'vino#3',
+        type: 'vini',
+    },
+    {
+        name: 'vino#4',
+        type: 'vini',
+    },
+    {
+        name: 'vino#5',
+        type: 'vini',
+    },
+    {
+        name: 'vino#6',
+        type: 'vini',
+    },
+    {
+        name: 'vino#7',
+        type: 'vini',
+    },
+    {
+        name: 'vino#8',
+        type: 'vini',
+    },
+
+    // DOLCI
     {
         name: 'vino#1',
         type: 'dolci',
@@ -187,6 +226,7 @@ const restaurantMenu = [
         type: 'dolci',
     },
 
+    // DIGESTIVI
     {
         name: 'digestivo#1',
         type: 'digestivi',
@@ -234,7 +274,16 @@ export default {
         return {
             plateMenu: restaurantMenu,
             plateTypes: plateTypes,
+
+            currentIndexType: 0,
+            currentType: '',
         }
+    },
+    methods: {
+        typeSelection(index, type) {
+            this.currentIndexType = index
+            this.currentType = type
+        },
     },
 }
 
