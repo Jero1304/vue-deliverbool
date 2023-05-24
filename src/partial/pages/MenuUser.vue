@@ -1,15 +1,5 @@
 <template>
-    <header>
-        <!-- <NavBar></NavBar> -->
-    </header>
-
-    <main>
-        
-    </main>
-
-    <footer>
-        <!-- <Footer></Footer> -->
-    </footer>
+menu
 </template>
 
 <script>
@@ -17,8 +7,8 @@
 // import Footer from '../partial/components/Footer.vue'
 export default {
     components: {
-        NavBar,
-        Footer,
+        // NavBar,
+        // Footer,
     }
 
 }
