@@ -1,5 +1,4 @@
 <template>
-    
     <Delivery></Delivery>
     <RestaurantsType></RestaurantsType>
     <Download></Download>
