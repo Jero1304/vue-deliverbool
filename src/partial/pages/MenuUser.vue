@@ -22,17 +22,30 @@
 
                         <div> sinistra</div>
 
-                        <div class="aside-card">
+                        <div class="aside-card" v-for="(plateType, index) in plateTypes">
                             <img src="../../../public/images/plate.webp" alt="">
-                            <p>plate</p>
+                            <p>{{ plateType }}</p>
                         </div>
 
                         <div> destra</div>
                     </div>
                 </div>
 
-                <div class="plates">
-                    piatti
+                <div class="plates p-3">
+                    <div class="row">
+                        <div class="col-1">frecia</div>
+
+                        <div class="row col-10 justify-content-center">
+                            <template v-for="(plate, index) in plateMenu">
+                                <div class="col-2">
+                                    <img src="../../../public/images/cibo.webp" alt="">
+                                    <p>{{ plate.name }}</p>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="col-1">frecia</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -208,17 +221,21 @@ const restaurantMenu = [
     },
 ];
 
-const plateType = [
+const plateTypes = [
     'primi',
     'secondi',
     'bevande',
     'vini',
     'dolci',
     'digestivi'
-
 ];
 export default {
-
+    data() {
+        return {
+            plateMenu: restaurantMenu,
+            plateTypes: plateTypes,
+        }
+    },
 }
 
 
@@ -261,9 +278,10 @@ export default {
             .aside-card {
                 color: rgb(187, 184, 184);
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
                 flex-direction: column;
+                margin: 0 10px;
 
                 img {
                     max-width: 80px;
@@ -271,9 +289,10 @@ export default {
             }
         }
     }
-    .plates{
+
+    .plates {
         background-color: green;
-        height: 700px ;
+        height: 700px;
     }
 
 }
