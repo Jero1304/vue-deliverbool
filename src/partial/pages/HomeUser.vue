@@ -1,5 +1,7 @@
 <template>
-    <Default></Default>
+    <Default>
+        default
+    </Default>
 </template>
 
 <script>

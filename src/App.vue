@@ -1,15 +1,16 @@
 <script>
-import HomeUser from './partial/pages/HomeUser.vue';
+import NavBar from './partial/components/NavBar.vue'
 
 export default {
   components:{
-    HomeUser,
+    NavBar,
   }
 }
 </script>
 
 <template>
-    <HomeUser></HomeUser>
+    <!-- <HomeUser></HomeUser> -->
+    <router-view></router-view>
 </template>
 
 <style>

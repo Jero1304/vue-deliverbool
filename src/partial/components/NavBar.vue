@@ -3,7 +3,9 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid justify-content-between">
                 <div>
+
                     <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo"></a>
+
                 </div>
                 <div>
                     <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,6 +37,7 @@
 </template>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
     var navLinks = document.querySelectorAll('.nav-link');
 
@@ -49,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+import 'bootstrap/dist/js/bootstrap.bundle'
+
 </script>
 
 <style lang="scss">
