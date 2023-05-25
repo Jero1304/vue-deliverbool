@@ -52,7 +52,7 @@
 
                         <div class="row col-10 justify-content-center">
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-4" v-if="plate.type.includes(currentType)">
+                                <div class="col-4 p-3" v-if="plate.type.includes(currentType)">
                                     <img src="../../../public/images/cibo.webp" alt="food">
                                     <p>{{ plate.name }}</p>
                                 </div>
