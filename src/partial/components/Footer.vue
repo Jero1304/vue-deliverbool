@@ -1,26 +1,32 @@
 <template>
     <div class="footer">
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-4 d-flex flex-column justify-content-center">
-                    <h3>Informazioni</h3>
+                <div class="col-sm-4 d-flex justify-content-center">
                     <ul>
+                        <li>
+                            <h3>Informazioni</h3>
+                        </li>
                         <li><a href="#">Chi siamo</a></li>
                         <li><a href="#">Termini e condizioni</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-4 d-flex flex-column justify-content-center">
-                    <h3>Servizio clienti</h3>
+                <div class="col-sm-4 d-flex justify-content-center">
                     <ul>
+                        <li>
+                            <h3>Servizio clienti</h3>
+                        </li>
                         <li><a href="#">Contatti</a></li>
                         <li><a href="#">Domande frequenti</a></li>
                         <li><a href="#">Assistenza online</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-4 d-flex flex-column justify-content-center">
-                    <h3>Social</h3>
+                <div class="col-sm-4 d-flex justify-content-center">
                     <ul>
+                        <li>
+                            <h3>Social</h3>
+                        </li>
                         <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
@@ -49,6 +55,8 @@ export default {
 .footer h3 {
     font-size: 18px;
     margin-bottom: 10px;
+    color: $bordeaux;
+    text-transform: uppercase;
 }
 
 .footer ul {
