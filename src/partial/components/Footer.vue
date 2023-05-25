@@ -2,7 +2,10 @@
     <div class="footer">
         <div class="container d-flex justify-content-center">
             <div class="row">
-                <div class="col-sm-4 d-flex justify-content-center">
+                <div class="col-sm-3 d-flex justify-content-center">
+
+                </div>
+                <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
                         <li>
                             <h3>Informazioni</h3>
@@ -12,7 +15,7 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-4 d-flex justify-content-center">
+                <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
                         <li>
                             <h3>Servizio clienti</h3>
@@ -22,14 +25,27 @@
                         <li><a href="#">Assistenza online</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-4 d-flex justify-content-center">
+                <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
                         <li>
                             <h3>Social</h3>
                         </li>
-                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank" class="icon fb">
+                                <font-awesome-icon :icon="['fab', 'facebook']" /> FaceBook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank" class="icon tw">
+                                <font-awesome-icon :icon="['fab', 'twitter']" /> Twitter
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/" target="_blank" class="icon insta">
+                                <font-awesome-icon :icon="['fab', 'instagram']" /> Instagram
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
