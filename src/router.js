@@ -12,14 +12,14 @@ const router = createRouter({
 	history,
 	routes: [
 		{
-			path: '/',
+			path: '/home',
 			name: 'home',
 			component: HomeUser,
 		},
         {
 			path: '/menu',
 			name: 'menu',
-			component: HomeUser,
+			component: MenuUser,
 		},
 		
 	],

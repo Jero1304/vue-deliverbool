@@ -1,14 +1,20 @@
 <template>
-    <Default>
-        default
-    </Default>
+    
+    <Delivery></Delivery>
+    <RestaurantsType></RestaurantsType>
+    <Download></Download>
 </template>
 
 <script>
-import Default from '../../layouts/Default.vue';
+import Delivery from '../components/Delivery.vue';
+import Download from '../components/Download.vue';
+import RestaurantsType from '../components/RestaurantsType.vue';
+
 export default {
     components:{
-        Default
+        Delivery,
+        Download,
+        RestaurantsType,
     }
 }
 </script>
