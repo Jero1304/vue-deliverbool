@@ -1,137 +1,79 @@
 <template>
-    <section class="nav-footer">
+    <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <figure class="thumb">
-                        <img class="burger_img" src="/images/hamburger-logo.png" alt="Burger">
-                    </figure>
-                </div>
-                <div class="col">
-                    <ul class="menu">
-                        <li>
-                            <h4>scopri deliveboo</h4>
-                        </li>
-                        <li class="menu_item">
-                            <span>Chi siamo</span>
-                        </li>
-                        <li class="menu_item">
-                            <span>Lavora con noi</span>
-                        </li>
-                        <li class="menu_item">
-                            <span>Diventa nostro partner</span>
-                        </li>
+                <div class="col-md-4">
+                    <h3>Informazioni</h3>
+                    <ul>
+                        <li><a href="#">Chi siamo</a></li>
+                        <li><a href="#">Termini e condizioni</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col">
-                    <ul class="menu">
-                        <li>
-                            <h4>note legali</h4>
-                        </li>
-                        <li class="menu_item">
-                            <span>Termini & condizioni</span>
-                        </li>
-                        <li class="menu_item">
-                            <span>Informativa sulla privacy</span>
-                        </li>
+                <div class="col-md-4">
+                    <h3>Servizio clienti</h3>
+                    <ul>
+                        <li><a href="#">Contatti</a></li>
+                        <li><a href="#">Domande frequenti</a></li>
+                        <li><a href="#">Assistenza online</a></li>
                     </ul>
                 </div>
-                <div class="col">
-                    <ul class="menu">
-                        <li>
-                            <h4>follow us</h4>
-                        </li>
-                        <li class="menu_item social_icon">
-                            <a href="https://www.facebook.com/" target="_blank" class="icon fb">
-                                <font-awesome-icon :icon="['fab', 'facebook']" />
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" class="icon tw">
-                                <font-awesome-icon :icon="['fab', 'twitter']" />
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" class="icon insta">
-                                <font-awesome-icon :icon="['fab', 'instagram']" />
-                            </a>
-                        </li>
+                <div class="col-md-4">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>&copy; 2023 Nome del tuo sito. Tutti i diritti riservati.</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
-
+  
 <script>
 export default {
-
-}
+    name: 'Footer',
+};
 </script>
+  
+<style lang="scss">
+@import '../src/scss/variables.scss';
 
-<style lang="scss" scoped>
-@use '../src/scss/variables' as *;
-
-.nav-footer {
-    background-color: $orange;
-    color: white;
-    padding-top: 25px;
-
-    .row {
-        display: flex;
-    }
-
-    .menu_item {
-        cursor: pointer;
-        line-height: 2.8rem;
-
-        span {
-            transition: transform 0.3s ease;
-            transition: text-shadow 0.3s ease;
-
-            &:hover {
-                text-shadow: 0 0 10px yellowgreen;
-                font-weight: 600;
-                color: $bordeaux;
-                transform: scale(1.2);
-            }
-        }
-    }
+.footer {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    background-color: $yellow;
 }
 
-
-h4 {
-    text-transform: uppercase;
-    padding: 5px 0;
-    color: $bordeaux;
+.footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.social_icon {
-    font-size: 34px;
-    display: flex;
-    gap: 0.5rem;
-
-    .fb {
-        color: blue;
-    }
-
-    .insta {
-        color: rgb(255, 3, 87);
-    }
-
-    .icon {
-
-        border-radius: 999px;
-        padding: 0 8px;
-        transition: box-shadow 0.3s ease;
-
-        &:hover {
-            box-shadow: 0 0 10px $yellow;
-        }
-
-    }
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-@media (max-width: 768px) {
-    .burger_img {
-        display: none;
-    }
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #777;
 }
 </style>
+  
