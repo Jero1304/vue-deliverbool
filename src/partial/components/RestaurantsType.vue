@@ -6,9 +6,10 @@
                 <div @click="previousPageType" :disabled="currentPageType === 1">
                     SU
                 </div>
-                <div class="aside_card" v-for="(type, index) in paginateType"
-                    @click="typeSelection(index, type), currentTypeRest(),pagesResest()"
-                    :class="{ 'active': index === currentIndexType }">
+                
+                <div class="aside_card" v-for="(type, index) in  paginateType" 
+                @click="typeSelection(index, type), currentTypeRest(), pagesResest()" 
+                :class="{ 'active' :  toggle(index)}">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
                     <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
@@ -31,7 +32,7 @@
                     </div>
 
                     <div class="row col-10 justify-content-center restaurants_grid">
-                        <template v-for="(restaurant, i) in paginateRestaurants" :key="i">
+                        <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
 
                             <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
                                 <img src="https://picsum.photos/200/300" alt="">
@@ -216,7 +217,7 @@ export default {
             restaurants: restaurants,
             types: restaurantType,
 
-            currentIndexType: 0,
+            currentIndexType: null,
             currentType: '',
 
             currentPageRestaurant: 1,
@@ -224,6 +225,8 @@ export default {
 
             currentPageType: 1,
             itemsPerPageType: 4,
+
+            click: false,
         }
     },
     methods: {
@@ -231,20 +234,32 @@ export default {
             this.currentIndexType = index
             this.currentType = type
         },
-        pagesResest(){
+        pagesResest() {
             this.currentPageRestaurant = 1
         },
+        toggle(index) {
+            if (index === this.currentIndexType) {
+                return !this.click
+            }
+            if (index !== this.currentIndexType) {
+                return this.click
+            }
+        },
+
 
         //type carusell
         previousPageType() {
             if (this.currentPageType > 1) {
                 this.currentPageType--;
+                this.currentIndexType = null
             }
             console.log(this.currentPageType);
         },
         nextPageType() {
             if (this.currentPageType < this.totalPagesType) {
                 this.currentPageType++;
+                this.currentIndexType = null
+
             }
             console.log(this.currentPageType);
         },
