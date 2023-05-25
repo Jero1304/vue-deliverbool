@@ -299,13 +299,13 @@ export default {
             if (this.currentPageType > 1) {
                 this.currentPageType--;
             }
-            console.log(this.currentPageType);
+            // console.log(this.currentPageType);
         },
         nextPageType() {
             if (this.currentPageType < this.totalPagesType) {
                 this.currentPageType++;
             }
-            console.log(this.currentPageType);
+            // console.log(this.currentPageType);
         },
 
         previousPagePlate() {
@@ -322,7 +322,7 @@ export default {
         currentTypeRest() {
             const resMenu = []
             for (const plate of this.plateMenu) {
-                console.log(this.currentType);
+                // console.log(this.currentType);
                 if (plate.type.includes(this.currentType)) {
                     resMenu.push(plate)
                 }
