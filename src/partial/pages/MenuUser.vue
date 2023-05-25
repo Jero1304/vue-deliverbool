@@ -1,53 +1,68 @@
 <template>
     <div class="hero">
         <div class="hero-container">
-            <div class="container bg-primary info">
-                <h2>Ristorante</h2>
-                <p>descrizione</p>
-                <p>orari</p>
+            <div class="container info">
+                <h2>{Ristorante}</h2>
+                <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente molestiae saepe cum.
+                Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas, fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat doloremque nisi tenetur ad impedit accusamus dolore.
+                Esse amet expedita laboriosam ipsam corporis, mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos!
+                Culpa voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda architecto cum velit.</p>
+                <p>{Orari di apertura e chiusura}</p>
+
+                <div class="container-img">
+                <img src="https://cdn.pixabay.com/photo/2022/05/22/13/21/healthy-7213383_1280.jpg" alt="gourmet">
+                <img src="https://cdn.pixabay.com/photo/2022/03/04/00/47/wine-7046276_1280.jpg" alt="gourmet">
+                <img src="https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_1280.jpg" alt="pizza-gourmet">
+                </div>
+
+
             </div>
         </div>
     </div>
 
     <div class="restaurant">
 
-        <div class="container">
+        <div class="container d-flex justify-content-center mt-4">
             <h1>Menu</h1>
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="aside">
+            <div class="row d-flex justify-content-center">
+                <!-- <div class="aside">
                     <div class="aside-plate">
 
                         <div @click="previousPageType" :disabled="currentPageType === 1"> sinistra</div>
 
                         <div class="aside-card" v-for="(plateType, index) in paginateType"
                             @click="typeSelection(index, plateType), currentTypeRest(), pagesResest()">
-                            <img src="../../../public/images/plate.webp" alt="">
+                            <img src="../../../public/images/plate.webp" alt="food">
                             <p>{{ plateType }}</p>
                         </div>
 
                         <div @click="nextPageType" :disabled="currentPageType === totalPagesType"> destra</div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="plates p-3">
                     <div class="row">
                         <div class="col-1" @click="previousPagePlate" 
-                            :disabled="currentPagePlate === 1">frecia</div>
+                            :disabled="currentPagePlate === 1">
+                            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/19/arrow-31203_1280.png" alt="freccia-destra">
+                        </div>
 
                         <div class="row col-10 justify-content-center">
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-2" v-if="plate.type.includes(currentType)">
-                                    <img src="../../../public/images/cibo.webp" alt="">
+                                <div class="col-4" v-if="plate.type.includes(currentType)">
+                                    <img src="../../../public/images/cibo.webp" alt="food">
                                     <p>{{ plate.name }}</p>
                                 </div>
                             </template>
                         </div>
 
                         <div class="col-1" @click="nextPagePlate"
-                            :disabled="currentPagePlate === totalPagesPlate">frecia</div>
+                            :disabled="currentPagePlate === totalPagesPlate">
+                        <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png" alt="freccia-destra">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,10 +297,10 @@ export default {
             currentType: '',
 
             currentPageType: 1,
-            itemsPerPageType: 4,
+            itemsPerPageType: 6,
 
             currentPagePlate: 1,
-            itemsPerPagePlate: 5,
+            itemsPerPagePlate: 6,
         }
     },
     methods: {
@@ -363,56 +378,83 @@ export default {
 
 <style lang="scss" scoped>
 .hero {
+    background-image: url('../components/img/pattern-hero.jpg');
+    background-size: cover;
+    padding: 20px;
     .hero-container {
         height: 500px;
         width: 100%;
-        background-image: url('https://picsum.photos/200/300');
+        margin-bottom: 50px;
         background-repeat: no-repeat;
         background-size: cover;
+        padding: 20px;
+        
+    }
+
+    .info{
+        background-color: rgba(209, 228, 222, 0.579);
+        text-align: center;
+        padding-bottom: 50px;
+        padding: 20px;
+    }
+
+    .container-img img {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        border-radius: 10px;
     }
 }
 
 .restaurant {
-    background-color: red;
+    background-image: url('../components/img/menu-pattern.jpg');
+    background-size: cover;
     height: 1000px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .aside {
-        background-color: blue;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: auto;
+    // .aside {
+    //     background-color: blue;
+    //     margin: 0;
+    //     display: flex;
+    //     justify-content: center;
+    //     width: 100%;
+    //     height: auto;
 
-        .aside-plate {
-            padding: 10px 0;
-            margin: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: center;
-            justify-content: end;
+    //     .aside-plate {
+    //         padding: 10px 0;
+    //         margin: 0;
+    //         height: 100%;
+    //         display: flex;
+    //         flex-direction: row;
+    //         align-items: center;
+    //         text-align: center;
+    //         justify-content: end;
 
-            .aside-card {
-                color: rgb(187, 184, 184);
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-direction: column;
-                margin: 0 10px;
+    //         .aside-card {
+    //             color: rgb(187, 184, 184);
+    //             display: flex;
+    //             justify-content: space-around;
+    //             align-items: center;
+    //             flex-direction: column;
+    //             margin: 0 10px;
 
-                img {
-                    max-width: 80px;
-                }
-            }
-        }
-    }
+    //             img {
+    //                 max-width: 80px;
+    //             }
+    //         }
+    //     }
+    // }
 
     .plates {
-        background-color: green;
-        height: 700px;
+        background-color: rgba(0, 128, 0, 0.076);
+        height: 600px;
+        width: 700px;
+        position: relative;
+        top: 300px;
+        right: -400px;
+        color: white;
     }
 
 }
