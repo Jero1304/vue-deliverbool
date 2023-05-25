@@ -63,11 +63,8 @@ export default {
 
 .footer ul li a {
     color: #333;
+    color: white !important;
     text-decoration: none;
-}
-
-.footer p {
-    font-size: 14px;
 }
 </style>
   
