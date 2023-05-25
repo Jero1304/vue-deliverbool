@@ -3,7 +3,7 @@
         <div class="container d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-3 d-flex justify-content-center">
-
+                    <img src="/images/hamburger-logo.png" alt="Burger">
                 </div>
                 <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
