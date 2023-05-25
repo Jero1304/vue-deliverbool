@@ -22,12 +22,12 @@
 
     <div class="restaurant">
 
-        <div class="container">
+        <div class="container d-flex justify-content-center mt-4">
             <h1>Menu</h1>
         </div>
 
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 <!-- <div class="aside">
                     <div class="aside-plate">
 
@@ -46,11 +46,13 @@
                 <div class="plates p-3">
                     <div class="row">
                         <div class="col-1" @click="previousPagePlate" 
-                            :disabled="currentPagePlate === 1">frecia</div>
+                            :disabled="currentPagePlate === 1">
+                            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/19/arrow-31203_1280.png" alt="freccia-destra">
+                        </div>
 
                         <div class="row col-10 justify-content-center">
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-2" v-if="plate.type.includes(currentType)">
+                                <div class="col-4" v-if="plate.type.includes(currentType)">
                                     <img src="../../../public/images/cibo.webp" alt="food">
                                     <p>{{ plate.name }}</p>
                                 </div>
@@ -58,7 +60,9 @@
                         </div>
 
                         <div class="col-1" @click="nextPagePlate"
-                            :disabled="currentPagePlate === totalPagesPlate">frecia</div>
+                            :disabled="currentPagePlate === totalPagesPlate">
+                        <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png" alt="freccia-destra">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,46 +407,54 @@ export default {
 }
 
 .restaurant {
-    background-color: red;
+    background-image: url('../components/img/menu-pattern.jpg');
+    background-size: cover;
     height: 1000px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .aside {
-        background-color: blue;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: auto;
+    // .aside {
+    //     background-color: blue;
+    //     margin: 0;
+    //     display: flex;
+    //     justify-content: center;
+    //     width: 100%;
+    //     height: auto;
 
-        .aside-plate {
-            padding: 10px 0;
-            margin: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: center;
-            justify-content: end;
+    //     .aside-plate {
+    //         padding: 10px 0;
+    //         margin: 0;
+    //         height: 100%;
+    //         display: flex;
+    //         flex-direction: row;
+    //         align-items: center;
+    //         text-align: center;
+    //         justify-content: end;
 
-            .aside-card {
-                color: rgb(187, 184, 184);
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-direction: column;
-                margin: 0 10px;
+    //         .aside-card {
+    //             color: rgb(187, 184, 184);
+    //             display: flex;
+    //             justify-content: space-around;
+    //             align-items: center;
+    //             flex-direction: column;
+    //             margin: 0 10px;
 
-                img {
-                    max-width: 80px;
-                }
-            }
-        }
-    }
+    //             img {
+    //                 max-width: 80px;
+    //             }
+    //         }
+    //     }
+    // }
 
     .plates {
-        background-color: green;
-        height: 700px;
+        background-color: rgba(0, 128, 0, 0.076);
+        height: 600px;
+        width: 700px;
+        position: relative;
+        top: 300px;
+        right: -400px;
+        color: white;
     }
 
 }
