@@ -21,6 +21,7 @@ const router = createRouter({
 			name: 'menu',
 			component: MenuUser,
 		},
+		
 	],
 })
 
