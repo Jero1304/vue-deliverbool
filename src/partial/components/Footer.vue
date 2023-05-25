@@ -90,5 +90,12 @@ export default {
     color: white !important;
     text-decoration: none;
 }
+
+.footer ul li a:hover {
+    text-shadow: 0 0 10px $azur;
+    font-weight: 600;
+    color: $bordeaux;
+    transform: scale(1.2);
+}
 </style>
   
