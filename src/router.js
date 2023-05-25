@@ -4,6 +4,7 @@ import HomeUser from './partial/pages/HomeUser.vue'
 import MenuUser from './partial/pages/MenuUser.vue'
 
 
+
 const history = createWebHistory()
 console.log('history: ', history)
 
@@ -20,6 +21,7 @@ const router = createRouter({
 			name: 'menu',
 			component: HomeUser,
 		},
+		
 	],
 })
 
