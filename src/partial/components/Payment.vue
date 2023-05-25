@@ -2,16 +2,15 @@
     <div>
         <form @submit.prevent="submitPayment">
             <div class="form-group">
-                <label for="card-number">Numero di carta</label>
-                <input type="text" class="form-control" id="card-number" v-model="cardNumber" required>
+                <input type="text" class="form-control" id="card-number" v-model="cardNumber"
+                    placeholder="Numero di carta..." required>
             </div>
             <div class="form-group">
-                <label for="expiration-date">Data di scadenza (MM/YY)</label>
-                <input type="text" class="form-control" id="expiration-date" v-model="expirationDate" required>
+                <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
+                    placeholder="Data di scadenza (MM/YY)..." required>
             </div>
             <div class="form-group">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv" v-model="cvv" required>
+                <input type="text" class="form-control" id="cvv" v-model="cvv" placeholder="CVV.." required>
             </div>
             <button type="submit" class="btn btn-primary">Paga</button>
         </form>
@@ -67,7 +66,7 @@ export default {
 };
 </script>
   
-<style>
-/* Aggiungi qui eventuali personalizzazioni CSS per il tuo componente */
+<style lang="scss">
+@import '../src/scss/variables.scss';
 </style>
   
