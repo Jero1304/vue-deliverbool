@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeUser from './partial/pages/HomeUser.vue'
 import MenuUser from './partial/pages/MenuUser.vue'
 import SinglePlate from './partial/pages/SinglePlate.vue'
-
+import PaymentPage from './partial/pages/PaymentPage.vue'
 
 
 const history = createWebHistory()
@@ -17,7 +17,7 @@ const router = createRouter({
 			name: 'home',
 			component: HomeUser,
 		},
-        {
+		{
 			path: '/menu',
 			name: 'menu',
 			component: MenuUser,
@@ -27,7 +27,12 @@ const router = createRouter({
 			name: 'singlePlate',
 			component: SinglePlate,
 		},
-		
+		{
+			path: '/PaymentPage',
+			name: 'PaymentPage',
+			component: PaymentPage,
+		},
+
 	],
 })
 

@@ -39,26 +39,28 @@
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/singlePlate"> Piatto Singolo </router-link></a>
                             </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">
+                                    <router-link to="/PaymentPage"> Pagina di pagamento </router-link></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
-
-
 </template>
 
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var navLinks = document.querySelectorAll('.nav-link');
 
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
             var navbarToggler = document.querySelector('.navbar-toggler');
             var navbarCollapse = document.querySelector('.navbar-collapse');
-            
+
 
             navbarToggler.classList.add('collapsed');
             navbarCollapse.classList.remove('show');
