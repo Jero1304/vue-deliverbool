@@ -20,24 +20,25 @@
                 <div class="aside">
                     <div class="aside-plate">
 
-                        <div> sinistra</div>
+                        <div @click="previousPageType" :disabled="currentPageType === 1"> sinistra</div>
 
-                        <div class="aside-card" v-for="(plateType, index) in plateTypes"
-                            @click="typeSelection(index, plateType)">
+                        <div class="aside-card" v-for="(plateType, index) in paginateType"
+                            @click="typeSelection(index, plateType), currentTypeRest(), pagesResest()">
                             <img src="../../../public/images/plate.webp" alt="">
                             <p>{{ plateType }}</p>
                         </div>
 
-                        <div> destra</div>
+                        <div @click="nextPageType" :disabled="currentPageType === totalPagesType"> destra</div>
                     </div>
                 </div>
 
                 <div class="plates p-3">
                     <div class="row">
-                        <div class="col-1">frecia</div>
+                        <div class="col-1" @click="previousPagePlate" 
+                            :disabled="currentPagePlate === 1">frecia</div>
 
                         <div class="row col-10 justify-content-center">
-                            <template v-for="(plate, index) in plateMenu">
+                            <template v-for="(plate, index) in paginatePlates" :key="index">
                                 <div class="col-2" v-if="plate.type.includes(currentType)">
                                     <img src="../../../public/images/cibo.webp" alt="">
                                     <p>{{ plate.name }}</p>
@@ -45,7 +46,8 @@
                             </template>
                         </div>
 
-                        <div class="col-1">frecia</div>
+                        <div class="col-1" @click="nextPagePlate"
+                            :disabled="currentPagePlate === totalPagesPlate">frecia</div>
                     </div>
                 </div>
             </div>
@@ -262,6 +264,7 @@ const restaurantMenu = [
 ];
 
 const plateTypes = [
+    'Seleziona',
     'primi',
     'secondi',
     'bevande',
@@ -277,6 +280,12 @@ export default {
 
             currentIndexType: 0,
             currentType: '',
+
+            currentPageType: 1,
+            itemsPerPageType: 4,
+
+            currentPagePlate: 1,
+            itemsPerPagePlate: 5,
         }
     },
     methods: {
@@ -284,7 +293,69 @@ export default {
             this.currentIndexType = index
             this.currentType = type
         },
+
+        //type carusell
+        previousPageType() {
+            if (this.currentPageType > 1) {
+                this.currentPageType--;
+            }
+            console.log(this.currentPageType);
+        },
+        nextPageType() {
+            if (this.currentPageType < this.totalPagesType) {
+                this.currentPageType++;
+            }
+            console.log(this.currentPageType);
+        },
+
+        previousPagePlate() {
+            if (this.currentPagePlate > 1) {
+                this.currentPagePlate--;
+            }
+        },
+        nextPagePlate() {
+            if (this.currentPagePlate < this.totalPagesPlate) {
+                this.currentPagePlate++;
+            }
+        },
+
+        currentTypeRest() {
+            const resMenu = []
+            for (const plate of this.plateMenu) {
+                console.log(this.currentType);
+                if (plate.type.includes(this.currentType)) {
+                    resMenu.push(plate)
+                }
+            }
+            // console.log('resMenu',resMenu);
+            return resMenu
+        },
+
+        pagesResest() {
+            this.currentPagePlate = 1
+        },
     },
+
+    computed: {
+        paginateType() {
+            const start = (this.currentPageType - 1) * this.itemsPerPageType;
+            const end = start + this.itemsPerPageType;
+            return this.plateTypes.slice(start, end);
+        },
+        totalPagesType() {
+            return Math.ceil(this.plateTypes.length / this.itemsPerPageType);
+        },
+
+        paginatePlates() {
+            const start = (this.currentPagePlate - 1) * this.itemsPerPagePlate;
+            const end = start + this.itemsPerPagePlate;
+            return this.currentTypeRest().slice(start, end);
+        },
+        totalPagesPlate() {
+            return Math.ceil(this.currentTypeRest().length / this.itemsPerPagePlate);
+        },
+    }
+
 }
 
 
