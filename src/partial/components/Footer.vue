@@ -2,12 +2,12 @@
     <section class="nav-footer">
         <div class="container">
             <div class="row d-flex">
-                <div class="col">
+                <div class="col d-flex justify-content-center align-item-center">
                     <figure class="thumb img-fluid flex-shrink-0">
                         <img src="/images/hamburger-logo.png" alt="">
                     </figure>
                 </div>                
-                <div class="col flex-md-wrap">                    
+                <div class="col flex-wrap">                    
                     <ul class="menu">
                         <li>
                             <h4>scopri deliveboo</h4>
@@ -23,7 +23,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col flex-md-wrap">
+                <div class="col flex-wrap">
                     <ul class="menu">
                         <li>
                             <h4>note legali</h4>
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col flex-md-wrap">
+                <div class="col flex-wrap">
                     <ul class="menu">
                         <li>
                             <h4>follow us</h4>
@@ -53,6 +53,7 @@
                             </a>                            
                         </li>
                     </ul>
+                    
                 </div>
                 
             </div>
@@ -79,7 +80,6 @@ export default {
 
 .nav-footer{
     background-color: $orange;
-    color: white;
     padding-top: 25px;
 
     .row{
@@ -137,6 +137,10 @@ export default {
 .copy{
         background-color: grey;
     }
-
+.thumb{
+    min-width: 200px;
+    max-width: 200px;
+    
+}
 
 </style>
