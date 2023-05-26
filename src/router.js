@@ -4,6 +4,7 @@ import HomeUser from './partial/pages/HomeUser.vue'
 import MenuUser from './partial/pages/MenuUser.vue'
 import SinglePlate from './partial/pages/SinglePlate.vue'
 import PaymentPage from './partial/pages/PaymentPage.vue'
+import HomeRestaurant from './partial/pages/HomeRestaurant.vue'
 
 
 const history = createWebHistory()
@@ -31,6 +32,11 @@ const router = createRouter({
 			path: '/PaymentPage',
 			name: 'PaymentPage',
 			component: PaymentPage,
+		},
+		{
+			path: '/HomeRestaurant',
+			name: 'HomeRestaurant',
+			component: HomeRestaurant,
 		},
 
 	],
