@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="cvv" v-model="cvv" placeholder="CVV.." required>
                 </div>
-                <button type="submit" class="btn btn-primary">Paga</button>
+                <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
             </form>
         </div>
     </div>
@@ -81,6 +81,17 @@ export default {
 
 .form-cont {
     padding: 25px;
+}
+
+.pay_btn {
+    background-color: $orange;
+    border: none;
+    text-transform: uppercase;
+}
+
+.pay_btn:hover {
+    background-color: $azur !important;
+    box-shadow: 0 0 10px $azur;
 }
 </style>
   
