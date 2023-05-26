@@ -3,8 +3,10 @@
 
         <div class="aside col-2">
             <div class="aside_type">
-                <div @click="previousPageType" :disabled="currentPageType === 1">
-                    SU
+                <div class="d-flex justify-content-center align-items-center" @click="previousPageType"
+                    :disabled="currentPageType === 1">
+                    <font-awesome-icon class="d-sm-none d-md-flex font-awesome-icon" icon="fa-solid fa-arrow-up" />
+                    <font-awesome-icon class="d-sm-flex d-md-none font-awesome-icon" icon="fa-solid fa-arrow-left" />
                 </div>
 
                 <div class="aside_card" v-for="(type, index) in paginateType" :key="type" @click="toggleSelection(type)"
@@ -14,11 +16,11 @@
                     <p>{{ type }}</p>
                 </div>
 
-                <div @click="nextPageType" :disabled="currentPageType === totalPagesType">
-                    GIU
+                <div class="d-flex justify-content-center align-items-center" @click="nextPageType"
+                    :disabled="currentPageType === totalPagesType">
+                    <font-awesome-icon class="d-sm-none d-md-flex font-awesome-icon" icon="fa-solid fa-arrow-down" />
+                    <font-awesome-icon class="d-sm-flex d-md-none font-awesome-icon" icon="fa-solid fa-arrow-right" />
                 </div>
-
-
             </div>
         </div>
 
@@ -27,7 +29,8 @@
             <div class="container mx-3">
                 <div class="row">
 
-                    <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">sinistra
+                    <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
+                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
                     </div>
 
                     <div class="row col-10 justify-content-center restaurants_grid">
@@ -42,7 +45,9 @@
                     </div>
 
                     <div class="col-1" @click="nextPageRestaurant"
-                        :disabled="currentPageRestaurant === totalPagesRestaurant">destra</div>
+                        :disabled="currentPageRestaurant === totalPagesRestaurant">
+                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
+                    </div>
 
                 </div>
             </div>
@@ -300,17 +305,16 @@ export default {
             return restaurant
         },
         checkRestaurantTypes() {
-            // if (this.selectedTypes.length === 0) {
-            //     return this.restaurants; // Se nessun tipo è selezionato, restituisci tutti i ristoranti
-            // }
+            if (this.selectedTypes.length === 0) {
+                return this.restaurants; // Se nessun tipo è selezionato, restituisci tutti i ristoranti
+            }
 
-            // const matchedRestaurants = this.restaurants.filter((restaurant) => {
-            //     const restaurantTypes = restaurant.type;
-            //     return this.selectedTypes.every((type) => restaurantTypes.includes(type));
-            // });
-            // console.log(matchedRestaurants);
-            // return matchedRestaurants;
-
+            const matchedRestaurants = this.restaurants.filter((restaurant) => {
+                const restaurantTypes = restaurant.type;
+                return this.selectedTypes.every((type) => restaurantTypes.includes(type));
+            });
+            console.log(matchedRestaurants);
+            return matchedRestaurants;
         },
         //_________________________________
 
@@ -376,6 +380,32 @@ export default {
             text-align: center;
             justify-content: end;
 
+            .font-awesome-icon {
+                background-color: rgb(215, 6, 6);
+                border-radius: 20px;
+                box-shadow: 0px 0px 10px 10px rgb(215, 6, 6);
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                margin: 10px;
+                border-radius: 999px;
+                font-size: 18px;
+                height: 26px;
+                width: 26px;
+                color: white;
+
+                &:hover {
+                    text-decoration-color: white;
+                    transition: transform 0.3s ease;
+                    transition: text-shadow 0.3s ease;
+                    text-shadow: 0 0 5px white;
+                    background-color: white;
+                    color: red;
+                    box-shadow: 0px 0px 10px 10px white;
+                }
+
+            }
+
             .aside_card {
                 width: 170px;
                 height: 170px;
@@ -426,6 +456,32 @@ export default {
         background-color: rgb(214, 24, 24);
         margin: 0;
         padding: 50px 0;
+
+        .font-awesome-icon {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 10px white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            border-radius: 999px;
+            font-size: 18px;
+            height: 26px;
+            width: 26px;
+            color: rgb(215, 6, 6);
+
+            &:hover {
+                text-decoration-color: white;
+                transition: transform 0.3s ease;
+                transition: text-shadow 0.3s ease;
+                text-shadow: 0 0 5px white;
+                background-color: rgb(215, 6, 6);
+                color: white;
+                box-shadow: 0px 0px 10px 10px white;
+            }
+
+        }
 
         .restaurants_grid {
             .col-md-2 {
