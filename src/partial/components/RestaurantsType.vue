@@ -455,6 +455,7 @@ export default {
     .restaurants {
         background-color: rgb(214, 24, 24);
         margin: 0;
+        
         padding: 50px 0;
 
         .font-awesome-icon {
