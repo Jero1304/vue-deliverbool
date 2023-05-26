@@ -6,10 +6,9 @@
                 <div @click="previousPageType" :disabled="currentPageType === 1">
                     SU
                 </div>
-                
-                <div class="aside_card" v-for="(type, index) in  paginateType" 
-                @click="typeSelection(index, type), currentTypeRest(), pagesResest()" 
-                :class="{ 'active' :  toggle(index)}">
+
+                <div class="aside_card" v-for="(type, index) in paginateType" :key="type" @click="toggleSelection(type)"
+                    :class="{ active: isSelected(type) }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
                     <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
@@ -219,6 +218,7 @@ export default {
 
             currentIndexType: null,
             currentType: '',
+            selectedTypes: [],
 
             currentPageRestaurant: 1,
             itemsPerPageRestaurant: 5,
@@ -231,22 +231,35 @@ export default {
     },
     methods: {
         typeSelection(index, type) {
-            this.currentIndexType = index
-            this.currentType = type
+            this.currentIndexType = index;
+            this.currentType = type;
+
+            // Aggiungi o rimuovi il 'type' dall'array selectedTypes in base alla sua selezione
+            const selectedIndex = this.selectedTypes.indexOf(type);
+            if (selectedIndex > -1) {
+                this.selectedTypes.splice(selectedIndex, 1); // Rimuovi il 'type' se è già presente nell'array
+            } else {
+                this.selectedTypes.push(type); // Aggiungi il 'type' se non è presente nell'array
+            }
         },
         pagesResest() {
             this.currentPageRestaurant = 1
         },
-        toggle(index) {
-            if (index === this.currentIndexType) {
-                return !this.click
-            }
-            if (index !== this.currentIndexType) {
-                return this.click
+        toggleSelection(type) {
+            if (this.isSelected(type)) {
+                // Remove type if already selected
+                const index = this.selectedTypes.indexOf(type);
+                if (index > -1) {
+                    this.selectedTypes.splice(index, 1);
+                }
+            } else {
+                // Add type if not selected
+                this.selectedTypes.push(type);
             }
         },
-
-
+        isSelected(type) {
+            return this.selectedTypes.includes(type);
+        },
         //type carusell
         previousPageType() {
             if (this.currentPageType > 1) {
@@ -280,7 +293,7 @@ export default {
         currentTypeRest() {
             const restaurant = []
             for (const res of this.restaurants) {
-                if (res.type.includes(this.currentType)) {
+                if (res.type.includes(this.currentType)) { // fagli arrivare gli array con tutti gli elementi selezionati
                     restaurant.push(res)
                 }
             }
