@@ -33,11 +33,10 @@
                     <div class="row col-10 justify-content-center restaurants_grid">
                         <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
 
-                            <div class="col-sm-4 col-md-2" v-if="restaurant.type.includes(currentType)">
+                            <div class="col-sm-4 col-md-2" v-if="checkRestaurantTypes(restaurant)">
                                 <img src="https://picsum.photos/200/300" alt="">
                                 <p class="restaurant-title">{{ restaurant.name }}</p>
-                                <!-- <p>{{ restaurant.type.join(', ') }}</p> -->
-
+                                <p>{{ restaurant.type.join(', ') }}</p>
                             </div>
                         </template>
                     </div>
@@ -199,7 +198,6 @@ const restaurants = [
 ];
 
 const restaurantType = [
-    'Seleziona',
     'fastFood',
     'sushi',
     'italiano',
@@ -256,6 +254,7 @@ export default {
                 // Add type if not selected
                 this.selectedTypes.push(type);
             }
+            console.log(this.selectedTypes);
         },
         isSelected(type) {
             return this.selectedTypes.includes(type);
@@ -293,12 +292,26 @@ export default {
         currentTypeRest() {
             const restaurant = []
             for (const res of this.restaurants) {
-                if (res.type.includes(this.currentType)) { // fagli arrivare gli array con tutti gli elementi selezionati
+                const matchedTypes = res.type.filter(type => this.selectedTypes.includes(type))
+                if (matchedTypes.length > 0) {
                     restaurant.push(res)
                 }
             }
             return restaurant
-        }
+        },
+        checkRestaurantTypes() {
+            // if (this.selectedTypes.length === 0) {
+            //     return this.restaurants; // Se nessun tipo è selezionato, restituisci tutti i ristoranti
+            // }
+
+            // const matchedRestaurants = this.restaurants.filter((restaurant) => {
+            //     const restaurantTypes = restaurant.type;
+            //     return this.selectedTypes.every((type) => restaurantTypes.includes(type));
+            // });
+            // console.log(matchedRestaurants);
+            // return matchedRestaurants;
+
+        },
         //_________________________________
 
 
