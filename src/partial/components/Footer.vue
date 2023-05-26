@@ -1,4 +1,12 @@
 <template>
+    <div class="footer">
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-3 d-flex justify-content-center">
+                    <img src="/images/hamburger-logo.png" alt="Burger">
+                </div>
+                <div class="col-sm-3 d-flex justify-content-center">
+                    <ul>
     <section class="nav-footer">
         <div class="container">
             <div class="row d-flex">
@@ -10,53 +18,53 @@
                 <div class="col flex-md-wrap">                    
                     <ul class="menu">
                         <li>
-                            <h4>scopri deliveboo</h4>
+                            <h3>Informazioni</h3>
                         </li>
-                        <li class="menu_item">
-                            <span>Chi siamo</span> 
-                        </li>
-                        <li class="menu_item">
-                            <span>Lavora con noi</span>
-                        </li>
-                        <li class="menu_item">
-                            <span>Diventa nostro partner</span>
-                        </li>
+                        <li><a href="#">Chi siamo</a></li>
+                        <li><a href="#">Termini e condizioni</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
+                <div class="col-sm-3 d-flex justify-content-center">
+                    <ul>
                 <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
-                            <h4>note legali</h4>
+                            <h3>Servizio clienti</h3>
                         </li>
-                        <li class="menu_item">
-                            <span>Termini & condizioni</span>
-                        </li>
-                        <li class="menu_item">
-                            <span>Informativa sulla privacy</span>
-                        </li>
+                        <li><a href="#">Contatti</a></li>
+                        <li><a href="#">Domande frequenti</a></li>
+                        <li><a href="#">Assistenza online</a></li>
                     </ul>
                 </div>
+                <div class="col-sm-3 d-flex justify-content-center">
+                    <ul>
                 <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
-                            <h4>follow us</h4>
+                            <h3>Social</h3>
                         </li>
-                        <li class="menu_item social_icon">
+                        <li>
                             <a href="https://www.facebook.com/" target="_blank" class="icon fb">
-                                <font-awesome-icon :icon="['fab', 'facebook']" />
+                                <font-awesome-icon :icon="['fab', 'facebook']" /> FaceBook
                             </a>
+                        </li>
+                        <li>
                             <a href="https://twitter.com/" target="_blank" class="icon tw">
-                                <font-awesome-icon :icon="['fab', 'twitter']" />
+                                <font-awesome-icon :icon="['fab', 'twitter']" /> Twitter
                             </a>
+                        </li>
+
+                        <li>
                             <a href="https://www.instagram.com/" target="_blank" class="icon insta">
-                                <font-awesome-icon :icon="['fab', 'instagram']" />
-                            </a>                            
+                                <font-awesome-icon :icon="['fab', 'instagram']" /> Instagram
+                            </a>
                         </li>
                     </ul>
                 </div>
-                
             </div>
         </div>
+    </div>
     </section>
     <section class="copy">
         <div class="container text-center">
@@ -67,54 +75,37 @@
 
     </section>
 </template>
-
+  
 <script>
 export default {
-
-}
+    name: 'Footer',
+};
 </script>
+  
+<style lang="scss">
+@import '../src/scss/variables.scss';
 
-<style lang="scss" scoped>
-@use '../src/scss/variables' as *;
-
-.nav-footer{
+.footer {
+    background-color: #f2f2f2;
+    padding: 20px 0;
     background-color: $orange;
-    color: white;
-    padding-top: 25px;
+}
 
-    .row{
-        display: flex;
-    }
+.footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: $bordeaux;
+    text-transform: uppercase;
+}
 
-    .menu_item{
-        cursor:pointer;
-        line-height: 2.8rem;
-        
-        span{
-            transition: transform 0.3s ease;
-            transition: text-shadow 0.3s ease;
-            &:hover {
-                text-shadow: 0 0 10px yellowgreen;
-                font-weight: 600;
-                color: $bordeaux;
-                transform: scale(1.2);
-            }
-        }
-      }
-    }
-    
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-    h4{
-        text-transform: uppercase;
-        padding: 5px 0;
-        color: $bordeaux;
-    }
-
-    .social_icon{
-        font-size: 34px;
-        display: flex;
-        gap: 0.5rem;
-
+.footer ul li {
+    margin-bottom: 10px;
         .fb{
             color: blue;
         }
@@ -138,5 +129,17 @@ export default {
         background-color: grey;
     }
 
+.footer ul li a {
+    color: #333;
+    color: white !important;
+    text-decoration: none;
+}
 
+.footer ul li a:hover {
+    text-shadow: 0 0 10px $azur;
+    font-weight: 600;
+    color: $bordeaux;
+    transform: scale(1.2);
+}
 </style>
+  
