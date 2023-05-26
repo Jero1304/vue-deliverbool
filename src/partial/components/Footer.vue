@@ -1,12 +1,13 @@
 <template>
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="container d-flex justify-content-center">
             <div class="row">
                 <div class="col-sm-3 d-flex justify-content-center">
                     <img src="/images/hamburger-logo.png" alt="Burger">
                 </div>
                 <div class="col-sm-3 d-flex justify-content-center">
-                    <ul>
+                    <ul> -->
+
     <section class="nav-footer">
         <div class="container">
             <div class="row d-flex">
@@ -14,8 +15,8 @@
                     <figure class="thumb img-fluid flex-shrink-0">
                         <img src="/images/hamburger-logo.png" alt="">
                     </figure>
-                </div>                
-                <div class="col flex-md-wrap">                    
+                </div>
+                <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
                             <h3>Informazioni</h3>
@@ -25,8 +26,9 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
+
                 <div class="col-sm-3 d-flex justify-content-center">
-                    <ul>
+                    <!-- <ul>
                 <div class="col flex-md-wrap">
                     <ul class="menu">
                         <li>
@@ -36,35 +38,35 @@
                         <li><a href="#">Domande frequenti</a></li>
                         <li><a href="#">Assistenza online</a></li>
                     </ul>
-                </div>
-                <div class="col-sm-3 d-flex justify-content-center">
-                    <ul>
-                <div class="col flex-md-wrap">
-                    <ul class="menu">
-                        <li>
-                            <h3>Social</h3>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/" target="_blank" class="icon fb">
-                                <font-awesome-icon :icon="['fab', 'facebook']" /> FaceBook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank" class="icon tw">
-                                <font-awesome-icon :icon="['fab', 'twitter']" /> Twitter
-                            </a>
-                        </li>
+                </div> -->
+                    <div class="col-sm-3 d-flex justify-content-center">
+                        <div class="col flex-md-wrap">
+                            <ul class="menu">
+                                <li>
+                                    <h3>Social</h3>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/" target="_blank" class="icon fb">
+                                        <font-awesome-icon :icon="['fab', 'facebook']" /> FaceBook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/" target="_blank" class="icon tw">
+                                        <font-awesome-icon :icon="['fab', 'twitter']" /> Twitter
+                                    </a>
+                                </li>
 
-                        <li>
-                            <a href="https://www.instagram.com/" target="_blank" class="icon insta">
-                                <font-awesome-icon :icon="['fab', 'instagram']" /> Instagram
-                            </a>
-                        </li>
-                    </ul>
+                                <li>
+                                    <a href="https://www.instagram.com/" target="_blank" class="icon insta">
+                                        <font-awesome-icon :icon="['fab', 'instagram']" /> Instagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
     <section class="copy">
         <div class="container text-center">
@@ -106,28 +108,32 @@ export default {
 
 .footer ul li {
     margin-bottom: 10px;
-        .fb{
-            color: blue;
-        }
-        .insta{
-            color: rgb(255, 3, 87);
-        }
-        
-        .icon{  
-            
-            border-radius: 999px ;
-            padding: 0 8px;
-            transition: box-shadow 0.3s ease;
-            &:hover {
-                box-shadow: 0 0 10px $yellow;
-        }
-        
+
+    .fb {
+        color: blue;
     }
-    
+
+    .insta {
+        color: rgb(255, 3, 87);
+    }
+
+    .icon {
+
+        border-radius: 999px;
+        padding: 0 8px;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 10px $yellow;
+        }
+
+    }
+
 }
-.copy{
-        background-color: grey;
-    }
+
+.copy {
+    background-color: grey;
+}
 
 .footer ul li a {
     color: #333;
@@ -140,6 +146,5 @@ export default {
     font-weight: 600;
     color: $bordeaux;
     transform: scale(1.2);
-}
-</style>
+}</style>
   
