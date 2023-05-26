@@ -19,51 +19,41 @@
             <!-- </div>
         </div> --> 
     
+        
+  <div class="restaurant">
+    <div class="container">
+      <div class="row justify-content-center">
+            <div class="col-12 col-md-6 description">
+                <h2>{Ristorante}</h2>
+                <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente molestiae saepe cum. Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas, fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat doloremque nisi tenetur ad impedit accusamus dolore. Esse amet expedita laboriosam ipsam corporis, mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos! Culpa voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda architecto cum velit.</p>
+                <p>{Orari di apertura e chiusura}</p>
+            </div>     
 
-    <div class="restaurant">
+            
 
-        <!-- <div class="container d-flex justify-content-center mt-4">
-            <h1>Menu</h1>
-        </div> -->
+                    <div class="plates p-3 col-6">
+                        <div class="row p-1">
+                            <div class="col-1 arrow sx" @click="previousPagePlate" 
+                                :disabled="currentPagePlate === 1">
+                                <img src="https://cdn.pixabay.com/photo/2012/04/13/00/19/arrow-31203_1280.png" alt="freccia-destra">
+                            </div>
 
-        <div class="container">
+                            <div class="row col-10 justify-content-center p-2">
+                                <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
+                                <template v-for="(plate, index) in paginatePlates" :key="index">
+                                    <div class="col-3 p-3" v-if="plate.type.includes(currentType)">
+                                        <img src="../../../public/images/cibo.webp" alt="food">
+                                        <p>{{ plate.name }}</p>
+                                    </div>
+                                </template>
+                            </div>
 
-
-            <div class="row d-flex justify-content-center">
-
-                <div class="col-5 description">
-
-                        <h2>{Ristorante}</h2>
-                        <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente molestiae saepe cum.
-                        Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas, fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat doloremque nisi tenetur ad impedit accusamus dolore.
-                        Esse amet expedita laboriosam ipsam corporis, mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos!
-                        Culpa voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda architecto cum velit.</p>
-                        <p>{Orari di apertura e chiusura}</p>
-
-                </div>        
-
-                <div class="plates p-3 col-6">
-                    <div class="row">
-                        <div class="col-1 arrow" @click="previousPagePlate" 
-                            :disabled="currentPagePlate === 1">
-                            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/19/arrow-31203_1280.png" alt="freccia-destra">
-                        </div>
-
-                        <div class="row col-10 justify-content-center">
-                            <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-3 p-3" v-if="plate.type.includes(currentType)">
-                                    <img src="../../../public/images/cibo.webp" alt="food">
-                                    <p>{{ plate.name }}</p>
-                                </div>
-                            </template>
-                        </div>
-
-                        <div class="col-1 arrow" @click="nextPagePlate"
-                            :disabled="currentPagePlate === totalPagesPlate">
-                        <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png" alt="freccia-destra">
+                            <div class="col-1 arrow dx" @click="nextPagePlate"
+                                :disabled="currentPagePlate === totalPagesPlate">
+                            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png" alt="freccia-destra">
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
 
@@ -296,10 +286,10 @@ export default {
             currentType: '',
 
             currentPageType: 1,
-            itemsPerPageType: 8,
+            itemsPerPageType: 6,
 
             currentPagePlate: 1,
-            itemsPerPagePlate: 8,
+            itemsPerPagePlate: 6,
         }
     },
     methods: {
@@ -398,38 +388,10 @@ export default {
     display: flex;
     flex-direction: column;
 
-    // .aside {
-    //     background-color: blue;
-    //     margin: 0;
-    //     display: flex;
-    //     justify-content: center;
-    //     width: 100%;
-    //     height: auto;
-
-    //     .aside-plate {
-    //         padding: 10px 0;
-    //         margin: 0;
-    //         height: 100%;
-    //         display: flex;
-    //         flex-direction: row;
-    //         align-items: center;
-    //         text-align: center;
-    //         justify-content: end;
-
-    //         .aside-card {
-    //             color: rgb(187, 184, 184);
-    //             display: flex;
-    //             justify-content: space-around;
-    //             align-items: center;
-    //             flex-direction: column;
-    //             margin: 0 10px;
-
-    //             img {
-    //                 max-width: 80px;
-    //             }
-    //         }
-    //     }
-    // }
+    .col-3.p-3:hover {
+    box-shadow: 0 0 30px rgba(246, 232, 123, 0.768);;
+    transform: translateY(-5px);
+    }
 
     .plates {
         background-color: rgba(0, 128, 0, 0);
@@ -439,6 +401,7 @@ export default {
         top: 400px;
         right: -185px;
         color: white;
+        margin-bottom: 150px;
     }
 
     .arrow{
@@ -446,5 +409,71 @@ export default {
         top: 150px;
     }
 
+    .title-responsive{
+        text-align: center;
+        color:rgb(255, 91, 0) ;
+        margin-bottom: 20px;
+    }
+
 }
+
+
+
+// RESPONSIVE RULES
+@media (max-width: 768px) {
+        .description {
+            width: 80%;
+            margin-bottom: 20px;
+            background-color: rgba(255, 89, 0, 0.8);
+            color: white;
+        }
+
+        .restaurant {
+            background-image: url(../components/img/pettern-hero-responsive.jpg);
+            height: auto;
+            margin-top: -200px;
+            
+        }
+
+        .plates {
+            margin-top: -400px;
+            margin-right: 375px;
+            margin-bottom: 100px; 
+            
+        }
+
+        .plates .row {
+            background-color:rgb(255, 202, 29); 
+            border-radius: 50px;
+           
+        }
+
+       
+
+        .arrow {
+           width: 40px;
+           height: 30px;
+           margin-top: 100px;
+           background-color: rgba(255, 89, 0, 0.681);
+        }
+
+         .sx{
+            position: relative;
+            right: -130px;
+            margin-bottom: 150px;
+            
+         }
+
+         .dx{
+            position: relative;
+            left: -130px;
+         }
+
+         .col-3.p-3:hover {
+            box-shadow: 0 0 30px rgb(255, 91, 0);
+            transform: translateY(-5px);
+        }
+
+
+    }
 </style>
