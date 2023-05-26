@@ -1,15 +1,19 @@
 <script>
-import HomeUser from './partial/pages/HomeUser.vue';
-
+// import NavBar from './partial/components/NavBar.vue'
+import Default from './partial/layouts/Default.vue'
+import Delivery from './partial/components/Delivery.vue';
 export default {
   components:{
-    HomeUser,
+    // NavBar,
+    Default,
+    Delivery,
   }
 }
 </script>
 
 <template>
-    <HomeUser></HomeUser>
+    <Default/>
+    <!-- <router-view></router-view> -->
 </template>
 
 <style>
