@@ -1,19 +1,21 @@
 <template>
-    <div>
-        <form @submit.prevent="submitPayment">
-            <div class="form-group">
-                <input type="text" class="form-control" id="card-number" v-model="cardNumber"
-                    placeholder="Numero di carta..." required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
-                    placeholder="Data di scadenza (MM/YY)..." required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="cvv" v-model="cvv" placeholder="CVV.." required>
-            </div>
-            <button type="submit" class="btn btn-primary">Paga</button>
-        </form>
+    <div class="form_card d-flex justify-content-center">
+        <div class="form-cont col d-flex justify-content-center">
+            <form @submit.prevent="submitPayment">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="card-number" v-model="cardNumber"
+                        placeholder="Numero di carta..." required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
+                        placeholder="Data di scadenza (MM/YY)..." required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="cvv" v-model="cvv" placeholder="CVV.." required>
+                </div>
+                <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
+            </form>
+        </div>
     </div>
 </template>
   
@@ -68,5 +70,28 @@ export default {
   
 <style lang="scss">
 @import '../src/scss/variables.scss';
+
+.form_card {
+    background-color: $yellow;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-cont {
+    padding: 25px;
+}
+
+.pay_btn {
+    background-color: $orange;
+    border: none;
+    text-transform: uppercase;
+}
+
+.pay_btn:hover {
+    background-color: $azur !important;
+    box-shadow: 0 0 10px $azur;
+}
 </style>
   
