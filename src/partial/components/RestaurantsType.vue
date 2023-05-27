@@ -1,6 +1,30 @@
 <template>
     <div class="row title text-capitalize">
-        <h1>I nostri ristoranti</h1>
+        <div class="contaier">
+
+            <h1>I nostri ristoranti</h1>
+
+            <template v-if="selectedTypes.length === 0">
+                <div class="types">
+                    <h3 class="">Seleziona categorie </h3>
+                </div>
+
+                <div class="arrow">
+                    <img class="logo-arrow" src="./img/freccia.png" alt="">
+                </div>
+            </template>
+
+            <template v-else-if="selectedTypes.length > 0">
+                <div class="types">
+                    <h3 class="">Categorie Selezionate: </h3>
+                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
+                </div>
+                <button type="button" @click="filterReset()" class="btn btn-light">Reset Filter</button>
+            </template>
+
+
+        </div>
+
     </div>
     <div class="restaurant-type row">
 
@@ -32,10 +56,7 @@
         <div class="restaurants col-10">
             <div class="container mx-3">
 
-                <div class="types">
-                    <h3 class="">Categorie Selezionate: </h3>
-                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
-                </div>
+
 
                 <div class="row restaurant-menu">
 
@@ -618,6 +639,9 @@ export default {
 
             return rest;
         },
+        filterReset() {
+            this.selectedTypes = []
+        }
 
         //_________________________________
 
@@ -646,6 +670,7 @@ export default {
         totalPagesType() {
             return Math.ceil(this.types.length / this.itemsPerPageType);
         },
+        
 
 
     },
@@ -663,10 +688,34 @@ export default {
     background-color: rgba(214, 24, 24, 1);
     width: 100%;
     margin: 0;
+    height: 400px;
 
     h1 {
         font-size: 60px;
         color: white;
+    }
+
+    .types {
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 30px;
+
+        p {
+            font-size: 16px;
+            margin: 0 5px;
+        }
+    }
+
+    .arrow{
+        position: relative;
+        .logo-arrow{
+            width: 200px;
+            position: absolute;
+            left: 150px;
+            bottom: -60px;
+            transform: rotate(350deg);
+
+        }
     }
 }
 
@@ -774,15 +823,7 @@ export default {
 
         padding: 50px 0;
 
-        .types {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-            p{
-                font-size: 16px;
-                margin: 0 5px ;
-            }
-        }
+
 
         .font-awesome-icon {
             background-color: white;
