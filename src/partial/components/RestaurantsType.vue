@@ -55,9 +55,6 @@
 
         <div class="restaurants col-10">
             <div class="container mx-3">
-
-
-
                 <div class="row restaurant-menu">
 
                     <div class="col-12 row mb-5 justify-content-between">
@@ -65,11 +62,18 @@
                         <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
                             <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
                         </div>
-
-                        <div class="col-1">
-                            <p>{{ currentPageRestaurant }} di {{ totalPagesRestaurant }}</p>
-                            <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
-                        </div>
+                        <template v-if="totalPagesRestaurant === 0">
+                            <div class="col-1">
+                                <p> 0 di {{ totalPagesRestaurant }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                            </div>
+                        </template>
+                        <template v-if="totalPagesRestaurant > 0">
+                            <div class="col-1">
+                                <p>{{ currentPageRestaurant }} di {{ totalPagesRestaurant }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                            </div>
+                        </template>
 
                         <div class="col-1" @click="nextPageRestaurant"
                             :disabled="currentPageRestaurant === totalPagesRestaurant">
@@ -586,6 +590,8 @@ export default {
                 this.selectedTypes.push(type);
             }
             console.log(this.selectedTypes);
+            this.currentPageRestaurant = 1
+
         },
         isSelected(type) {
             return this.selectedTypes.includes(type);
@@ -670,7 +676,7 @@ export default {
         totalPagesType() {
             return Math.ceil(this.types.length / this.itemsPerPageType);
         },
-        
+
 
 
     },
@@ -706,9 +712,10 @@ export default {
         }
     }
 
-    .arrow{
+    .arrow {
         position: relative;
-        .logo-arrow{
+
+        .logo-arrow {
             width: 200px;
             position: absolute;
             left: 150px;
