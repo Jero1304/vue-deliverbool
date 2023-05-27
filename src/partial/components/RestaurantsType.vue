@@ -36,7 +36,7 @@
                     <div class="row col-10 justify-content-center restaurants_grid">
                         <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
 
-                            <div class="col-sm-4 col-md-2" v-if="checkRestaurantTypes(restaurant)">
+                            <div class="col-sm-4 col-md-2">
                                 <img src="https://picsum.photos/200/300" alt="">
                                 <p class="restaurant-title">{{ restaurant.name }}</p>
                                 <p>{{ restaurant.type.join(', ') }}</p>
@@ -295,27 +295,25 @@ export default {
             }
         },
         currentTypeRest() {
-            const restaurant = []
-            for (const res of this.restaurants) {
-                const matchedTypes = res.type.filter(type => this.selectedTypes.includes(type))
-                if (matchedTypes.length > 0) {
-                    restaurant.push(res)
+            const rest = [];
+            if (this.selectedTypes.length == 0)
+                return rest
+            for (let j = 0; j < this.restaurants.length; j++) {
+                let hasAllSelectedTypes = true;
+                for (let i = 0; i < this.selectedTypes.length; i++) {
+                    if (!this.restaurants[j].type.includes(this.selectedTypes[i])) {
+                        hasAllSelectedTypes = false;
+                        break;
+                    }
+                }
+                if (hasAllSelectedTypes) {
+                    rest.push(this.restaurants[j]);
                 }
             }
-            return restaurant
-        },
-        checkRestaurantTypes() {
-            if (this.selectedTypes.length === 0) {
-                return this.restaurants; // Se nessun tipo è selezionato, restituisci tutti i ristoranti
-            }
 
-            const matchedRestaurants = this.restaurants.filter((restaurant) => {
-                const restaurantTypes = restaurant.type;
-                return this.selectedTypes.every((type) => restaurantTypes.includes(type));
-            });
-            console.log(matchedRestaurants);
-            return matchedRestaurants;
+            return rest;
         },
+
         //_________________________________
 
 
