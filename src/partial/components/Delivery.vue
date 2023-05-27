@@ -304,11 +304,12 @@ h5 {
   padding: 50px;
   background-color: rgb(255, 204, 0);
   /* Colore arancione */
-  background-image: linear-gradient(rgb(255, 204, 0), rgb(251, 71, 0));
+  background-image: linear-gradient(rgb(255, 204, 0), rgba(214, 24, 24, 1));
   /* Colore a metà tra arancione e giallo */
   padding-bottom: 20px;
   min-height: auto;
 }
+
 
 .form-consegna h3 {
   color: rgb(255, 85, 0);
