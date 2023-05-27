@@ -197,6 +197,271 @@ const restaurants = [
             'italiano'
         ]
     },
+    {
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi 2',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola 2',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi 2',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico 2',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan 2',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s 2',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz 2',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Dario',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Luigi',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },    {
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi 2',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola 2',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi 2',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico 2',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan 2',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s 2',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz 2',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Dario',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Luigi',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
 
 
 
@@ -224,7 +489,7 @@ export default {
             selectedTypes: [],
 
             currentPageRestaurant: 1,
-            itemsPerPageRestaurant: 5,
+            itemsPerPageRestaurant: 24,
 
             currentPageType: 1,
             itemsPerPageType: 4,
