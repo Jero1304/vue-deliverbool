@@ -1,5 +1,33 @@
 <template>
+    <div class="row title pb-0 text-capitalize">
+        <div class="contaier">
+
+            <h1>I nostri ristoranti</h1>
+
+            <template v-if="selectedTypes.length === 0">
+                <div class="types">
+                    <h3 class="">Seleziona categorie </h3>
+                </div>
+
+                <div class="arrow">
+                    <img class="logo-arrow" src="./img/freccia.png" alt="">
+                </div>
+            </template>
+
+            <template v-else-if="selectedTypes.length > 0">
+                <div class="types mb-1">
+                    <h3 class="">Categorie Selezionate: </h3>
+                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
+                </div>
+                <button type="button" @click="filterReset()" class="btn btn-light">Reset Filter</button>
+            </template>
+
+
+        </div>
+
+    </div>
     <div class="restaurant-type row">
+
 
         <div class="aside col-2">
             <div class="aside_type">
@@ -26,93 +54,69 @@
 
 
         <div class="restaurants col-10">
-            <div class="container mx-3">
-                <div class="row">
+            <div class="container">
+                <div class="row restaurant-menu">
 
-                    <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
-                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                    </div>
+                    <div class="col-12 row mb-5 justify-content-between">
 
-                    <div class="row col-10 justify-content-center restaurants_grid">
-                        <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
-                            <div class="row restaurant-menu">
+                        <div class="col-3" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
+                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
+                        </div>
 
-                                <div class="col-12 row mb-5 justify-content-between">
-
-                                    <div class="col-1" @click="previousPageRestaurant"
-                                        :disabled="currentPageRestaurant === 1">
-                                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                                    </div>
-                                    <template v-if="totalPagesRestaurant === 0">
-                                        <!-- <div class="col-1"> -->
-                                        <div class="col-3" @click="previousPageRestaurant"
-                                            :disabled="currentPageRestaurant === 1">
-                                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                                        </div>
-                                    </template>
-
-                                    <template v-if="totalPagesRestaurant === 0">
-                                        <div class="col-6 text-center">
-                                            <p> 0 di {{ totalPagesRestaurant }}</p>
-                                            <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
-                                        </div>
-                                    </template>
-                                    <template v-if="totalPagesRestaurant > 0">
-                                        <!-- <div class="col-1"> -->
-
-                                        <div class="col-sm-4 col-md-2">
-                                            <img src="https://picsum.photos/200/300" alt="">
-                                            <p class="restaurant-title">{{ restaurant.name }}</p>
-                                            <p>{{ restaurant.type.join(', ') }}</p>
-                                        </div>
-                                    </template>
-                                </div>
-
-                                <div class="col-1" @click="nextPageRestaurant"
-                                    :disabled="currentPageRestaurant === totalPagesRestaurant">
-                                    <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
-
-                                    <div class="col-3  d-flex justify-content-end" @click="nextPageRestaurant"
-                                        :disabled="currentPageRestaurant === totalPagesRestaurant">
-                                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 mt-4">
-                                    <div class="row justify-content-center restaurants_grid">
-                                        <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
-                                            <div class="col-md-6 col-sm-10  p-2 ">
-                                                <div class="row restaurant-card">
-                                                    <div class="col-4 restaurant-image">
-                                                        <img src="https://picsum.photos/200/300" alt="">
-                                                    </div>
-                                                    <div class="col-10 restaurant-info">
-                                                        <div class="row justify-content-between align-items-center">
-                                                            <div class="col-5">
-                                                                <p class="restaurant-title my-0">{{ restaurant.name }}</p>
-                                                                <p>{{ restaurant.type.join(', ') }}</p>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                    Facere
-                                                                    ipsa
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </template>
-                                    </div>
-                                </div>
+                        <template v-if="totalPagesRestaurant === 0">
+                            <div class="col-6 text-center">
+                                <p> 0 di {{ totalPagesRestaurant }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
                             </div>
                         </template>
+
+                        <template v-if="totalPagesRestaurant > 0">
+                            <div class="col-6 text-center">
+                                <p>{{ currentPageRestaurant }} di {{ totalPagesRestaurant }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                            </div>
+                        </template>
+
+                        <div class="col-3  d-flex justify-content-end" @click="nextPageRestaurant"
+                            :disabled="currentPageRestaurant === totalPagesRestaurant">
+                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
+                        </div>
+
                     </div>
+
+                    <div class="col-12 mt-4">
+                        <div class="row justify-content-center restaurants_grid">
+                            <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
+                                <div class="col-md-6 col-sm-10  p-2 ">
+                                    <div class="row restaurant-card">
+                                        <div class="col-4 restaurant-image">
+                                            <img src="https://picsum.photos/200/300" alt="">
+                                        </div>
+                                        <div class="col-10 restaurant-info">
+                                            <div class="row justify-content-between align-items-center">
+                                                <div class="col-5">
+                                                    <p class="restaurant-title my-0">{{ restaurant.name }}</p>
+                                                    <p>{{ restaurant.type.join(', ') }}</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+                                                        ipsa
+                                                        natus mollitia.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-        </div> 
-    </div>       
+           
+        </div>
+    </div>
 </template>
 
 <script>
@@ -125,6 +129,271 @@ const restaurants = [
         ]
     },
     {
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi 2',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola 2',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi 2',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico 2',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan 2',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s 2',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz 2',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Dario',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Luigi',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Luigi 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi 2',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola 2',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi 2',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna 2',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico 2',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan 2',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s 2',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz 2',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Dario',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Da Luigi',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Genki Sushi',
+        type: [
+            'pizzeria',
+            'sushi'
+        ]
+    },
+    {
+        name: 'Hola Hola',
+        type: [
+            'messicano',
+            'pizzeria'
+        ]
+    },
+    {
+        name: 'Pizza a Pezzi',
+        type: [
+            'pizzeria',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'Dalla nonna',
+        type: [
+            'pizzeria',
+            'italiano'
+        ]
+    },
+    {
+        name: 'Chico',
+        type: [
+            'messicano',
+        ]
+    },
+    {
+        name: 'Ghoan',
+        type: [
+            'pizzeria',
+            'sushi',
+            'fastFood'
+        ]
+    },
+    {
+        name: 'MC Donald\'s',
+        type: [
+            'FastFood',
+        ]
+    },
+    {
+        name: 'Burgerz',
+        type: [
+            'pizzeria',
+            'fastFood',
+            'italiano'
+        ]
+    }, {
         name: 'Da Luigi 2',
         type: [
             'pizzeria',
@@ -284,7 +553,7 @@ export default {
             selectedTypes: [],
 
             currentPageRestaurant: 1,
-            itemsPerPageRestaurant: 5,
+            itemsPerPageRestaurant: 6,
 
             currentPageType: 1,
             itemsPerPageType: 4,
@@ -305,9 +574,8 @@ export default {
                 this.selectedTypes.push(type); // Aggiungi il 'type' se non è presente nell'array
             }
         },
-        pagesResest() {
-            this.currentPageRestaurant = 1
-        },
+        // pagesResest() {
+        // },
         toggleSelection(type) {
             if (this.isSelected(type)) {
                 // Remove type if already selected
@@ -320,6 +588,8 @@ export default {
                 this.selectedTypes.push(type);
             }
             console.log(this.selectedTypes);
+            this.currentPageRestaurant = 1
+
         },
         isSelected(type) {
             return this.selectedTypes.includes(type);
@@ -373,6 +643,9 @@ export default {
 
             return rest;
         },
+        filterReset() {
+            this.selectedTypes = []
+        }
 
         //_________________________________
 
@@ -403,6 +676,7 @@ export default {
         },
 
 
+
     },
 
 
@@ -412,21 +686,61 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/variables.scss';
 
+.title {
+    text-align: center;
+    padding: 40px 0 40px;
+    background-color: rgba(214, 24, 24, 1);
+    width: 100%;
+    margin: 0;
+    height: 400px;
+
+    h1 {
+        font-size: 60px;
+        color: white;
+    }
+
+    .types {
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 30px;
+
+        p {
+            font-size: 16px;
+            margin: 0 5px;
+        }
+    }
+
+    .arrow {
+        position: relative;
+
+        .logo-arrow {
+            width: 150px;
+            position: absolute;
+            left: 150px;
+            bottom: 50px;
+            transform: rotate(350deg);
+
+        }
+    }
+}
+
 .restaurant-type {
     flex-direction: row;
     margin: 0;
     flex-wrap: nowrap;
     flex-shrink: 1;
     height: auto;
+    background-color: rgba(214, 24, 24, 1);
 
     .aside {
         // background-color: rgb(240, 3, 3);
         background: rgb(139, 0, 0);
-        background: linear-gradient(270deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
+        // background: linear-gradient(270deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
         // min-height: 200px;
         margin: 0;
         display: flex;
         justify-content: center;
+        border-radius: 0 200px 200px 0;
 
 
         .aside_type {
@@ -436,7 +750,7 @@ export default {
             display: flex;
             flex-direction: column;
             text-align: center;
-            justify-content: end;
+            justify-content: start;
 
             .font-awesome-icon {
                 background-color: rgb(215, 6, 6);
@@ -481,9 +795,9 @@ export default {
             .active {
                 background-color: rgb(214, 24, 24);
                 border-radius: 20px;
-                box-shadow: 70px 10px 5px rgb(214, 24, 24),
+                box-shadow: 10px 10px 5px rgb(214, 24, 24),
                     -10px -10px 5px rgb(214, 24, 24),
-                    70px -10px 5px rgb(214, 24, 24),
+                    10px -10px 5px rgb(214, 24, 24),
                     -10px 10px 5px rgb(214, 24, 24);
                 text-decoration-color: white;
                 transition: transform 0.3s ease;
@@ -513,7 +827,10 @@ export default {
     .restaurants {
         background-color: rgb(214, 24, 24);
         margin: 0;
+
         padding: 50px 0;
+
+
 
         .font-awesome-icon {
             background-color: white;
@@ -541,30 +858,88 @@ export default {
 
         }
 
-        .restaurants_grid {
-            .col-md-2 {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                padding-bottom: 20px;
-                margin: 0;
-                color: white;
+        .restaurant-menu {
 
-                &:hover {
-                    text-decoration-color: white;
-                    transition: transform 0.3s ease;
-                    transition: text-shadow 0.3s ease;
-                    text-shadow: 0 0 5px $yellow;
-                    font-weight: 800;
-                    color: $yellow;
+            .restaurants_grid {
+                align-items: center;
+
+                // justify-content: center;
+                .col-md-2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    padding-bottom: 20px;
+                    margin: 0;
+                    color: white;
+
+                    &:hover {
+                        text-decoration-color: white;
+                        transition: transform 0.3s ease;
+                        transition: text-shadow 0.3s ease;
+                        text-shadow: 0 0 5px $yellow;
+                        font-weight: 800;
+                        color: $yellow;
+                    }
+
+                    img {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 30px;
+                        margin: 20px 0;
+                    }
                 }
 
-                img {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 30px;
-                    margin: 20px 0;
+                .restaurant-card {
+                    background: rgb(223, 82, 82);
+                    background: linear-gradient(180deg, rgba(223, 82, 82, 1) 41%, rgba(214, 24, 24, 1) 87%);
+                    margin: 0 10px 80px 10px;
+                    border-radius: 40px;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    max-height: 600px;
+
+
+                    &:hover {
+                        background: rgb(223, 82, 82);
+                        text-shadow: 0 0 10px $yellow;
+                        font-weight: 600;
+                        color: black;
+                        box-shadow: 0 0 10px white;
+
+                        img {
+                            box-shadow: 0 0 40px $yellow;
+                        }
+
+                    }
+
+                    .restaurant-image {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        top: -60px;
+
+                        img {
+                            aspect-ratio: 1/1;
+                            border-radius: 999px;
+                            width: 80%;
+                        }
+                    }
+
+                    .restaurant-info {
+                        margin-top: 60px;
+                        padding-top: 40px;
+
+                        .restaurant-title {
+                            font-size: 28px;
+                            color: white;
+                        }
+                    }
+
+
                 }
             }
         }
@@ -586,6 +961,7 @@ export default {
             display: flex;
             justify-content: center;
             width: 100%;
+            border-radius: 200px 200px;
 
             .aside_type {
                 padding: 10px 0;
