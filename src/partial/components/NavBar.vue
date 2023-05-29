@@ -3,9 +3,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid justify-content-between">
                 <div>
-
-                    <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo"></a>
-
+                    <a class="navbar-brand" href="#"><img src="./img/favicon-deliveboo.png" alt="logo"></a>
                 </div>
                 <div>
                     <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -24,8 +22,6 @@
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">aiuto</a>
                             </li>
-
-
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/home"> Home User </router-link></a>
@@ -34,10 +30,17 @@
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/menu"> Home menu </router-link></a>
                             </li>
-
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/singlePlate"> Piatto Singolo </router-link></a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">
+                                    <router-link to="/PaymentPage"> Pagina di pagamento </router-link></a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">
+                                    <router-link to="/HomeRestaurant"> Home Ristorante </router-link></a>
                             </li>
                         </ul>
                     </div>
@@ -45,20 +48,18 @@
             </div>
         </nav>
     </div>
-
-
 </template>
 
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var navLinks = document.querySelectorAll('.nav-link');
 
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
             var navbarToggler = document.querySelector('.navbar-toggler');
             var navbarCollapse = document.querySelector('.navbar-collapse');
-            
+
 
             navbarToggler.classList.add('collapsed');
             navbarCollapse.classList.remove('show');
