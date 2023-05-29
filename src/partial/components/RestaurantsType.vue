@@ -1,4 +1,5 @@
 <template>
+    {{ restaurants.type }}
     <div class="row title pb-0 text-capitalize">
         <div class="contaier">
 
@@ -21,14 +22,10 @@
                 </div>
                 <button type="button" @click="filterReset()" class="btn btn-light">Reset Filter</button>
             </template>
-
-
         </div>
 
     </div>
     <div class="restaurant-type row">
-
-
         <div class="aside col-2">
             <div class="aside_type">
                 <div class="d-flex justify-content-center align-items-center" @click="previousPageType"
@@ -37,8 +34,8 @@
                     <font-awesome-icon class="d-sm-flex d-md-none font-awesome-icon" icon="fa-solid fa-arrow-left" />
                 </div>
 
-                <div class="aside_card" v-for="(type, index) in paginateType" :key="type" @click="toggleSelection(type)"
-                    :class="{ active: isSelected(type) }">
+                <div class="aside_card" v-for="(type, index) in paginateType" :key="type"
+                    @click="toggleSelection(type), fetchRestaurants()" :class="{ active: isSelected(type) }">
                     <img src="../../../public/img/hamburger-logo.png" alt="">
                     <img src="../../../public/images/hamburger-logo.png" alt="">
                     <p>{{ type }}</p>
@@ -95,8 +92,11 @@
                                         <div class="col-10 restaurant-info">
                                             <div class="row justify-content-between align-items-center">
                                                 <div class="col-5">
-                                                    <p class="restaurant-title my-0">{{ restaurant.name }}</p>
-                                                    <p>{{ restaurant.type.join(', ') }}</p>
+                                                    <p class="restaurant-title my-0">{{ restaurant.restaurant_name }}</p>
+                                                    <ul v-for="(tipology, j) in restaurant.types">
+                                                        <li>{{ tipology.name }}</li>
+
+                                                    </ul>
                                                 </div>
                                                 <div class="col-6">
                                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
@@ -111,441 +111,30 @@
                             </template>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-           
+
         </div>
     </div>
 </template>
 
 <script>
-const restaurants = [
-    {
-        name: 'Da Dario 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Luigi 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi 2',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola 2',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi 2',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico 2',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan 2',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s 2',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz 2',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Dario',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Luigi',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Luigi 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi 2',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola 2',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi 2',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico 2',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan 2',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s 2',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz 2',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Dario',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Luigi',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    }, {
-        name: 'Da Luigi 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi 2',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola 2',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi 2',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna 2',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico 2',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan 2',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s 2',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz 2',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Dario',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Da Luigi',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Genki Sushi',
-        type: [
-            'pizzeria',
-            'sushi'
-        ]
-    },
-    {
-        name: 'Hola Hola',
-        type: [
-            'messicano',
-            'pizzeria'
-        ]
-    },
-    {
-        name: 'Pizza a Pezzi',
-        type: [
-            'pizzeria',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'Dalla nonna',
-        type: [
-            'pizzeria',
-            'italiano'
-        ]
-    },
-    {
-        name: 'Chico',
-        type: [
-            'messicano',
-        ]
-    },
-    {
-        name: 'Ghoan',
-        type: [
-            'pizzeria',
-            'sushi',
-            'fastFood'
-        ]
-    },
-    {
-        name: 'MC Donald\'s',
-        type: [
-            'FastFood',
-        ]
-    },
-    {
-        name: 'Burgerz',
-        type: [
-            'pizzeria',
-            'fastFood',
-            'italiano'
-        ]
-    },
-
-
-
-];
 
 const restaurantType = [
-    'fastFood',
-    'sushi',
     'italiano',
-    'pizzeria',
-    'messicano',
-    'thai',
-    'eee',
-    '33333'
+    'giapponese',
+    'thailandese',
+    'vegano',
+    'americano',
+    'fast food',
+    'pizzeria'
 ];
-
+import axios from 'axios'
 export default {
     data() {
         return {
-            restaurants: restaurants,
+            restaurants: [],
             types: restaurantType,
 
             currentIndexType: null,
@@ -561,7 +150,22 @@ export default {
             click: false,
         }
     },
+
     methods: {
+        fetchRestaurants() {
+            axios.get('http://127.0.0.1:8000/api/restaurants')
+                .then(res => {
+                    const results = res.data.results
+                    this.restaurants = results.data
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        },
+
+
+
+
         typeSelection(index, type) {
             this.currentIndexType = index;
             this.currentType = type;
@@ -569,13 +173,11 @@ export default {
             // Aggiungi o rimuovi il 'type' dall'array selectedTypes in base alla sua selezione
             const selectedIndex = this.selectedTypes.indexOf(type);
             if (selectedIndex > -1) {
-                this.selectedTypes.splice(selectedIndex, 1); // Rimuovi il 'type' se è già presente nell'array
+                this.selectedTypes.splice(selectedIndex, 1);
             } else {
-                this.selectedTypes.push(type); // Aggiungi il 'type' se non è presente nell'array
+                this.selectedTypes.push(type);
             }
         },
-        // pagesResest() {
-        // },
         toggleSelection(type) {
             if (this.isSelected(type)) {
                 // Remove type if already selected
@@ -626,16 +228,31 @@ export default {
         },
         currentTypeRest() {
             const rest = [];
-            if (this.selectedTypes.length == 0)
-                return rest
+            if (this.selectedTypes.length === 0) {
+                return rest;
+            }
+
             for (let j = 0; j < this.restaurants.length; j++) {
+                const typeName = this.restaurants[j].types;
                 let hasAllSelectedTypes = true;
-                for (let i = 0; i < this.selectedTypes.length; i++) {
-                    if (!this.restaurants[j].type.includes(this.selectedTypes[i])) {
+
+                for (let x = 0; x < this.selectedTypes.length; x++) {
+                    const selectedType = this.selectedTypes[x];
+                    let typeIncluded = false;
+
+                    for (let i = 0; i < typeName.length; i++) {
+                        if (typeName[i].name.includes(selectedType)) {
+                            typeIncluded = true;
+                            break;
+                        }
+                    }
+
+                    if (!typeIncluded) {
                         hasAllSelectedTypes = false;
                         break;
                     }
                 }
+
                 if (hasAllSelectedTypes) {
                     rest.push(this.restaurants[j]);
                 }
