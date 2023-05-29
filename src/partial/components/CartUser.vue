@@ -1,10 +1,13 @@
 <template>
-    single plate
+    <Cart/>
 </template>
 
 <script>
+import Cart from '../pages/Cart.vue';
 export default {
-    name: 'name'
+    components:{
+        Cart,
+    }
 
 }
 </script>
