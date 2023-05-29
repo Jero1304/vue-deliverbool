@@ -38,6 +38,7 @@ const router = createRouter({
 			name: 'HomeRestaurant',
 			component: HomeRestaurant,
 		},
+	
 
 	],
 })

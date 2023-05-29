@@ -1,6 +1,5 @@
 <template>
-    <Delivery></Delivery>
-    <div class="section_home_ristaurant py-5 text-center">
+    <div class="section_home_ristaurant text-center">
         <h3 class="py-5">Nome Ristorante</h3>
         <div class="container d-flex justify-content-center flex-wrap gap-5">
             <div class="card" style="width: 18rem;">
@@ -13,7 +12,9 @@
                     <p class="card-text text-overflow">Ingredienti: accusamus sequi minima! text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2 button-edit-delete">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -29,7 +30,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2 button-edit-delete">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -45,7 +48,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -61,7 +66,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -75,7 +82,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -88,7 +97,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -102,7 +113,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -116,7 +129,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -130,7 +145,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -144,7 +161,9 @@
                     <p class="card-text text-overflow">Ingredienti: quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="#" class="btn btn-primary">Modifica</a>
+                        <a style="color:white" href="#">
+                            <router-link class="btn btn-primary" to="/singlePlate">Modifica</router-link>
+                        </a>
                         <a href="#" class="btn btn-primary">Elimina</a>
                     </div>
                 </div>
@@ -154,16 +173,18 @@
 </template>
 
 <script>
-import Delivery from '../components/Delivery.vue';
+
 
 export default {
     components: {
-        Delivery,
+       
     }
 }
 </script>
 
-<style lang="scss" scoped>.section_home_ristaurant {
+<style lang="scss" scoped>
+
+.section_home_ristaurant {
     background-color: rgb(255, 204, 29);
 }
 
