@@ -35,81 +35,84 @@
 
                     <div class="row col-10 justify-content-center restaurants_grid">
                         <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
-                <div class="row restaurant-menu">
+                            <div class="row restaurant-menu">
 
-                    <div class="col-12 row mb-5 justify-content-between">
+                                <div class="col-12 row mb-5 justify-content-between">
 
-                        <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
-                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                        </div>
-                        <template v-if="totalPagesRestaurant === 0">
-                            <div class="col-1">
-                        <div class="col-3" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
-                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                        </div>
-
-                        <template v-if="totalPagesRestaurant === 0">
-                            <div class="col-6 text-center">
-                                <p> 0 di {{ totalPagesRestaurant }}</p>
-                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
-                            </div>
-                        </template>
-                        <template v-if="totalPagesRestaurant > 0">
-                            <div class="col-1">
-
-                            <div class="col-sm-4 col-md-2">
-                                <img src="https://picsum.photos/200/300" alt="">
-                                <p class="restaurant-title">{{ restaurant.name }}</p>
-                                <p>{{ restaurant.type.join(', ') }}</p>
-                            </div>
-                        </template>
-                    </div>
-
-                    <div class="col-1" @click="nextPageRestaurant"
-                        :disabled="currentPageRestaurant === totalPagesRestaurant">
-                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
-
-                        <div class="col-1" @click="nextPageRestaurant"
-                        <div class="col-3  d-flex justify-content-end" @click="nextPageRestaurant"
-                            :disabled="currentPageRestaurant === totalPagesRestaurant">
-                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
-                        </div>
-
-                    </div>
-    
-                    <div class="col-12 mt-4">
-                        <div class="row justify-content-center restaurants_grid">
-                            <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
-                                <div class="col-md-6 col-sm-10  p-2 ">
-                                    <div class="row restaurant-card">
-                                        <div class="col-4 restaurant-image">
-                                            <img src="https://picsum.photos/200/300" alt="">
+                                    <div class="col-1" @click="previousPageRestaurant"
+                                        :disabled="currentPageRestaurant === 1">
+                                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
+                                    </div>
+                                    <template v-if="totalPagesRestaurant === 0">
+                                        <!-- <div class="col-1"> -->
+                                        <div class="col-3" @click="previousPageRestaurant"
+                                            :disabled="currentPageRestaurant === 1">
+                                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
                                         </div>
-                                        <div class="col-10 restaurant-info">
-                                            <div class="row justify-content-between align-items-center">
-                                                <div class="col-5">
-                                                    <p class="restaurant-title my-0">{{ restaurant.name }}</p>
-                                                    <p>{{ restaurant.type.join(', ') }}</p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                                                        ipsa
-                                                        natus mollitia.</p>
-                                                        natus mollitia.
-                                                    </p>
+                                    </template>
+
+                                    <template v-if="totalPagesRestaurant === 0">
+                                        <div class="col-6 text-center">
+                                            <p> 0 di {{ totalPagesRestaurant }}</p>
+                                            <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                                        </div>
+                                    </template>
+                                    <template v-if="totalPagesRestaurant > 0">
+                                        <!-- <div class="col-1"> -->
+
+                                        <div class="col-sm-4 col-md-2">
+                                            <img src="https://picsum.photos/200/300" alt="">
+                                            <p class="restaurant-title">{{ restaurant.name }}</p>
+                                            <p>{{ restaurant.type.join(', ') }}</p>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <div class="col-1" @click="nextPageRestaurant"
+                                    :disabled="currentPageRestaurant === totalPagesRestaurant">
+                                    <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
+
+                                    <div class="col-3  d-flex justify-content-end" @click="nextPageRestaurant"
+                                        :disabled="currentPageRestaurant === totalPagesRestaurant">
+                                        <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <div class="row justify-content-center restaurants_grid">
+                                        <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
+                                            <div class="col-md-6 col-sm-10  p-2 ">
+                                                <div class="row restaurant-card">
+                                                    <div class="col-4 restaurant-image">
+                                                        <img src="https://picsum.photos/200/300" alt="">
+                                                    </div>
+                                                    <div class="col-10 restaurant-info">
+                                                        <div class="row justify-content-between align-items-center">
+                                                            <div class="col-5">
+                                                                <p class="restaurant-title my-0">{{ restaurant.name }}</p>
+                                                                <p>{{ restaurant.type.join(', ') }}</p>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                    Facere
+                                                                    ipsa
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </template>
                                     </div>
                                 </div>
-                            </template>
-                        </div>
+                            </div>
+                        </template>
                     </div>
-
                 </div>
             </div>
-        </div>
-    </div>
+        </div> 
+    </div>       
 </template>
 
 <script>

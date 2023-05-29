@@ -24,11 +24,6 @@ const router = createRouter({
 			component: MenuUser,
 		},
 		{
-			path: '/singlePlate',
-			name: 'singlePlate',
-			component: SinglePlate,
-		},
-		{
 			path: '/PaymentPage',
 			name: 'PaymentPage',
 			component: PaymentPage,
