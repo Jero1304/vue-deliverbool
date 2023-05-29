@@ -7,16 +7,6 @@
                 </div>
                 <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
-    <section class="nav-footer">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col">
-                    <figure class="thumb img-fluid flex-shrink-0">
-                        <img src="/images/hamburger-logo.png" alt="">
-                    </figure>
-                </div>                
-                <div class="col flex-md-wrap">                    
-                    <ul class="menu">
                         <li>
                             <h3>Informazioni</h3>
                         </li>
@@ -27,8 +17,6 @@
                 </div>
                 <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
-                <div class="col flex-md-wrap">
-                    <ul class="menu">
                         <li>
                             <h3>Servizio clienti</h3>
                         </li>
@@ -39,8 +27,6 @@
                 </div>
                 <div class="col-sm-3 d-flex justify-content-center">
                     <ul>
-                <div class="col flex-md-wrap">
-                    <ul class="menu">
                         <li>
                             <h3>Social</h3>
                         </li>
@@ -54,7 +40,6 @@
                                 <font-awesome-icon :icon="['fab', 'twitter']" /> Twitter
                             </a>
                         </li>
-
                         <li>
                             <a href="https://www.instagram.com/" target="_blank" class="icon insta">
                                 <font-awesome-icon :icon="['fab', 'instagram']" /> Instagram
@@ -65,15 +50,6 @@
             </div>
         </div>
     </div>
-    </section>
-    <section class="copy">
-        <div class="container text-center">
-            <span>
-                <i>DeliveBoo 2023&copy; created by <strong>Team 6</strong> of Boolean #Class86</i>
-            </span>
-        </div>
-
-    </section>
 </template>
   
 <script>
@@ -106,28 +82,7 @@ export default {
 
 .footer ul li {
     margin-bottom: 10px;
-        .fb{
-            color: blue;
-        }
-        .insta{
-            color: rgb(255, 3, 87);
-        }
-        
-        .icon{  
-            
-            border-radius: 999px ;
-            padding: 0 8px;
-            transition: box-shadow 0.3s ease;
-            &:hover {
-                box-shadow: 0 0 10px $yellow;
-        }
-        
-    }
-    
 }
-.copy{
-        background-color: grey;
-    }
 
 .footer ul li a {
     color: #333;
@@ -142,4 +97,3 @@ export default {
     transform: scale(1.2);
 }
 </style>
-  
