@@ -4,7 +4,7 @@
             <div class="container-fluid justify-content-between">
                 <div>
 
-                    <a class="navbar-brand" href="#"><img src="./img/favicon-deliveboo.png" alt="logo"></a>
+                   <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo"></a>
 
                 </div>
                 <div>
@@ -97,4 +97,6 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     outline: none !important;
     box-shadow: none !important;
 }
+
+
 </style>

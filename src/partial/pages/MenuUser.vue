@@ -1,26 +1,6 @@
 <template>
     
-        <!-- <div class="hero-container">
-            <div class="container info">
-                <h2>{Ristorante}</h2>
-                <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente molestiae saepe cum.
-                Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas, fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat doloremque nisi tenetur ad impedit accusamus dolore.
-                Esse amet expedita laboriosam ipsam corporis, mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos!
-                Culpa voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda architecto cum velit.</p>
-                <p>{Orari di apertura e chiusura}</p>
-
-                <div class="container-img">
-                <img src="https://cdn.pixabay.com/photo/2022/05/22/13/21/healthy-7213383_1280.jpg" alt="gourmet">
-                <img src="https://cdn.pixabay.com/photo/2022/03/04/00/47/wine-7046276_1280.jpg" alt="gourmet">
-                <img src="https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_1280.jpg" alt="pizza-gourmet">
-                </div> -->
-
-
-            <!-- </div>
-        </div> --> 
-    
-        
-  <div class="restaurant">
+<div class="restaurant">
     <div class="container">
       <div class="row justify-content-center">
             <div class="col-12 col-md-6 description">
@@ -383,7 +363,8 @@ export default {
 .restaurant {
     background-image: url('../components/img/menu-pattern.jpg');
     background-size: cover;
-    height: 1000px;
+    height: auto;
+    padding-bottom: 200px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -401,7 +382,7 @@ export default {
         top: 400px;
         right: -185px;
         color: white;
-        margin-bottom: 150px;
+        margin-bottom: 150px; /* Aggiunto spazio tra plates e footer */
     }
 
     .arrow{
@@ -430,14 +411,78 @@ export default {
 
         .restaurant {
             background-image: url(../components/img/pettern-hero-responsive.jpg);
-            height: auto;
-            margin-top: -200px;
+            
+            
+            
             
         }
 
         .plates {
             margin-top: -400px;
-            margin-right: 375px;
+            margin-right: 375px; 
+            margin-bottom: 100px; 
+            
+        }
+
+        .plates .row {
+            background-color:rgb(255, 202, 29); 
+            border-radius: 50px;
+           
+        }
+
+       
+
+        .arrow {
+           width: 40px;
+           height: 30px;
+           margin-top: 100px;
+           background-color: rgba(255, 89, 0, 0.681);
+        }
+
+         .sx{
+            position: relative;
+            right: -130px;
+            margin-bottom: 150px;
+            
+         }
+
+         .dx{
+            position: relative;
+            left: -130px;
+         }
+
+         .col-3.p-3:hover {
+            box-shadow: 0 0 30px rgb(255, 91, 0);
+            transform: translateY(-5px);
+        }
+
+       
+
+
+    }
+
+
+    // RESPONSIVE TABLET
+
+    @media (max-width: 1355px) {
+        .description {
+            width: 80%;
+            margin-bottom: 20px;
+            background-color: rgba(255, 89, 0, 0.8);
+            color: white;
+        }
+
+        .restaurant {
+            background-image: url(../components/img/pettern-hero-responsive.jpg);
+            height: 1000px;
+            margin-top: -200px;
+            
+            
+        }
+
+        .plates {
+            margin-top: -400px; 
+            margin-right: 375px; 
             margin-bottom: 100px; 
             
         }
