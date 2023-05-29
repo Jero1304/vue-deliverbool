@@ -1,5 +1,5 @@
 <template>
-    <div class="row title text-capitalize">
+    <div class="row title pb-0 text-capitalize">
         <div class="contaier">
 
             <h1>I nostri ristoranti</h1>
@@ -15,7 +15,7 @@
             </template>
 
             <template v-else-if="selectedTypes.length > 0">
-                <div class="types">
+                <div class="types mb-1">
                     <h3 class="">Categorie Selezionate: </h3>
                     <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
                 </div>
@@ -714,10 +714,10 @@ export default {
         position: relative;
 
         .logo-arrow {
-            width: 200px;
+            width: 150px;
             position: absolute;
             left: 150px;
-            bottom: -60px;
+            bottom: 50px;
             transform: rotate(350deg);
 
         }
