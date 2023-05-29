@@ -54,11 +54,16 @@
 
 
         <div class="restaurants col-10">
-            <div class="container">
+            <div class="container mx-3">
                 <div class="row restaurant-menu">
 
                     <div class="col-12 row mb-5 justify-content-between">
 
+                        <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
+                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
+                        </div>
+                        <template v-if="totalPagesRestaurant === 0">
+                            <div class="col-1">
                         <div class="col-3" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
                             <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
                         </div>
@@ -69,6 +74,8 @@
                                 <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
                             </div>
                         </template>
+                        <template v-if="totalPagesRestaurant > 0">
+                            <div class="col-1">
 
                         <template v-if="totalPagesRestaurant > 0">
                             <div class="col-6 text-center">
@@ -77,13 +84,14 @@
                             </div>
                         </template>
 
+                        <div class="col-1" @click="nextPageRestaurant"
                         <div class="col-3  d-flex justify-content-end" @click="nextPageRestaurant"
                             :disabled="currentPageRestaurant === totalPagesRestaurant">
                             <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
                         </div>
 
                     </div>
-
+    
                     <div class="col-12 mt-4">
                         <div class="row justify-content-center restaurants_grid">
                             <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
@@ -101,6 +109,7 @@
                                                 <div class="col-6">
                                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
                                                         ipsa
+                                                        natus mollitia.</p>
                                                         natus mollitia.
                                                     </p>
                                                 </div>
@@ -730,17 +739,15 @@ export default {
     flex-wrap: nowrap;
     flex-shrink: 1;
     height: auto;
-    background-color: rgba(214, 24, 24, 1);
 
     .aside {
         // background-color: rgb(240, 3, 3);
         background: rgb(139, 0, 0);
-        // background: linear-gradient(270deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
+        background: linear-gradient(270deg, rgba(214, 24, 24, 1) 0%, rgba(107, 0, 0, 1) 100%);
         // min-height: 200px;
         margin: 0;
         display: flex;
         justify-content: center;
-        border-radius: 0 200px 200px 0;
 
 
         .aside_type {
@@ -795,9 +802,9 @@ export default {
             .active {
                 background-color: rgb(214, 24, 24);
                 border-radius: 20px;
-                box-shadow: 10px 10px 5px rgb(214, 24, 24),
+                box-shadow: 70px 10px 5px rgb(214, 24, 24),
                     -10px -10px 5px rgb(214, 24, 24),
-                    10px -10px 5px rgb(214, 24, 24),
+                    70px -10px 5px rgb(214, 24, 24),
                     -10px 10px 5px rgb(214, 24, 24);
                 text-decoration-color: white;
                 transition: transform 0.3s ease;
@@ -961,7 +968,6 @@ export default {
             display: flex;
             justify-content: center;
             width: 100%;
-            border-radius: 200px 200px;
 
             .aside_type {
                 padding: 10px 0;
