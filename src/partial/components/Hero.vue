@@ -56,10 +56,9 @@ export default{
                 </figure>
             </div>
         </div>
-        <p @click="nextSlide" class="arrow-right">next</p>
-        <p @click="prevSlide" class="arrow-left">prev</p>
-        <i class="fa-solid fa-chevron-right"></i>
-        <i class="fa-solid fa-chevron-left"></i>
+        <p @click="nextSlide" class="arrow-right"><font-awesome-icon :icon="['fas', 'chevron-right']" /></p>
+        <p @click="prevSlide" class="arrow-left"><font-awesome-icon :icon="['fas', 'chevron-left']" /></p>
+        
     </div>
     
 </template>
@@ -79,6 +78,8 @@ export default{
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
+            color: white;
+            font-size: 25px;
         }
 
         .arrow-left{
@@ -86,6 +87,8 @@ export default{
             left: 10px;
             top: 50%;
             cursor: pointer;
+            color: white;
+            font-size: 25px;
         }
     };
 
