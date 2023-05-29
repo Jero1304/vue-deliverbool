@@ -16,6 +16,8 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 
 
 library.add(faSearch, faFileLines, faMugSaucer, faCubes, faLaptop,
+
     faWrench, faAppleWhole, faDesktop, faFacebook, faInstagram, faTwitter,faArrowLeft,faArrowUp,faArrowDown,faArrowRight,faChevronLeft,faChevronRight)
+
 
 createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
