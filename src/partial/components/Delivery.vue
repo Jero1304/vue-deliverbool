@@ -104,15 +104,15 @@
       <h3>I tuoi piatti preferiti a casa tua!</h3>
 
       <div class="input-group mb-4 gap-3">
-        <h6>Inserisci il tuo indirizzo per scoprire i ristoranti intorno a te.</h6>
+        <h4>Inserisci il tuo indirizzo per scoprire i ristoranti intorno a te.</h4>
         <div class="container">
           <form @submit.prevent="submitForm" class="gap-3">
             <div class="row">
               <div class="col-12 d-flex flex-column gap-3">
                 <input type="text" class="form-control search_bar" id="street" v-model="address.street"
                   placeholder="Via..." required>
-                <input type="text" class="form-control search_bar" id="city" v-model="address.city" placeholder="Città..."
-                  required>
+                <!-- <input type="text" class="form-control search_bar" id="city" v-model="address.city" placeholder="Città..."
+                  required> -->
               </div>
             </div>
             <button type="submit" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3 mt-3">Invia</button>
@@ -304,11 +304,12 @@ h5 {
   padding: 50px;
   background-color: rgb(255, 204, 0);
   /* Colore arancione */
-  background-image: linear-gradient(rgb(255, 204, 0), rgb(251, 71, 0));
+  background-image: linear-gradient(rgb(255, 204, 0), rgba(214, 24, 24, 1));
   /* Colore a metà tra arancione e giallo */
   padding-bottom: 20px;
   min-height: auto;
 }
+
 
 .form-consegna h3 {
   color: rgb(255, 85, 0);
@@ -338,6 +339,7 @@ h5 {
 
 .search_bar {
   border-radius: 20px !important;
+  width: 60%;
 }
 
 .search_bar:hover {
@@ -382,7 +384,7 @@ h5 {
     align-items: center;
   }
 
-  .form-consegna h6 {
+  .form-consegna h4 {
     font-size: 13px;
   }
 
@@ -402,6 +404,10 @@ h5 {
 
   .form-consegna img {
     display: none;
+  }
+
+  .search_bar {
+    width: 80%;
   }
 }
 </style>
