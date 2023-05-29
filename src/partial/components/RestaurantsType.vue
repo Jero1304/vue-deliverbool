@@ -109,72 +109,12 @@
                                     </div>
                                 </div>
                             </template>
-
                         </div>
                     </div>
-            <div class="container mx-3">
-                <div class="row restaurant-menu">
-
-                    <div class="col-12 row mb-5 justify-content-between">
-
-                        <div class="col-1" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
-                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
-                        </div>
-                        <template v-if="totalPagesRestaurant === 0">
-                            <div class="col-1">
-                                <p> 0 di {{ totalPagesRestaurant }}</p>
-                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
-                            </div>
-                        </template>
-                        <template v-if="totalPagesRestaurant > 0">
-                            <div class="col-1">
-                                <p>{{ currentPageRestaurant }} di {{ totalPagesRestaurant }}</p>
-                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
-                            </div>
-                        </template>
-
-                        <div class="col-1" @click="nextPageRestaurant"
-                            :disabled="currentPageRestaurant === totalPagesRestaurant">
-                            <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-right" />
-                        </div>
-
-                    </div>
-
-                    <div class="col-12">
-                        <div class="row justify-content-center restaurants_grid">
-                            <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
-
-                                <!-- <div class="col-sm-4 col-md-2">
-                                <img src="https://picsum.photos/200/300" alt="">
-                                <p class="restaurant-title">{{ restaurant.name }}</p>
-                                <p>{{ restaurant.type.join(', ') }}</p>
-                            </div> -->
-                                <div class="col-md-6 col-sm-10  p-2 ">
-                                    <div class="row restaurant-card">
-                                        <div class="col-4 restaurant-image">
-                                            <img src="https://picsum.photos/200/300" alt="">
-                                        </div>
-                                        <div class="col-10 restaurant-info">
-                                            <div class="row justify-content-between align-items-center">
-                                                <div class="col-5">
-                                                    <p class="restaurant-title my-0">{{ restaurant.name }}</p>
-                                                    <p>{{ restaurant.type.join(', ') }}</p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                                                        ipsa
-                                                        natus mollitia.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
+                    
                 </div>
-
             </div>
+           
         </div>
     </div>
 </template>
