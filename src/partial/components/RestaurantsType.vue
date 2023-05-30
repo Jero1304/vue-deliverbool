@@ -229,7 +229,7 @@ export default {
         currentTypeRest() {
             const rest = [];
             if (this.selectedTypes.length === 0) {
-                return rest;
+                return this.restaurants;
             }
 
             for (let j = 0; j < this.restaurants.length; j++) {

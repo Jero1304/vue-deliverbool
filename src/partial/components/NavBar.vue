@@ -45,7 +45,7 @@
                             </li>
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
-                                    <router-link to="/Cart"> Carrello </router-link></a>
+                                    <router-link to="/CartUser"> Carrello </router-link></a>
                             </li>
                         </ul>
                     </div>
