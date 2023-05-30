@@ -114,7 +114,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -122,13 +121,41 @@
 <script>
 
 const restaurantType = [
-    'italiano',
-    'giapponese',
-    'thailandese',
-    'vegano',
-    'americano',
-    'fast food',
-    'pizzeria'
+    {
+        name:'italiano',
+        thumb:'',
+
+    },
+    {
+        name:'giapponese',
+        thumb:'',
+
+    },
+    {
+        name:'thailandese',
+        thumb:'',
+
+    },
+    {
+        name:'vegano',
+        thumb:'',
+
+    },
+    {
+        name:'americano',
+        thumb:'',
+
+    },
+    {
+        name:'fast food',
+        thumb:'',
+        
+    },
+    {
+        name:'pizzeria',
+        thumb:'',
+
+    }
 ];
 import axios from 'axios'
 export default {
