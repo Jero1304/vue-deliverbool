@@ -367,7 +367,7 @@ export default {
             display: flex;
             flex-direction: column;
             text-align: center;
-            justify-content: start;
+            justify-content: space-around;
 
             .font-awesome-icon {
                 background-color: rgb(215, 6, 6);
@@ -376,7 +376,7 @@ export default {
                 padding: 10px;
                 display: flex;
                 justify-content: center;
-                margin: 10px;
+                margin: 20px;
                 border-radius: 999px;
                 font-size: 18px;
                 height: 26px;
