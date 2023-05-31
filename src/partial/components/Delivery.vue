@@ -3,7 +3,7 @@
 
     <h2 class="pt-5">Deliveboo consegna a casa tua!</h2>
 
-    <!-- inizio struttura tre card -->
+    <!-- struttura card -->
 
 
 
@@ -25,7 +25,7 @@
         <div class="card-body">
           <h5 class="card-title text-uppercase mt-4">Food street irresistibile!</h5>
           <p>Scopri una vasta selezione di cibi di strada provenienti da tutto il mondo, dai deliziosi panini ai gustosi
-            falafel. Goditi il sapore autentico e l'atmosfera unica dello street food comodamente a casa tua.</p>
+            falafel! Goditi il sapore autentico e l'atmosfera unica dello street food comodamente a casa tua.</p>
 
         </div>
       </div>

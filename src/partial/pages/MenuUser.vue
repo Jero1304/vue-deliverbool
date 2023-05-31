@@ -1,21 +1,12 @@
 <template>
-    {{ restaurantID }}
+    
     <div class="restaurant">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
-                    <h2>{Ristorante}</h2>
-                    <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel
-                        incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente
-                        molestiae saepe cum. Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas,
-                        fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat
-                        doloremque nisi tenetur ad impedit accusamus dolore. Esse amet expedita laboriosam ipsam corporis,
-                        mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus
-                        beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos! Culpa
-                        voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab
-                        quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda
-                        architecto cum velit.</p>
-                    <p>{Orari di apertura e chiusura}</p>
+                    <h2>{{ restaurantID }}</h2>
+                    <p>{{desciption}}</p>
+                    <p>{{ address }}</p>
                 </div>
 
 
@@ -32,7 +23,7 @@
                             <template v-for="(plate, index) in paginatePlates" :key="index">
                                 <div class="col-3 p-3" v-if="plate.type.includes(currentType)">
                                     <img src="../../../public/images/cibo.webp" alt="food">
-                                    <p>{{ plate.name }}</p>
+                                    <p>{{ plateMenu}}</p>
                                 </div>
                             </template>
                         </div>
