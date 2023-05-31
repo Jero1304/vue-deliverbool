@@ -1,21 +1,21 @@
 <template>
-    {{ restaurantID }}
     <div class="restaurant">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
-                    <h2>{Ristorante}</h2>
-                    <p>{Descrizione}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores placeat et vel
-                        incidunt cum ex ullam quos neque doloribus a! Nemo quidem quaerat sequi magnam eum sapiente
-                        molestiae saepe cum. Ullam nisi doloribus necessitatibus vero labore sequi vel quis dicta voluptas,
-                        fuga modi ipsam. Perferendis enim molestias, reiciendis, incidunt velit tempora deserunt, fugiat
-                        doloremque nisi tenetur ad impedit accusamus dolore. Esse amet expedita laboriosam ipsam corporis,
-                        mollitia, perferendis eius atque enim necessitatibus saepe unde minus quae ex. Deserunt repellendus
-                        beatae incidunt et ipsam, quia perferendis atque nulla sed. Distinctio, dignissimos! Culpa
-                        voluptates veniam animi, illum veritatis dicta, nihil quia numquam, eius doloremque obcaecati ab
-                        quae odio magni ipsam cupiditate iure omnis soluta. Natus, sapiente nesciunt aut assumenda
-                        architecto cum velit.</p>
-                    <p>{Orari di apertura e chiusura}</p>
+                    <h2 class="title-description">{{ restaurant.restaurant_name}}</h2>
+                    <h5> Dove siamo: {{ restaurant.address}}</h5>
+                    
+                    <ul v-for="(tipology, j) in restaurant.types" class="list-group m-3">
+                     <li class="list-group-item">{{ tipology.name }}</li>
+                    </ul>
+
+                    <div class="col-4 description-image">
+                        <img src="https://picsum.photos/200/300" alt="">
+                    </div>
+                    
+                    
+  
                 </div>
 
 
@@ -30,9 +30,12 @@
                         <div class="row col-10 justify-content-center p-2">
                             <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-3 p-3" v-if="plate.type.includes(currentType)">
-                                    <img src="../../../public/images/cibo.webp" alt="food">
-                                    <p>{{ plate.name }}</p>
+                                <div class="col-4 p-3" height="200px">
+                                    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning">
+                                    <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
+                                    <span class="plate-ingredient">{{ plate.ingredient }}</span>
+                                    <p class="mt-2">{{ plate.price }} &euro;</p>
+                                    <button class="carrello"><img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png" alt="carrello"></button>
                                 </div>
                             </template>
                         </div>
@@ -41,48 +44,61 @@
                             <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png"
                                 alt="freccia-destra">
                         </div>
+
+
                     </div>
                 </div>
+
+
             </div>
         </div>
 
     </div>
+    <Cart></Cart>
 </template>
 
 <script>
 
 import axios from 'axios'
+
+import Cart from '../components/Cart.vue';
+
 export default {
+    
+    components:{
+        Cart,
+    },
+
     data() {
         return {
-            plateMenu: restaurantMenu,
-            plateTypes: plateTypes,
-
-            currentIndexType: 0,
-            currentType: '',
-
-            currentPageType: 1,
-            itemsPerPageType: 6,
 
             currentPagePlate: 1,
             itemsPerPagePlate: 6,
 
             restaurantID: this.$route.params.id,
-            plates:[],
+            plates: [],
+
+            restaurant: [],
+
+
         }
     },
-    created(){
+    created() {
         console.log(this.fetchPost());
     },
 
     methods: {
 
         fetchPost() {
-            axios.get(`http://127.0.0.1:8000/api/restaurants/${this.restaurantID}`) 
+            axios.get(`http://127.0.0.1:8000/api/restaurants/${this.restaurantID}`)
                 .then(res => {
-                    
+
                     this.plates = res.data.restaurant.products
+                    // this.openingHours = res.data.restaurant.openingHours;
                     console.log(this.plates);
+
+                    this.restaurant = res.data.restaurant
+                    console.log (this.restaurant)
 
 
                 })
@@ -93,25 +109,6 @@ export default {
         },
 
 
-
-
-        typeSelection(index, type) {
-            this.currentIndexType = index
-            this.currentType = type
-        },
-        //type carusell
-        previousPageType() {
-            if (this.currentPageType > 1) {
-                this.currentPageType--;
-            }
-            // console.log(this.currentPageType);
-        },
-        nextPageType() {
-            if (this.currentPageType < this.totalPagesType) {
-                this.currentPageType++;
-            }
-            // console.log(this.currentPageType);
-        },
 
         previousPagePlate() {
             if (this.currentPagePlate > 1) {
@@ -124,15 +121,15 @@ export default {
             }
         },
 
-        currentTypeRest() {
-            const resMenu = []
-            for (const plate of this.plates) {
-                // console.log(this.currentType);
-                
-            }
-            // console.log('resMenu',resMenu);
-            return resMenu
-        },
+        // currentTypeRest() {
+        //     const resMenu = []
+        //     for (const plate of this.plates) {
+        //         // console.log(this.currentType);
+
+        //     }
+        //     // console.log('resMenu',resMenu);
+        //     return resMenu
+        // },
 
         pagesResest() {
             this.currentPagePlate = 1
@@ -140,22 +137,14 @@ export default {
     },
 
     computed: {
-        paginateType() {
-            const start = (this.currentPageType - 1) * this.itemsPerPageType;
-            const end = start + this.itemsPerPageType;
-            return this.plates.slice(start, end);
-        },
-        totalPagesType() {
-            return Math.ceil(this.plates.length / this.itemsPerPageType);
-        },
 
         paginatePlates() {
             const start = (this.currentPagePlate - 1) * this.itemsPerPagePlate;
             const end = start + this.itemsPerPagePlate;
-            return this.currentTypeRest().slice(start, end);
+            return this.plates.slice(start, end);
         },
         totalPagesPlate() {
-            return Math.ceil(this.currentTypeRest().length / this.itemsPerPagePlate);
+            return Math.ceil(this.plate.length / this.itemsPerPagePlate);
         },
     }
 
@@ -173,7 +162,28 @@ export default {
     margin-top: 200px;
     border-radius: 10px;
     color: rgb(0, 0, 0);
+
+    .list-group-item {
+        background-color: rgba(255, 89, 0, 0.769);
+        color: white;
+        text-transform: uppercase;
+        
+    }
+
+    .title-description{
+        color: rgb(255, 91, 0);;
+    }
+
+    .description-image{
+        width: 400px;
+    }
+
+    .description-image img{
+        width: 200px;
+    }
 }
+
+
 
 
 
@@ -186,7 +196,7 @@ export default {
     display: flex;
     flex-direction: column;
 
-    .col-3.p-3:hover {
+    .col-4.p-3:hover {
         box-shadow: 0 0 30px rgba(246, 232, 123, 0.768);
         ;
         transform: translateY(-5px);
@@ -202,6 +212,24 @@ export default {
         color: white;
         margin-bottom: 150px;
         /* Aggiunto spazio tra plates e footer */
+    }
+
+    .plate-ingredient{
+        font-size: 9px;
+        text-align: center;
+        
+    }
+
+    .carrello{
+        width: 30px;
+        background-color: rgb(255, 255, 255);
+        padding: 3px;
+        margin-left: 35px;
+        
+    }
+
+    .carrello:hover{
+        transform: scale(1.5);
     }
 
     .arrow {

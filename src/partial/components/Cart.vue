@@ -1,70 +1,90 @@
-<template>
-    <div class="container">
-        <div class="list-group">
-            <div v-for="(order, index) in orders" class="list-group-item list-group-item-action">
-                <!-- <div class="d-flex w-100 justify-content-between">
-                    <img class="w-25" :src="order.thumb" alt="">
-                    <h5 class="mb-1">{{ order.name }}</h5>
-                    <small>{{ order.price }} $</small>
-                </div>
-                <p class="mb-1">{{ order.ingredient }}</p> -->
-                <!-- <small>And some small print.</small> -->
-
-                <div class="row w-75">
-                    <div class="col">
-                        <img class="w-25" :src="order.thumb" alt="">
-                    </div>
-                    <div class="col">
-                        <h5 class="mb-1">{{ order.name }}</h5>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</template>
 
 <script>
+export default{
+    data(){
+        return{
 
-const orders = [
-    {
-        name: 'pizza',
-        ingredient: 'Sugo mozzarella olive ',
-        price: 12.77,
-        thumb: 'https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_1280.jpg',
-    },
-    {
-        name: 'pasta al sugo',
-        ingredient: 'Sugo ',
-        price: 7.29,
-        thumb: 'https://media.istockphoto.com/id/155433174/it/foto/penne-al-sugo.jpg?s=1024x1024&w=is&k=20&c=H-EzF23OGEsMrnJbnhvOgEk-tRI-TrzolJ66j5PSAN4=',
-    },
-    {
-        name: 'misto fritto',
-        ingredient: 'pesci fritti',
-        price: 10.47,
-        thumb: 'https://media.istockphoto.com/id/967914044/it/foto/pesce-di-mare-fritto-italiano.jpg?s=1024x1024&w=is&k=20&c=qswNhZ4qsMqU_-5NLC6_u__WPMaccPJYkHGNAta_uSo=',
-    },
-    {
-        name: 'carbonara',
-        ingredient: 'uovo pancetta pecorino ',
-        price: 11.58,
-        thumb: 'https://media.istockphoto.com/id/1312758295/it/foto/pasta-tradizionale-italiana-alla-carbonara-con-uova-di-guanciale-e-pecorino.jpg?s=1024x1024&w=is&k=20&c=jHGUnLVjnXYxYdEX8yQteyi9zaQBt7kHvtp6ADHYmMA=',
-    },
-    {
-        name: 'caffe\' ',
-        ingredient: 'caffe\' ',
-        price: 1.00,
-        thumb: 'https://cdn.pixabay.com/photo/2013/11/05/23/55/coffee-206142_1280.jpg',
-    },
-]
-export default {
-    data() {
-        return {
-            orders: orders
         }
-    },
+    }
 }
 </script>
 
-<style lang="scss" scoped></style>
+
+<template>
+    <div class="cart">
+        <div class="container container-table">
+            <h2 class="text-center pb-5 title">il tuo Carrello</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Piatto</th>
+                    <th scope="col">Quantità</th>
+                    <th scope="col">Prezzo</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pizza margherita</td>
+                        <td>1</td>
+                        <td>€7.50</td>
+                        <td  class="d-flex justify-content-end">
+                            <a class="btn btn-danger btn-sm" href="">Rimuovi dal carrello</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tagliata con patate</td>
+                        <td>1</td>
+                        <td>€15.00</td>
+                        <td class="d-flex justify-content-end">
+                            <a class="btn btn-danger btn-sm" href="">Rimuovi dal carrello</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pokè media</td>
+                        <td>1</td>
+                        <td>€12.20</td>
+                        <td class="d-flex justify-content-end">
+                            <a class="btn btn-danger btn-sm" href="">Rimuovi dal carrello</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="d-flex justify-content-center py-4">
+                <a class="btn cart-btn" href="">Procedi con il pagamento</a>
+            </div>
+        </div> 
+     </div>
+</template>
+
+<style scoped lang="scss">
+@use '../src/scss/variables' as *;
+
+.cart{
+    background-color: #FCFCFB;
+    padding: 50px 0;
+    .container-table{
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .title{
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-top: 30px;
+        }
+        .cart-btn{
+            padding: 10px 0;
+            width: 30%;
+            text-transform: uppercase;
+            background-color: $orange;
+            color: white;
+            font-weight: bold;
+            &:hover{
+                background-color: $yellow;
+            }
+        }
+    }
+}
+
+</style>
+
