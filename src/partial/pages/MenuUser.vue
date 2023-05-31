@@ -54,6 +54,7 @@
         </div>
 
     </div>
+    <Cart></Cart>
 </template>
 
 <script>
@@ -62,7 +63,59 @@
 
 import axios from 'axios'
 
+    // DIGESTIVI
+    {
+        name: 'digestivo#1',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#2',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#3',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#4',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#5',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#6',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#7',
+        type: 'digestivi',
+    },
+    {
+        name: 'digestivo#8',
+        type: 'digestivi',
+    },
+];
+
+const plateTypes = [
+    'Seleziona',
+    'primi',
+    'secondi',
+    'bevande',
+    'vini',
+    'dolci',
+    'digestivi'
+];
+
+import Cart from '../components/Cart.vue';
+
 export default {
+    
+    components:{
+        Cart,
+    },
+
     data() {
         return {
 
