@@ -3,7 +3,18 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
-                    <h2>{{ restaurantID }}</h2>
+                    <h2 class="title-description">{{ restaurant.restaurant_name}}</h2>
+                    <h5> Dove siamo: {{ restaurant.address}}</h5>
+                    
+                    <ul v-for="(tipology, j) in restaurant.types" class="list-group m-3">
+                     <li class="list-group-item">{{ tipology.name }}</li>
+                    </ul>
+
+                    <div class="col-4 description-image">
+                        <img src="https://picsum.photos/200/300" alt="">
+                    </div>
+                    
+                    
   
                 </div>
 
@@ -19,11 +30,12 @@
                         <div class="row col-10 justify-content-center p-2">
                             <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-3 p-3">
-                                    <img :src="plate.image" alt="food">
-                                    <p>{{ plate.name }}</p>
-                                    <p>{{ plate.ingredients }}</p>
-                                    <p>{{ plate.price }}</p>
+                                <div class="col-4 p-3" height="200px">
+                                    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning">
+                                    <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
+                                    <span class="plate-ingredient">{{ plate.ingredient }}</span>
+                                    <p class="mt-2">{{ plate.price }} &euro;</p>
+                                    <button class="carrello"><img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png" alt="carrello"></button>
                                 </div>
                             </template>
                         </div>
@@ -60,6 +72,8 @@ export default {
             restaurantID: this.$route.params.id,
             plates: [],
 
+            restaurant: [],
+
 
         }
     },
@@ -76,6 +90,9 @@ export default {
                     this.plates = res.data.restaurant.products
                     // this.openingHours = res.data.restaurant.openingHours;
                     console.log(this.plates);
+
+                    this.restaurant = res.data.restaurant
+                    console.log (this.restaurant)
 
 
                 })
@@ -121,7 +138,7 @@ export default {
             return this.plates.slice(start, end);
         },
         totalPagesPlate() {
-            return Math.ceil(this.currentTypeRest().length / this.itemsPerPagePlate);
+            return Math.ceil(this.plate.length / this.itemsPerPagePlate);
         },
     }
 
@@ -139,7 +156,28 @@ export default {
     margin-top: 200px;
     border-radius: 10px;
     color: rgb(0, 0, 0);
+
+    .list-group-item {
+        background-color: rgba(255, 89, 0, 0.769);
+        color: white;
+        text-transform: uppercase;
+        
+    }
+
+    .title-description{
+        color: rgb(255, 91, 0);;
+    }
+
+    .description-image{
+        width: 400px;
+    }
+
+    .description-image img{
+        width: 200px;
+    }
 }
+
+
 
 
 
@@ -152,7 +190,7 @@ export default {
     display: flex;
     flex-direction: column;
 
-    .col-3.p-3:hover {
+    .col-4.p-3:hover {
         box-shadow: 0 0 30px rgba(246, 232, 123, 0.768);
         ;
         transform: translateY(-5px);
@@ -168,6 +206,24 @@ export default {
         color: white;
         margin-bottom: 150px;
         /* Aggiunto spazio tra plates e footer */
+    }
+
+    .plate-ingredient{
+        font-size: 9px;
+        text-align: center;
+        
+    }
+
+    .carrello{
+        width: 30px;
+        background-color: rgb(255, 255, 255);
+        padding: 3px;
+        margin-left: 35px;
+        
+    }
+
+    .carrello:hover{
+        transform: scale(1.5);
     }
 
     .arrow {
