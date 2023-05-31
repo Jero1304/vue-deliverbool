@@ -3,7 +3,7 @@
 
     <h2 class="pt-5">Deliveboo consegna a casa tua!</h2>
 
-    <!-- inizio struttura tre card -->
+    <!-- struttura card -->
 
 
 
