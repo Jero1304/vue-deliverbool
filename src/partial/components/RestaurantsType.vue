@@ -9,9 +9,9 @@
                     <h3 class="">Seleziona categorie </h3>
                 </div>
 
-                <div class="arrow">
+                <!-- <div class="arrow">
                     <img class="logo-arrow" src="./img/freccia.png" alt="">
-                </div>
+                </div> -->
             </template>
 
             <template v-else-if="selectedTypes.length > 0">
@@ -27,24 +27,16 @@
     <div class="restaurant-type row">
         <div class="aside col-2">
             <div class="aside_type">
-                <div class="d-flex justify-content-center align-items-center" @click="previousPageType"
-                    :disabled="currentPageType === 1">
-                    <font-awesome-icon class="d-sm-none d-md-flex font-awesome-icon" icon="fa-solid fa-arrow-up" />
-                    <font-awesome-icon class="d-sm-flex d-md-none font-awesome-icon" icon="fa-solid fa-arrow-left" />
+
+                <div class="aside_card" v-for="(type, index) in types"
+                    @click="toggleSelection(type.name), fetchRestaurants()" :class="{ active: isSelected(type.name) }">
+                    <img :src="type.thumb" alt="">
+                    <!-- <p>{{ type.thumb }}</p> -->
+                    <!-- <img src="./img/restaurantTypeImg/giapponese.png" alt=""> -->
+                    <p>{{ type.name }}</p>
                 </div>
 
-                <div class="aside_card" v-for="(type, index) in paginateType" :key="type"
-                    @click="toggleSelection(type), fetchRestaurants()" :class="{ active: isSelected(type) }">
-                    <img src="../../../public/img/hamburger-logo.png" alt="">
-                    <img src="../../../public/images/hamburger-logo.png" alt="">
-                    <p>{{ type }}</p>
-                </div>
 
-                <div class="d-flex justify-content-center align-items-center" @click="nextPageType"
-                    :disabled="currentPageType === totalPagesType">
-                    <font-awesome-icon class="d-sm-none d-md-flex font-awesome-icon" icon="fa-solid fa-arrow-down" />
-                    <font-awesome-icon class="d-sm-flex d-md-none font-awesome-icon" icon="fa-solid fa-arrow-right" />
-                </div>
             </div>
         </div>
 
@@ -128,37 +120,37 @@
 const restaurantType = [
     {
         name: 'italiano',
-        thumb: './img/',
+        thumb: 'https://pngimg.com/d/pasta_PNG51.png',
 
     },
     {
         name: 'giapponese',
-        thumb: './img/giapponese.png',
+        thumb: 'https://cdn.pixabay.com/photo/2020/08/20/03/44/ramen-5502503_1280.png',
 
     },
     {
         name: 'thailandese',
-        thumb: './img/thai.png',
+        thumb: 'https://static.vecteezy.com/system/resources/previews/010/283/253/non_2x/thai-food-watercolor-hand-paint-free-png.png',
 
     },
     {
         name: 'vegano',
-        thumb: './img/vegano.webp',
+        thumb: 'https://cdn.pixabay.com/photo/2017/07/03/18/14/lettuce-2468495_1280.png',
 
     },
     {
         name: 'americano',
-        thumb: './img/',
+        thumb: 'https://clipart-library.com/image_gallery2/Hot-Dog-Transparent.png',
 
     },
     {
         name: 'fast food',
-        thumb: './img/',
+        thumb: 'https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png',
 
     },
     {
         name: 'pizzeria',
-        thumb: './img/pizza.webp',
+        thumb: 'https://pngimg.com/d/pizza_PNG44090.png',
 
     }
 ];
@@ -182,6 +174,10 @@ export default {
             click: false,
         }
     },
+    created() {
+        this.fetchRestaurants()
+        console.log(this.fetchRestaurants());
+    },
 
     methods: {
         fetchRestaurants() {
@@ -189,12 +185,14 @@ export default {
                 .then(res => {
                     const results = res.data.results
                     this.restaurants = results.data
+                    console.log('restaurants', this.restaurants);
+                    console.log('results', results.data);
                 })
                 .catch(err => {
                     console.log(err);
                 })
         },
- 
+
         typeSelection(index, type) {
             this.currentIndexType = index;
             this.currentType = type;
@@ -226,21 +224,21 @@ export default {
             return this.selectedTypes.includes(type);
         },
         //type carusell
-        previousPageType() {
-            if (this.currentPageType > 1) {
-                this.currentPageType--;
-                this.currentIndexType = null
-            }
-            console.log(this.currentPageType);
-        },
-        nextPageType() {
-            if (this.currentPageType < this.totalPagesType) {
-                this.currentPageType++;
-                this.currentIndexType = null
+        // previousPageType() {
+        //     if (this.currentPageType > 1) {
+        //         this.currentPageType--;
+        //         this.currentIndexType = null
+        //     }
+        //     console.log(this.currentPageType);
+        // },
+        // nextPageType() {
+        //     if (this.currentPageType < this.totalPagesType) {
+        //         this.currentPageType++;
+        //         this.currentIndexType = null
 
-            }
-            console.log(this.currentPageType);
-        },
+        //     }
+        //     console.log(this.currentPageType);
+        // },
 
 
 
@@ -308,14 +306,14 @@ export default {
         //_________________________________
 
         //type carusel
-        paginateType() {
-            const start = (this.currentPageType - 1) * this.itemsPerPageType;
-            const end = start + this.itemsPerPageType;
-            return this.types.slice(start, end);
-        },
-        totalPagesType() {
-            return Math.ceil(this.types.length / this.itemsPerPageType);
-        },
+        // paginateType() {
+        //     const start = (this.currentPageType - 1) * this.itemsPerPageType;
+        //     const end = start + this.itemsPerPageType;
+        //     return this.types.slice(start, end);
+        // },
+        // totalPagesType() {
+        //     return Math.ceil(this.types.length / this.itemsPerPageType);
+        // },
 
 
 
@@ -334,7 +332,9 @@ export default {
     background-color: rgba(214, 24, 24, 1);
     width: 100%;
     margin: 0;
-    height: 400px;
+    height: auto;
+    max-height: 400px;
+    padding-bottom: 18px;
 
     h1 {
         font-size: 60px;
@@ -386,7 +386,7 @@ export default {
 
 
         .aside_type {
-            padding: 10px 0;
+            padding: 50px 0;
             margin: 0;
             height: 100%;
             display: flex;
@@ -430,7 +430,8 @@ export default {
                 flex-direction: column;
 
                 img {
-                    max-width: 60%;
+                    width: 300px;
+                    // max-width: 60%;
                 }
             }
 
@@ -505,6 +506,7 @@ export default {
                 .router {
                     text-decoration: none;
                     color: currentColor;
+
                     .restaurant-card {
                         background: rgb(223, 82, 82);
                         background: linear-gradient(180deg, rgba(223, 82, 82, 1) 41%, rgba(214, 24, 24, 1) 87%);
@@ -512,9 +514,11 @@ export default {
                         border-radius: 40px;
                         flex-direction: column;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: start;
                         position: relative;
-                        max-height: 600px;
+                        min-height: 400px;
+                        max-height: 800px;
+                        padding-top: 60px;
 
 
                         &:hover {
@@ -535,7 +539,7 @@ export default {
                             justify-content: center;
                             align-items: center;
                             position: absolute;
-                            top: -60px;
+                            top: -80px;
 
                             img {
                                 aspect-ratio: 1/1;
@@ -545,8 +549,8 @@ export default {
                         }
 
                         .restaurant-info {
-                            margin-top: 60px;
-                            padding-top: 40px;
+                            // margin-top: 60px;
+                            padding-top: 20px;
 
                             .restaurant-title {
                                 font-size: 28px;
