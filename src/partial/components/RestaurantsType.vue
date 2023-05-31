@@ -17,7 +17,7 @@
             <template v-else-if="selectedTypes.length > 0">
                 <div class="types mb-1">
                     <h3 class="">Categorie Selezionate: </h3>
-                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types.name }}</p>
+                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
                 </div>
                 <button type="button" @click="filterReset()" class="btn btn-light">Reset Filter</button>
             </template>
@@ -28,15 +28,10 @@
         <div class="aside col-2">
             <div class="aside_type">
 
-                <!-- <div class="aside_card" v-for="(type, index) in restaurants.types" :key="type"
-                    @click="toggleSelection(type.name), fetchRestaurants()" :class="{ active: isSelected(type.name) }">
-                    <img :src=" type.thumb" alt="">
-                    <p>{{ type.name }}</p>
-                </div> -->
-
                 <div class="aside_card" v-for="(type, index) in types"
                     @click="toggleSelection(type.name), fetchRestaurants()" :class="{ active: isSelected(type.name) }">
                     <img :src="type.thumb" alt="">
+                    <!-- <p>{{ type.thumb }}</p> -->
                     <!-- <img src="./img/restaurantTypeImg/giapponese.png" alt=""> -->
                     <p>{{ type.name }}</p>
                 </div>
@@ -125,37 +120,37 @@
 const restaurantType = [
     {
         name: 'italiano',
-        thumb: './img/restaurantTypeImg/',
+        thumb: 'https://pngimg.com/d/pasta_PNG51.png',
 
     },
     {
         name: 'giapponese',
-        thumb: './img/restaurantTypeImg/giapponese.png',
+        thumb: 'https://cdn.pixabay.com/photo/2020/08/20/03/44/ramen-5502503_1280.png',
 
     },
     {
         name: 'thailandese',
-        thumb: './img/restaurantTypeImg/thai.png',
+        thumb: 'https://static.vecteezy.com/system/resources/previews/010/283/253/non_2x/thai-food-watercolor-hand-paint-free-png.png',
 
     },
     {
         name: 'vegano',
-        thumb: './img/restaurantTypeImg/vegano.webp',
+        thumb: 'https://cdn.pixabay.com/photo/2017/07/03/18/14/lettuce-2468495_1280.png',
 
     },
     {
         name: 'americano',
-        thumb: './img/restaurantTypeImg/',
+        thumb: 'https://clipart-library.com/image_gallery2/Hot-Dog-Transparent.png',
 
     },
     {
         name: 'fast food',
-        thumb: './img/restaurantTypeImg/',
+        thumb: 'https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png',
 
     },
     {
         name: 'pizzeria',
-        thumb: './img/restaurantTypeImg/pizza.webp',
+        thumb: 'https://pngimg.com/d/pizza_PNG44090.png',
 
     }
 ];
@@ -337,7 +332,9 @@ export default {
     background-color: rgba(214, 24, 24, 1);
     width: 100%;
     margin: 0;
-    height: 400px;
+    height: auto;
+    max-height: 400px;
+    padding-bottom: 18px;
 
     h1 {
         font-size: 60px;
@@ -389,7 +386,7 @@ export default {
 
 
         .aside_type {
-            padding: 10px 0;
+            padding: 50px 0;
             margin: 0;
             height: 100%;
             display: flex;
@@ -433,7 +430,8 @@ export default {
                 flex-direction: column;
 
                 img {
-                    max-width: 60%;
+                    width: 300px;
+                    // max-width: 60%;
                 }
             }
 
@@ -516,9 +514,11 @@ export default {
                         border-radius: 40px;
                         flex-direction: column;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: start;
                         position: relative;
-                        max-height: 600px;
+                        min-height: 400px;
+                        max-height: 800px;
+                        padding-top: 60px;
 
 
                         &:hover {
@@ -539,7 +539,7 @@ export default {
                             justify-content: center;
                             align-items: center;
                             position: absolute;
-                            top: -60px;
+                            top: -80px;
 
                             img {
                                 aspect-ratio: 1/1;
@@ -549,8 +549,8 @@ export default {
                         }
 
                         .restaurant-info {
-                            margin-top: 60px;
-                            padding-top: 40px;
+                            // margin-top: 60px;
+                            padding-top: 20px;
 
                             .restaurant-title {
                                 font-size: 28px;
