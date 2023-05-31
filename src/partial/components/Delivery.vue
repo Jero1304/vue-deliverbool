@@ -24,7 +24,7 @@
 
         <div class="card-body">
           <h5 class="card-title text-uppercase mt-4">Food street irresistibile!</h5>
-          <p>Scopri una vasta selezione di cibi di strada provenienti da tutto il mondo, dai deliziosi panini ai gustosi
+          <p>Scopri una vasta e enorme  selezione di cibi di strada provenienti da tutto il mondo, dai deliziosi panini ai gustosi
             falafel. Goditi il sapore autentico e l'atmosfera unica dello street food comodamente a casa tua.</p>
 
         </div>
