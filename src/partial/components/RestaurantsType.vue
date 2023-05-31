@@ -1,5 +1,4 @@
 <template>
-    {{ restaurants.type }}
     <div class="row title pb-0 text-capitalize">
         <div class="contaier">
 
@@ -83,35 +82,41 @@
 
                     <div class="col-12 mt-4">
                         <div class="row justify-content-center restaurants_grid">
+
                             <template v-for="( restaurant, i ) in  paginateRestaurants " :key="i">
                                 <div class="col-md-6 col-sm-10  p-2 ">
-                                    <div class="row restaurant-card">
-                                        <div class="col-4 restaurant-image">
-                                            <img src="https://picsum.photos/200/300" alt="">
-                                        </div>
-                                        <div class="col-10 restaurant-info">
-                                            <div class="row justify-content-between align-items-center">
-                                                <div class="col-5">
-                                                    <p class="restaurant-title my-0">{{ restaurant.restaurant_name }}</p>
-                                                    <ul v-for="(tipology, j) in restaurant.types">
-                                                        <li>{{ tipology.name }}</li>
+                                    <router-link class="router" :to="{ name: 'menu', params: { id: restaurant.id } }">
+                                        <div class="row restaurant-card">
+                                            <div class="col-4 restaurant-image">
+                                                <img src="https://picsum.photos/200/300" alt="">
+                                            </div>
+                                            <div class="col-10 restaurant-info">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col-5">
+                                                        <p class="restaurant-title my-0">{{ restaurant.restaurant_name }}
+                                                        </p>
+                                                        {{ restaurant.id }}
+                                                        <ul v-for="(tipology, j) in restaurant.types">
+                                                            <li>{{ tipology.name }}</li>
 
-                                                    </ul>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                                                        ipsa
-                                                        natus mollitia.
-                                                    </p>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+                                                            ipsa
+                                                            natus mollitia.
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </router-link>
                                 </div>
                             </template>
+
                         </div>
                     </div>
-
+                    <!-- <img src="" alt=""> -->
                 </div>
             </div>
         </div>
@@ -122,38 +127,38 @@
 
 const restaurantType = [
     {
-        name:'italiano',
-        thumb:'',
+        name: 'italiano',
+        thumb: './img/',
 
     },
     {
-        name:'giapponese',
-        thumb:'',
+        name: 'giapponese',
+        thumb: './img/giapponese.png',
 
     },
     {
-        name:'thailandese',
-        thumb:'',
+        name: 'thailandese',
+        thumb: './img/thai.png',
 
     },
     {
-        name:'vegano',
-        thumb:'',
+        name: 'vegano',
+        thumb: './img/vegano.webp',
 
     },
     {
-        name:'americano',
-        thumb:'',
+        name: 'americano',
+        thumb: './img/',
 
     },
     {
-        name:'fast food',
-        thumb:'',
-        
+        name: 'fast food',
+        thumb: './img/',
+
     },
     {
-        name:'pizzeria',
-        thumb:'',
+        name: 'pizzeria',
+        thumb: './img/pizza.webp',
 
     }
 ];
@@ -189,10 +194,7 @@ export default {
                     console.log(err);
                 })
         },
-
-
-
-
+ 
         typeSelection(index, type) {
             this.currentIndexType = index;
             this.currentType = type;
@@ -292,10 +294,6 @@ export default {
         }
 
         //_________________________________
-
-
-
-
     },
     computed: {
         // restaurants carusel
@@ -471,10 +469,7 @@ export default {
     .restaurants {
         background-color: rgb(214, 24, 24);
         margin: 0;
-
         padding: 50px 0;
-
-
 
         .font-awesome-icon {
             background-color: white;
@@ -507,79 +502,56 @@ export default {
             .restaurants_grid {
                 align-items: center;
 
-                // justify-content: center;
-                .col-md-2 {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    padding-bottom: 20px;
-                    margin: 0;
-                    color: white;
-
-                    &:hover {
-                        text-decoration-color: white;
-                        transition: transform 0.3s ease;
-                        transition: text-shadow 0.3s ease;
-                        text-shadow: 0 0 5px $yellow;
-                        font-weight: 800;
-                        color: $yellow;
-                    }
-
-                    img {
-                        width: 100px;
-                        height: 100px;
-                        border-radius: 30px;
-                        margin: 20px 0;
-                    }
-                }
-
-                .restaurant-card {
-                    background: rgb(223, 82, 82);
-                    background: linear-gradient(180deg, rgba(223, 82, 82, 1) 41%, rgba(214, 24, 24, 1) 87%);
-                    margin: 0 10px 80px 10px;
-                    border-radius: 40px;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                    max-height: 600px;
-
-
-                    &:hover {
+                .router {
+                    text-decoration: none;
+                    color: currentColor;
+                    .restaurant-card {
                         background: rgb(223, 82, 82);
-                        text-shadow: 0 0 10px $yellow;
-                        font-weight: 600;
-                        color: black;
-                        box-shadow: 0 0 10px white;
-
-                        img {
-                            box-shadow: 0 0 40px $yellow;
-                        }
-
-                    }
-
-                    .restaurant-image {
-                        display: flex;
-                        justify-content: center;
+                        background: linear-gradient(180deg, rgba(223, 82, 82, 1) 41%, rgba(214, 24, 24, 1) 87%);
+                        margin: 0 10px 80px 10px;
+                        border-radius: 40px;
+                        flex-direction: column;
                         align-items: center;
-                        position: absolute;
-                        top: -60px;
+                        justify-content: center;
+                        position: relative;
+                        max-height: 600px;
 
-                        img {
-                            aspect-ratio: 1/1;
-                            border-radius: 999px;
-                            width: 80%;
+
+                        &:hover {
+                            background: rgb(223, 82, 82);
+                            text-shadow: 0 0 10px $yellow;
+                            font-weight: 600;
+                            color: black;
+                            box-shadow: 0 0 10px white;
+
+                            img {
+                                box-shadow: 0 0 40px $yellow;
+                            }
+
                         }
-                    }
 
-                    .restaurant-info {
-                        margin-top: 60px;
-                        padding-top: 40px;
+                        .restaurant-image {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            top: -60px;
 
-                        .restaurant-title {
-                            font-size: 28px;
-                            color: white;
+                            img {
+                                aspect-ratio: 1/1;
+                                border-radius: 999px;
+                                width: 80%;
+                            }
+                        }
+
+                        .restaurant-info {
+                            margin-top: 60px;
+                            padding-top: 40px;
+
+                            .restaurant-title {
+                                font-size: 28px;
+                                color: white;
+                            }
                         }
                     }
 

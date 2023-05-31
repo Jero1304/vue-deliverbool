@@ -20,7 +20,7 @@ const router = createRouter({
 			component: HomeUser,
 		},
 		{
-			path: '/menu',
+			path: '/menu/:id',
 			name: 'menu',
 			component: MenuUser,
 		},
