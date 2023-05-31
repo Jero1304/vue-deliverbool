@@ -38,6 +38,7 @@
         </div>
 
     </div>
+    <Cart></Cart>
 </template>
 
 <script>
@@ -256,7 +257,14 @@ const plateTypes = [
     'dolci',
     'digestivi'
 ];
+
+import Cart from '../components/Cart.vue';
 export default {
+    
+    components:{
+        Cart,
+    },
+
     data() {
         return {
             plateMenu: restaurantMenu,
