@@ -21,11 +21,14 @@
                             <div class="row col-10 justify-content-center p-2">
                                 <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
                                 <template v-for="(plate, index) in paginatePlates" :key="index">
-                                    <div class="col-3 p-3" v-if="plate.type.includes(currentType)">
-                                        <img src="../../../public/images/cibo.webp" alt="food">
-                                        <p>{{ plate.name }}</p>
+
+                                    <div class="col-3 p-3" v-if="plate.type.includes(currentType)" @click="showCard">
+                                            <img src="../../../public/images/cibo.webp" alt="food">
+                                            <p>{{ plate.name }}</p>
                                     </div>
+
                                 </template>
+
                             </div>
 
                             <div class="col-1 arrow dx" @click="nextPagePlate"
@@ -34,6 +37,8 @@
                             </div>
                         </div>
                     </div>
+
+
             </div>
         </div>
 
@@ -270,6 +275,10 @@ export default {
 
             currentPagePlate: 1,
             itemsPerPagePlate: 6,
+
+
+            // Variabile di stato per mostrare/nascondere la card
+            showCard: false, 
         }
     },
     methods: {
@@ -318,6 +327,11 @@ export default {
         pagesResest() {
             this.currentPagePlate = 1
         },
+
+        // Metodo card
+        showCard() {
+          this.showCard = !this.showCard;
+        }
     },
 
     computed: {
