@@ -1,3 +1,4 @@
+
 <script>
 export default{
     data(){
@@ -53,10 +54,9 @@ export default{
             <div class="d-flex justify-content-center py-4">
                 <a class="btn cart-btn" href="">Procedi con il pagamento</a>
             </div>
-        </div>
-    </div>
+        </div> 
+     </div>
 </template>
-
 
 <style scoped lang="scss">
 @use '../src/scss/variables' as *;
@@ -87,3 +87,4 @@ export default{
 }
 
 </style>
+

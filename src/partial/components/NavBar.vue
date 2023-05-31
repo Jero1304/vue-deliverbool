@@ -31,6 +31,10 @@
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/menu"> Home menu </router-link></a>
                             </li>
+                            <!-- <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="#">
+                                    <router-link to="/singlePlate"> Piatto Singolo </router-link></a>
+                            </li> -->
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/PaymentPage"> Pagina di pagamento </router-link></a>
@@ -41,7 +45,7 @@
                             </li>
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
-                                    <router-link to="/Cart"> Carrello </router-link></a>
+                                    <router-link to="/CartUser"> Carrello </router-link></a>
                             </li>
                         </ul>
                     </div>
