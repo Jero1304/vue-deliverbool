@@ -14,27 +14,38 @@ export default {
     },
     methods: {
         quantityPrice(price, quantity) {
-            // console.log('price',price);
             let totalPrice = price * quantity
-            // console.log(totalPrice);
             return totalPrice.toFixed(2)
         },
         removeFromCart(index) {
-            this.cart.splice(index, 1); // Rimuove l'elemento dal carrello
+            this.cart.splice(index, 1);
         },
-        removeElement(product,index){
-            if(product.quantity === 0){
+        removeElement(product, index) {
+            if (product.quantity === 1) {
                 this.cart.splice(index, 1)
-            }else{
-                return product.quantity --
+            } else {
+                return product.quantity--
             }
-            // console.log();
+        },
+        addElement(product) {
+            return product.quantity++
+        },
+        totalQuantity() {
+            let total = 0
 
+            for (let i = 0; i < this.cart.length; i++) {
+                total = this.cart[i].quantity + total
+            }
+            return total
         },
-        addElement(product){
-            // console.log();
-            return product.quantity ++
-        },
+        totalPrice() {
+            let total = 0;
+            for (let i = 0; i < this.cart.length; i++) {
+                const product = this.cart[i];
+                total += product.plate.price * product.quantity;
+            }
+            return total.toFixed(2);
+        }
 
     },
 }
@@ -58,17 +69,32 @@ export default {
                     <tr v-for="(product, index) in cart">
                         <!-- {{product.plate}} -->
                         <td>{{ product.plate.name }}</td>
-                        
-                        <td><span @click="removeElement(product,index)" class="btn btn-primary mx-3">-</span>{{ product.quantity }}<span @click="addElement(product)" class="btn btn-primary mx-3">+</span></td>
-                       
+
+                        <td>
+                            <span @click="removeElement(product, index)" class="btn btn-primary mx-3">-</span>
+                            {{ product.quantity }}
+                            <span @click="addElement(product)" class="btn btn-primary mx-3">+</span>
+                        </td>
+
                         <!-- <td>€{{product.plate.price}}</td> -->
                         <td>€ {{ quantityPrice(product.plate.price, product.quantity) }}</td>
-                        
-                        <td class="d-flex justify-content-end">
-                            <a class="btn btn-danger btn-sm" @click="removeFromCart(index)">Rimuovi dal carrello</a>
+
+                        <td class="d-flex justify-content-end align-items-center remove-btn">
+                            <a class="btn btn-danger btn-sm " @click="removeFromCart(index)">Rimuovi dal carrello</a>
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <h3>Totale</h3>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>pz. {{ totalQuantity() }}</td>
+                        <td>€ {{ totalPrice() }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
 
             <div class="d-flex justify-content-center py-4">
@@ -84,6 +110,10 @@ export default {
 .cart {
     background-color: #FCFCFB;
     padding: 50px 0;
+
+    .remove-btn {
+        height: 56px;
+    }
 
     .container-table {
         background-color: white;
