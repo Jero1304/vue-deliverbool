@@ -274,8 +274,6 @@ export default {
         filterReset() {
             this.selectedTypes = []
         }
-
-        //_________________________________
     },
 
     computed: {
@@ -621,7 +619,7 @@ export default {
                     // margin: 0 5px;
                     padding: 10px;
                     margin: 20px 20px 50px 20px;
-                    // border: 1px solid black;
+                    // // border: 1px solid black;
 
 
                     img {
