@@ -274,8 +274,6 @@ export default {
         filterReset() {
             this.selectedTypes = []
         }
-
-        //_________________________________
     },
 
     computed: {
