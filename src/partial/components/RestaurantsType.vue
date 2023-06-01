@@ -222,12 +222,19 @@ export default {
         // restaurants carusel
         previousPageRestaurant() {
             if (this.currentPageRestaurant > 1) {
-                this.currentPageRestaurant--;
+                this.currentPageRestaurant--;                
             }
+            else if(this.currentPageRestaurant === 1){
+                this.currentPageRestaurant = this.totalPagesRestaurant
+            }
+            
         },
         nextPageRestaurant() {
             if (this.currentPageRestaurant < this.totalPagesRestaurant) {
                 this.currentPageRestaurant++;
+            }
+            else if(this.currentPageRestaurant === this.totalPagesRestaurant){
+                this.currentPageRestaurant = 1
             }
         },
         currentTypeRest() {
