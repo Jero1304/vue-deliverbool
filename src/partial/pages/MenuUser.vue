@@ -87,7 +87,7 @@ export default {
         return {
 
             currentPagePlate: 1,
-            itemsPerPagePlate: 2,
+            itemsPerPagePlate: 3,
 
             restaurantID: this.$route.params.id,
             plates: [],
