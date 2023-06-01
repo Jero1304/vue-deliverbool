@@ -14,15 +14,15 @@
                     </button>
                     <div class="collapse navbar-collapse " id="navbarNavDropdown">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item text-uppercase">
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" aria-current="page" href="#">registrati o accedi</a>
-                            </li>
-                            <li class="nav-item text-uppercase">
+                            </li> -->
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">i nostri ristoranti</a>
-                            </li>
-                            <li class="nav-item text-uppercase">
+                            </li> -->
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">aiuto</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/home"> Home User </router-link></a>
@@ -92,9 +92,14 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     padding: 5px 10px !important;
 }
 
+.nav-btn a{
+    color: white;
+}
+
 .nav-btn:hover {
     background-color: $azur !important;
     box-shadow: 0 0 10px $azur;
+    
 }
 
 .nav-icon {
@@ -104,5 +109,14 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     box-shadow: none !important;
 }
 
+
+
+// RESPONSIVE RULES
+
+@media (max-width: 991.98px) {
+  .bg-body-tertiary {
+    background-color: $yellow !important;
+  }
+}
 
 </style>
