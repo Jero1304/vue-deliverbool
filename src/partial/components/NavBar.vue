@@ -3,8 +3,8 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid justify-content-between">
                 <div>
-                   <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo"></a>
-
+                   <a class="navbar-brand" href="#"><img src="./img/favicon-deliveboo.png" alt="logo" class="logo-responsive"></a>
+                   <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo" class="logo"></a>
                 </div>
                 <div>
                     <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,15 +14,15 @@
                     </button>
                     <div class="collapse navbar-collapse " id="navbarNavDropdown">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item text-uppercase">
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" aria-current="page" href="#">registrati o accedi</a>
-                            </li>
-                            <li class="nav-item text-uppercase">
+                            </li> -->
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">i nostri ristoranti</a>
-                            </li>
-                            <li class="nav-item text-uppercase">
+                            </li> -->
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">aiuto</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/home"> Home User </router-link></a>
@@ -92,9 +92,14 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     padding: 5px 10px !important;
 }
 
+.nav-btn a{
+    color: white;
+}
+
 .nav-btn:hover {
     background-color: $azur !important;
     box-shadow: 0 0 10px $azur;
+    
 }
 
 .nav-icon {
@@ -104,5 +109,31 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     box-shadow: none !important;
 }
 
+.logo-responsive{
+    display: none;
+  }
+
+.logo{
+    display: block;
+    width: 200px;
+}
+
+
+
+// RESPONSIVE RULES
+
+@media (max-width: 991.98px) {
+  .bg-body-tertiary {
+    background-color: $yellow !important;
+  }
+
+  .logo-responsive{
+    display: block;
+  }
+
+  .logo{
+    display: none;
+}
+}
 
 </style>
