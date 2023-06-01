@@ -184,5 +184,104 @@ export default{
         display: flex;
     };
 
- 
+    @media (max-width: 1355px){
+
+        .hero{
+            padding: 200px;
+            .arrow{ 
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+        .hero_container{
+            flex-wrap: wrap;
+            gap: 30px;
+            .hero_description{
+                
+                flex-basis: 50%;
+                .title{
+                    font-size: 40px;
+                    margin-bottom: 15px;
+                }
+                
+                .description{
+                    font-size: 25px;
+                }
+                
+            }
+            .thumb{
+                width: 250px;
+            }
+            
+        }
+    }
+    
+    @media (max-width: 820px){
+
+        .hero{
+            padding: 150px;
+            .arrow{ 
+                font-size: 15px;
+                padding: 7px;
+            }
+        }
+        .hero_container{
+            flex-wrap: wrap;
+            gap: 30px;
+            .hero_description{
+                
+                flex-basis: 50%;
+                .title{
+                    font-size: 30px;
+                    margin-bottom: 15px;
+                }
+                
+                .description{
+                    font-size: 15px;
+                }
+                
+            }
+            .thumb{
+                width: 200px;
+            }
+            
+        }
+    }
+    
+    @media (max-width: 415px){
+    
+        .hero{
+            padding: 230px 0px;
+            .arrow{ 
+                font-size: 10px;
+                padding: 4px;
+            }
+        }
+        .hero_container{
+            gap: 10px;
+            padding: 15px 30px;
+            .hero_description{
+                flex-basis: 0%;
+                .title{
+                    font-size: 28px;
+                    margin-bottom: 5px;
+                }
+    
+                .description{
+                    font-size: 20px;
+                }
+    
+            }
+            .thumb{
+                width: 150px;
+            }
+    
+        }
+
+        .active{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
 </style>
