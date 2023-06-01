@@ -21,6 +21,8 @@
           <button class="button-down"> <img
               src="https://cdn.icon-icons.com/icons2/271/PNG/256/apple_festival_social_apple_29950.png" alt="Apple-store">
             <h6>Apple Store</h6>
+            <p class="mx-3"> Apple <br>
+              store!</p>
           </button>
 
 
@@ -28,6 +30,7 @@
               src="https://cdn.icon-icons.com/icons2/3658/PNG/512/app_store_game_social_media_playstore_google_icon_228385.png"
               alt="Google-play">
             <h6>Google Play</h6>
+            <p>Google Play!</p>
           </button>
 
         </li>
@@ -35,9 +38,11 @@
     </div>
 
     <div class="col-12 col-md-6 img-phone">
-      <img src="./img/app-1.png.png" alt="app-deliveboo">
+      <img src="./img/app-1.png.png" alt="app-deliveboo" >
       <img src="./img/app-3.png.png" alt="app-deliveboo" class="img-logo">
       <img src="./img/app-2.png.png" alt="app-deliveboo">
+
+      <img src="" alt="logo-responsive" class="logo-responsive">
 
     </div>
   </div>
@@ -115,6 +120,10 @@ export default {
 
 }
 
+.button-down p {
+  display: none;
+}
+
 .list-download button:hover {
   background-color: rgb(2, 214, 196);
   border: 1px solid rgb(2, 214, 196);
@@ -124,6 +133,10 @@ export default {
 
 .img-phone img {
   width: 280px;
+}
+
+.img-phone img:hover {
+  transform: scale(1.5);
 }
 
 .img-logo {
@@ -152,7 +165,7 @@ export default {
   }
 
   .list-download button {
-    background-color: black;
+    background-color: rgb(255, 91, 0);
     color: white;
     margin: 2px;
     display: inline-flex;
@@ -166,10 +179,24 @@ export default {
 
   }
 
+
+
+  .button-down{
+    background-color: rgb(255, 91, 0) !important;
+    width: 500px;
+  }
+
+  .button-down p {
+  display: block;
+  font-size: 13px;
+  
+}
+
   .button-down img {
     width: 30px;
     height: 30px;
     margin-left: 15px;
+    display: none;
 
 
   }
@@ -178,6 +205,7 @@ export default {
 
   .button-down h6 {
     display: none;
+    color: white;
   }
 
   .list-download img {
@@ -187,20 +215,13 @@ export default {
     width: 150px;
   }
 
-  .img-logo {
-    margin-right: 0;
-    margin-left: 0;
-    margin-top: -20px;
-  }
+ 
 
   .img-phone img {
     display: none;
   }
 
-  .img-phone .img-logo {
-    display: block;
-    margin: 0 295px;
-  }
+  
 
 }
 
@@ -263,6 +284,7 @@ export default {
     width: 30px;
     height: 30px;
     margin-left: 15px;
+    display: none;
 
 
   }
@@ -272,6 +294,17 @@ export default {
   .button-down h6 {
     display: none;
   }
+
+  .button-down{
+    background-color: rgb(255, 91, 0) !important;
+    width: 500px;
+  }
+
+  .button-down p {
+  display: block;
+  font-size: 13px;
+  
+}
 }
 
 /* TABLET VERSION - BIG */
