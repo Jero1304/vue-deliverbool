@@ -3,8 +3,8 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid justify-content-between">
                 <div>
-                   <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo"></a>
-
+                   <a class="navbar-brand" href="#"><img src="./img/favicon-deliveboo.png" alt="logo" class="logo-responsive"></a>
+                   <a class="navbar-brand" href="#"><img src="./img/logo-navbar-small.png" alt="logo" class="logo"></a>
                 </div>
                 <div>
                     <button class="nav-icon navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -109,6 +109,15 @@ import 'bootstrap/dist/js/bootstrap.bundle'
     box-shadow: none !important;
 }
 
+.logo-responsive{
+    display: none;
+  }
+
+.logo{
+    display: block;
+    width: 200px;
+}
+
 
 
 // RESPONSIVE RULES
@@ -117,6 +126,14 @@ import 'bootstrap/dist/js/bootstrap.bundle'
   .bg-body-tertiary {
     background-color: $yellow !important;
   }
+
+  .logo-responsive{
+    display: block;
+  }
+
+  .logo{
+    display: none;
+}
 }
 
 </style>
