@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <Cart></Cart>
+    <Cart :cart="cart"></Cart>
 </template>
 
 <script>
