@@ -33,9 +33,10 @@
                                     <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
                                     <span class="plate-ingredient">{{ plate.ingredient }}</span>
                                     <p class="mt-2">{{ plate.price }} &euro;</p>
-                                    <button class="carrello"><img
-                                            src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png"
-                                            alt="carrello"></button>
+                                    <button class="carrello" @click="cartList(plate)">
+                                        <img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png"
+                                            alt="carrello">
+                                    </button>
                                 </div>
                             </template>
                         </div>
@@ -63,10 +64,8 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
-
     </div>
     <Cart></Cart>
 </template>
@@ -93,7 +92,7 @@ export default {
             plates: [],
 
             restaurant: [],
-
+            cart: [],
 
         }
     },
@@ -109,10 +108,10 @@ export default {
 
                     this.plates = res.data.restaurant.products
                     // this.openingHours = res.data.restaurant.openingHours;
-                    console.log(this.plates);
+                    // console.log(this.plates);
 
                     this.restaurant = res.data.restaurant
-                    console.log(this.restaurant)
+                    // console.log(this.restaurant)
 
 
                 })
@@ -122,6 +121,21 @@ export default {
                 })
         },
 
+        cartList(currentPlate) {
+
+            const existingPlate = this.cart.find(item => item.plate === currentPlate);
+
+            if (existingPlate) {
+                existingPlate.quantity++;
+            } else {
+                this.cart.push({ plate: currentPlate, quantity: 1 });
+            }
+            console.log(this.cart);
+        },
+
+
+
+        /* PAGINATION*/
         previousPagePlate() {
             if (this.currentPagePlate > 1) {
                 this.currentPagePlate--;
@@ -137,23 +151,23 @@ export default {
                 this.currentPagePlate = 1
             }
         },
-
         pagesResest() {
             this.currentPagePlate = 1
         },
     },
 
     computed: {
-
+        /* PAGINATION*/
         paginatePlates() {
             const start = (this.currentPagePlate - 1) * this.itemsPerPagePlate;
             const end = start + this.itemsPerPagePlate;
-            console.log(this.plates.slice(start, end))
+            // console.log(this.plates.slice(start, end))
             return this.plates.slice(start, end);
         },
         totalPagesPlate() {
             return Math.ceil(this.plates.length / this.itemsPerPagePlate);
         },
+
     }
 
 }
