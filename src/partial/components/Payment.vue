@@ -88,16 +88,17 @@ export default {
     },
     mounted() {
         // Inizializza Braintree
-        createBraintree({
-            authorization: 'YOUR_BRAINTREE_AUTHORIZATION_TOKEN'
-        }, (err, instance) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
+        // createBraintree({
+        //     authorization: 'YOUR_BRAINTREE_AUTHORIZATION_TOKEN'
+        // }, (err, instance) => {
+        //     if (err) {
+        //         console.error(err);
+        //         return;
+        //     }
 
-            this.braintreeInstance = instance;
-        });
+        //     this.braintreeInstance = instance;
+        // });
+        
     },
     methods: {
         submitPayment() {
