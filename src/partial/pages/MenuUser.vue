@@ -1,6 +1,14 @@
 <template class="menu-hero">
     <div class="restaurant">
         <div class="container">
+
+            <!-- Pulsante back to Home -->
+
+            <button class="btn btn-primary mt-3" @click="$router.push('/')">Torna alla home</button>
+
+
+
+
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
                     <h2 class="title-description">{{ restaurant.restaurant_name}}</h2>
@@ -244,6 +252,11 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
+        margin-top: 200px;
+    }
+
+    .title-description {
+        color: white;
     }
 
     .restaurant {
@@ -326,11 +339,12 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
+        margin-top: 200px;
     }
 
     .restaurant {
         background-image: url(../components/img/pettern-hero-responsive.jpg);
-        height: 1000px;
+        height: 1160px;
         margin-top: -200px;
 
 
@@ -346,6 +360,7 @@ export default {
     .plates .row {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
+        
 
     }
 
