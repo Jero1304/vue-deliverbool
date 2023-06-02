@@ -17,7 +17,7 @@
             <template v-else-if="selectedTypes.length > 0">
                 <div class="types mb-1">
                     <h3 class="">Categorie Selezionate: </h3>
-                    <p class="badge bg-primary" v-for="(types, index) in selectedTypes">{{ types }}</p>
+                    <p class="badge bg-warning" v-for="(types, index) in selectedTypes">{{ types }}</p>
                 </div>
                 <button type="button" @click="filterReset()" class="btn btn-light">Reset Filter</button>
             </template>
@@ -45,21 +45,21 @@
             <div class="container">
                 <div class="row restaurant-menu">
 
-                    <div class="col-12 row mb-5 justify-content-between">
+                    <div class=" navigation col-12 row justify-content-between">
 
                         <div class="col-3" @click="previousPageRestaurant" :disabled="currentPageRestaurant === 1">
                             <font-awesome-icon class="font-awesome-icon" icon="fa-solid fa-arrow-left" />
                         </div>
 
                         <template v-if="totalPagesRestaurant === 0">
-                            <div class="col-6 text-center">
+                            <div class="col-6 pagination text-center">
                                 <p> 0 di {{ totalPagesRestaurant }}</p>
                                 <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
                             </div>
                         </template>
 
                         <template v-if="totalPagesRestaurant > 0">
-                            <div class="col-6 text-center">
+                            <div class="col-6 pagination text-center">
                                 <p>{{ currentPageRestaurant }} di {{ totalPagesRestaurant }}</p>
                                 <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
                             </div>
@@ -105,10 +105,8 @@
                                     </router-link>
                                 </div>
                             </template>
-
                         </div>
                     </div>
-                    <!-- <img src="" alt=""> -->
                 </div>
             </div>
         </div>
@@ -168,9 +166,6 @@ export default {
             currentPageRestaurant: 1,
             itemsPerPageRestaurant: 6,
 
-            currentPageType: 1,
-            itemsPerPageType: 4,
-
             click: false,
         }
     },
@@ -223,34 +218,23 @@ export default {
         isSelected(type) {
             return this.selectedTypes.includes(type);
         },
-        //type carusell
-        // previousPageType() {
-        //     if (this.currentPageType > 1) {
-        //         this.currentPageType--;
-        //         this.currentIndexType = null
-        //     }
-        //     console.log(this.currentPageType);
-        // },
-        // nextPageType() {
-        //     if (this.currentPageType < this.totalPagesType) {
-        //         this.currentPageType++;
-        //         this.currentIndexType = null
-
-        //     }
-        //     console.log(this.currentPageType);
-        // },
-
-
 
         // restaurants carusel
         previousPageRestaurant() {
             if (this.currentPageRestaurant > 1) {
-                this.currentPageRestaurant--;
+                this.currentPageRestaurant--;                
             }
+            else if(this.currentPageRestaurant === 1){
+                this.currentPageRestaurant = this.totalPagesRestaurant
+            }
+            
         },
         nextPageRestaurant() {
             if (this.currentPageRestaurant < this.totalPagesRestaurant) {
                 this.currentPageRestaurant++;
+            }
+            else if(this.currentPageRestaurant === this.totalPagesRestaurant){
+                this.currentPageRestaurant = 1
             }
         },
         currentTypeRest() {
@@ -290,9 +274,8 @@ export default {
         filterReset() {
             this.selectedTypes = []
         }
-
-        //_________________________________
     },
+
     computed: {
         // restaurants carusel
         paginateRestaurants() {
@@ -303,20 +286,6 @@ export default {
         totalPagesRestaurant() {
             return Math.ceil(this.currentTypeRest().length / this.itemsPerPageRestaurant);
         },
-        //_________________________________
-
-        //type carusel
-        // paginateType() {
-        //     const start = (this.currentPageType - 1) * this.itemsPerPageType;
-        //     const end = start + this.itemsPerPageType;
-        //     return this.types.slice(start, end);
-        // },
-        // totalPagesType() {
-        //     return Math.ceil(this.types.length / this.itemsPerPageType);
-        // },
-
-
-
     },
 
 
@@ -350,6 +319,10 @@ export default {
             font-size: 16px;
             margin: 0 5px;
         }
+
+        .badge {
+            margin-bottom: 20px;
+        }
     }
 
     .arrow {
@@ -363,6 +336,11 @@ export default {
             transform: rotate(350deg);
 
         }
+    }
+
+
+    .btn {
+        margin-bottom: 40px;
     }
 }
 
@@ -383,16 +361,18 @@ export default {
         display: flex;
         justify-content: center;
         border-radius: 0 200px 200px 0;
+        padding: 40px;
 
 
         .aside_type {
             padding: 50px 0;
             margin: 0;
             height: 100%;
-            display: flex;
-            flex-direction: column;
             text-align: center;
-            justify-content: space-around;
+            display: flex;
+            justify-content: center !important;
+            align-items: center;
+            flex-wrap: wrap;
 
             .font-awesome-icon {
                 background-color: rgb(215, 6, 6);
@@ -428,9 +408,11 @@ export default {
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
+                padding: 20px;
+                margin: 20px;
 
                 img {
-                    width: 300px;
+                    width: 200px;
                     // max-width: 60%;
                 }
             }
@@ -447,11 +429,13 @@ export default {
                 transition: text-shadow 0.3s ease;
                 text-shadow: 0 0 5px white;
                 font-weight: 600;
+                padding: 0;
                 color: white;
-                margin: 40px;
+                margin: 60px;
+
 
                 img {
-                    max-width: 70%;
+                    max-width: 50%;
                 }
 
                 img,
@@ -499,6 +483,16 @@ export default {
         }
 
         .restaurant-menu {
+            .navigation {
+                margin-bottom: 150px;
+                .pagination {
+                    color: white;
+                    font-size: 30px;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                }
+            }
 
             .restaurants_grid {
                 align-items: center;
@@ -575,13 +569,13 @@ export default {
         height: auto;
 
         .aside {
-            background: rgb(214, 24, 24);
-            background: linear-gradient(0deg, rgba(214, 24, 24, 1) 43%, rgba(107, 0, 0, 1) 100%);
+            background: rgb(107, 0, 0);
+            background: linear-gradient(180deg, rgba(107, 0, 0, 1) 55%, rgba(214, 24, 24, 1) 100%);
             margin: 0;
             display: flex;
             justify-content: center;
             width: 100%;
-            border-radius: 200px 200px;
+            border-radius: 200px 200px 0 0;
 
             .aside_type {
                 padding: 10px 0;
@@ -610,6 +604,10 @@ export default {
 
                 .active {
                     background-color: rgb(214, 24, 24);
+                    // box-shadow: 10px 10px 5px rgb(214, 24, 24),
+                    // -10px -10px 5px rgb(214, 24, 24),
+                    // 10px -10px 5px rgb(214, 24, 24),
+                    // -10px 10px 5px rgb(214, 24, 24);
                     border-radius: 20px 20px 0 0;
                     box-shadow: none;
                     text-decoration-color: white;
@@ -618,8 +616,11 @@ export default {
                     text-shadow: 0 0 5px white;
                     font-weight: 600;
                     color: white;
-                    margin: 0 5px;
+                    // margin: 0 5px;
                     padding: 10px;
+                    margin: 20px 20px 50px 20px;
+                    // // border: 1px solid black;
+
 
                     img {
                         max-width: 80%;
@@ -645,6 +646,28 @@ export default {
             width: 100%;
 
             .restaurants_grid {
+                .router {
+                    .restaurant-card {
+                        .restaurant-image {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            // position: absolute;
+                            // top: -50px;
+
+                            position: relative;
+
+                            img {
+                                aspect-ratio: 1/1;
+                                border-radius: 999px;
+                                width: 80%;
+                                position: absolute;
+                                top: 25px;
+                            }
+                        }
+                    }
+                }
+
                 .col-md-2 {
                     display: flex;
                     justify-content: center;

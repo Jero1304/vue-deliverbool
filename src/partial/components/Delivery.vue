@@ -91,14 +91,13 @@
 
     <!-- Call to action -->
 
-    <button type="button" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3">Ordina ora ed esplora i locali
-      intorno a te!</button>
+    <a href="#form-consegna" class="btn btn-secondary btn-sm text-uppercase mb-5 mt-md-3">Ordina ora ed esplora i locali intorno a te!</a>
 
   </div>
 
 
   <!-- Sezione form-consegna -->
-  <div class="form-consegna d-flex pt-5">
+  <div id="form-consegna" class="form-consegna d-flex pt-5">
 
     <div class="col-8">
       <h3>I tuoi piatti preferiti a casa tua!</h3>
