@@ -98,7 +98,9 @@ export default {
             </table>
 
             <div class="d-flex justify-content-center py-4">
-                <a class="btn cart-btn" href="">Procedi con il pagamento</a>
+                <router-link :to="{ name: 'PaymentPage'}">
+                    <a class="btn cart-btn w-100 px-2" href="">Procedi con il pagamento</a>
+                </router-link>
             </div>
         </div>
     </div>
