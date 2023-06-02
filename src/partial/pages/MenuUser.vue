@@ -11,7 +11,7 @@
                     </ul>
 
                     <div class="col-4 description-image">
-                        <img src="https://picsum.photos/200/300" alt="">
+                        <img :src="restaurant.image_path" alt="">
                     </div>
                 </div>
 
@@ -28,8 +28,8 @@
 
                             <template v-for="(plate, index) in paginatePlates" :key="index">
                                 <div class="col-4 p-3" height="200px">
-                                    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg"
-                                        alt="food" class=" border border-warning">
+                                    <!-- <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning"> -->
+                                    <img :src="plate.thumb_path" alt="">
                                     <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
                                     <span class="plate-ingredient">{{ plate.ingredient }}</span>
                                     <p class="mt-2">{{ plate.price }} &euro;</p>
