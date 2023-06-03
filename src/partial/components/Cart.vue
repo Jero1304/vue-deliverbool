@@ -3,16 +3,60 @@
 export default {
     data() {
         return {
-
+            clientName: '',
+            date: '',
+            code: '',
+            address: '',
+            restaurantId: this.restaurantID,
+            order: [],
         }
     },
     props: {
         cart: {
             type: Object,
             required: true,
+        },
+        restaurantID: {
+            type: String,
+            required: true,
         }
     },
+    mounted() {
+        this.date = this.getCurrentDate();
+        this.code = this.orderCode();
+    },
     methods: {
+
+        getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            let month = now.getMonth() + 1;
+            let day = now.getDate();
+
+            // Aggiungi uno zero iniziale per i mesi e i giorni inferiori a 10
+            if (month < 10) {
+                month = `0${month}`;
+            }
+            if (day < 10) {
+                day = `0${day}`;
+            }
+
+            return `${year}-${month}-${day}`;
+        },
+
+        orderCode() {
+            const characters = 'abcdefghijklmnopqrstuvwxyz';
+            let code = this.restaurantID + '-';
+
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                code += characters.charAt(randomIndex);
+            }
+
+            return code;
+        },
+
+
         quantityPrice(price, quantity) {
             let totalPrice = price * quantity
             return totalPrice.toFixed(2)
@@ -54,8 +98,21 @@ export default {
 
 <template>
     <div class="cart">
+
         <div class="container container-table">
             <h2 class="text-center pb-5 title">il tuo Carrello</h2>
+            <div class="row">
+                <form class="d-flex align-items-center justify-content-center gap-5 pb-5">
+                    <div class="form-group w-25">
+                        <label for="clientName">Nome cliente</label>
+                        <input required type="text" class="form-control" id="clientName" v-model="clientName">
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="address">Indirizzo</label>
+                        <input required type="text" class="form-control" id="address" rows="3" v-model="address">
+                    </div>
+                </form>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -98,8 +155,8 @@ export default {
             </table>
 
             <div class="d-flex justify-content-center py-4">
-                <router-link :to="{ name: 'PaymentPage'}">
-                    <a class="btn cart-btn w-100 px-2" href="">Procedi con il pagamento</a>
+                <router-link :to="{ name: 'PaymentPage' }">
+                    <button type="submit" class="btn cart-btn w-25 px-2">Procedi con il pagamento</button>
                 </router-link>
             </div>
         </div>
