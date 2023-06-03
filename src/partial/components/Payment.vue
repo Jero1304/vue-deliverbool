@@ -49,8 +49,9 @@
                                 </li>
                             </ul> -->
 
-                            <ul >
-                                <li class="d-flex gap-3 justify-content-between align-items-center" v-for="(plate, index) in order.order">
+                            <ul>
+                                <li class="d-flex gap-3 justify-content-between align-items-center"
+                                    v-for="(plate, index) in order.order">
                                     <p>
                                         {{ plate.quantity }} - {{ plate.plate.name }}
                                     </p>
@@ -73,21 +74,24 @@
                         </div>
                         <div class="form-group ">
                             <label for="card-number">Nome del proprietario</label>
-                            <input type="text" class="form-control" id="card-name" v-model="cardName" required>
+                            <input type="text" class="form-control" id="card-name" v-model="cardName" name="cardName"
+                                required>
                         </div>
                         <div class="form-group ">
                             <label for="card-number">Numero di carta</label>
-                            <input type="text" class="form-control" id="card-number" v-model="cardNumber" required>
+                            <input type="text" class="form-control" id="card-number" v-model="cardNumber" name="cardNumber"
+                                required>
                         </div>
                     </div>
                     <div class="billing-cont-bottom">
                         <div class="form-group">
                             <label for="card-number">(MM/YY)</label>
-                            <input type="text" class="form-control" id="expiration-date" v-model="expirationDate" required>
+                            <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
+                                name="expirationDate" required>
                         </div>
                         <div class="form-group">
                             <label for="card-number">CVV</label>
-                            <input type="text" class="form-control" id="cvv" v-model="cvv" required>
+                            <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required>
                         </div>
                     </div>
                     <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
@@ -99,7 +103,7 @@
   
 <script>
 import { createBraintree, tokenizeCard } from 'braintree-web';
-
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -134,19 +138,30 @@ export default {
     methods: {
         submitPayment() {
             // Tokenizza i dati della carta di credito utilizzando Braintree
-            this.braintreeInstance.tokenizeCard({
-                cardNumber: this.cardNumber,
-                expirationDate: this.expirationDate,
-                cvv: this.cvv
-            }, (err, nonce) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
+            // this.braintreeInstance.tokenizeCard({
+            //     cardNumber: this.cardNumber,
+            //     expirationDate: this.expirationDate,
+            //     cvv: this.cvv
+            // }, (err, nonce) => {
+            //     if (err) {
+            //         console.error(err);
+            //         return;
+            //     }
 
-                // Invia il nonce al server per elaborare il pagamento
-                this.processPayment(nonce);
-            });
+            //     // Invia il nonce al server per elaborare il pagamento
+            //     this.processPayment(nonce);
+            // });
+
+            const data = {
+                order: this.order
+            };
+            axios.post('/api/payment', data)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
 
         quantityPrice(price, quantity) {
@@ -160,7 +175,13 @@ export default {
                 total += product.plate.price * product.quantity;
             }
             return total.toFixed(2);
+        },
+
+        fetchPayment() {
+
         }
+
+
     }
 };
 </script>
