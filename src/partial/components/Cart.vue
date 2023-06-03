@@ -3,16 +3,106 @@
 export default {
     data() {
         return {
+            clientName: '',
+            date: '',
+            code: '',
+            address: '',
+            restaurantId: this.restaurantID,
+            order: {},
 
+            showConfirmButton: true,
         }
     },
     props: {
         cart: {
             type: Object,
             required: true,
-        }
+        },
+        restaurantID: {
+            type: String,
+            required: true,
+        },
+        // orderInfo: {
+        //     type: Object, // o il tipo appropriato per l'oggetto order
+        //     required: true,
+        // },
+    },
+    mounted() {
+        this.date = this.getCurrentDate();
+        this.code = this.orderCode();
     },
     methods: {
+
+        SelectedInfo() {
+            this.order = {
+                clientName: this.clientName,
+                date: this.date,
+                code: this.code,
+                address: this.address,
+                restaurantId: this.restaurantId,
+                order: this.cart,
+            };
+
+            // Recupera l'oggetto order esistente dal localStorage
+            const existingOrder = JSON.parse(localStorage.getItem('order')) || {};
+
+            // Verifica se il restaurantID corrisponde all'oggetto order esistente
+            // if (existingOrder.restaurantId === this.restaurantId) {
+                // Salva l'oggetto order nel localStorage solo se il restaurantID corrisponde
+                // }
+            localStorage.setItem('order', JSON.stringify(this.order));
+
+            console.log(this.order);
+        },
+
+        getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            let month = now.getMonth() + 1;
+            let day = now.getDate();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            // Aggiungi uno zero iniziale per i mesi, giorni, ore, minuti e secondi inferiori a 10
+            if (month < 10) {
+                month = `0${month}`;
+            }
+            if (day < 10) {
+                day = `0${day}`;
+            }
+            if (hours < 10) {
+                hours = `0${hours}`;
+            }
+            if (minutes < 10) {
+                minutes = `0${minutes}`;
+            }
+            if (seconds < 10) {
+                seconds = `0${seconds}`;
+            }
+
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        },
+
+        orderCode() {
+            const characters = 'abcdefghijklmnopqrstuvwxyz';
+            let code = this.restaurantID + '-';
+
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                code += characters.charAt(randomIndex);
+            }
+
+            return code;
+        },
+
+        hideConfirmButton() {
+            this.showConfirmButton = false;
+        },
+        showPaymentButton() {
+            this.showConfirmButton = true;
+        },
+
         quantityPrice(price, quantity) {
             let totalPrice = price * quantity
             return totalPrice.toFixed(2)
@@ -54,8 +144,21 @@ export default {
 
 <template>
     <div class="cart">
+
         <div class="container container-table">
             <h2 class="text-center pb-5 title">il tuo Carrello</h2>
+            <div class="row">
+                <form class="d-flex align-items-center justify-content-center gap-5 pb-5">
+                    <div class="form-group w-25">
+                        <label for="clientName">Nome cliente</label>
+                        <input required type="text" class="form-control" id="clientName" v-model="clientName">
+                    </div>
+                    <div class="form-group w-50">
+                        <label for="address">Indirizzo</label>
+                        <input required type="text" class="form-control" id="address" rows="3" v-model="address">
+                    </div>
+                </form>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -97,9 +200,18 @@ export default {
                 </tfoot>
             </table>
 
-            <div class="d-flex justify-content-center py-4">
-                <a class="btn cart-btn" href="">Procedi con il pagamento</a>
+            <div v-if="showConfirmButton" @click="hideConfirmButton(), SelectedInfo()"
+                class="d-flex justify-content-center py-4">
+                <button type="submit" class="btn cart-btn w-25 px-2">Conferma</button>
             </div>
+
+
+            <div v-else @click="showPaymentButton()" class="d-flex justify-content-center py-4">
+                <router-link :to="{ name: 'PaymentPage', props: { orderInfo: order } }">
+                    <button type="submit" class="btn cart-btn w-100 px-2">Procedi con il pagamento</button>
+                </router-link>
+            </div>
+
         </div>
     </div>
 </template>

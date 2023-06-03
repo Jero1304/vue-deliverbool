@@ -5,7 +5,7 @@
                 <div class="billing-cont">
                     <div class="billing-cont-top">
                         <div class="order">
-                            <ul class="order_item">
+                            <!-- <ul class="order_item">
                                 <li>
                                     <h4>
                                         Riepilogo ordine
@@ -47,7 +47,29 @@
                                         24,90 &euro;
                                     </h4>
                                 </li>
+                            </ul> -->
+
+                            <ul >
+                                <li class="d-flex gap-3 justify-content-between align-items-center" v-for="(plate, index) in order.order">
+                                    <p>
+                                        {{ plate.quantity }} - {{ plate.plate.name }}
+                                    </p>
+                                    <p>
+                                        &euro; {{ quantityPrice(plate.plate.price, plate.quantity) }}
+                                    </p>
+                                </li>
+
+                                <li class="d-flex gap-3 justify-content-between align-items-center">
+                                    <p>
+                                        Totale
+                                    </p>
+                                    <p>
+                                        &euro; {{ totalPrice() }}
+                                    </p>
+                                </li>
                             </ul>
+
+
                         </div>
                         <div class="form-group ">
                             <label for="card-number">Nome del proprietario</label>
@@ -81,23 +103,33 @@ import { createBraintree, tokenizeCard } from 'braintree-web';
 export default {
     data() {
         return {
+            cardName: '',
             cardNumber: '',
             expirationDate: '',
-            cvv: ''
+            cvv: '',
+            order: JSON.parse(localStorage.getItem('order')),
         };
     },
+    // props: {
+    //     orderInfo: {
+    //         type: Object,
+    //         required: true
+    //     }
+    // },
     mounted() {
         // Inizializza Braintree
-        createBraintree({
-            authorization: 'YOUR_BRAINTREE_AUTHORIZATION_TOKEN'
-        }, (err, instance) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
+        // createBraintree({
+        //     authorization: 'YOUR_BRAINTREE_AUTHORIZATION_TOKEN'
+        // }, (err, instance) => {
+        //     if (err) {
+        //         console.error(err);
+        //         return;
+        //     }
 
-            this.braintreeInstance = instance;
-        });
+        //     this.braintreeInstance = instance;
+        // });
+        // const order = JSON.parse(localStorage.getItem('order'));
+        console.log(this.order)
     },
     methods: {
         submitPayment() {
@@ -116,9 +148,18 @@ export default {
                 this.processPayment(nonce);
             });
         },
-        processPayment(nonce) {
-            // Effettua una chiamata al server per elaborare il pagamento con Braintree nonce
-            // Implementa la logica di comunicazione con il tuo backend
+
+        quantityPrice(price, quantity) {
+            let totalPrice = price * quantity
+            return totalPrice.toFixed(2)
+        },
+        totalPrice() {
+            let total = 0;
+            for (let i = 0; i < this.order.order.length; i++) {
+                const product = this.order.order[i];
+                total += product.plate.price * product.quantity;
+            }
+            return total.toFixed(2);
         }
     }
 };

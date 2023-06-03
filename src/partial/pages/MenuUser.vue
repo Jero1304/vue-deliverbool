@@ -24,7 +24,6 @@
                     </div>
                 </div>
 
-
                 <div class="plates p-3 col-6">
                     <div class="row row-plates p-1">
                         <div class="col-1 arrow sx" @click="previousPagePlate" :disabled="currentPagePlate === 1">
@@ -76,7 +75,7 @@
             </div>
         </div>
     </div>
-    <Cart :cart="cart"></Cart>
+    <Cart :cart="cart" :restaurantID="restaurantID"></Cart> 
 </template>
 
 <script>
@@ -105,8 +104,10 @@ export default {
 
         }
     },
+    
     created() {
         console.log(this.fetchPost());
+        console.log(this.cart);
     },
 
     methods: {
