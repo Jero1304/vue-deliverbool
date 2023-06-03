@@ -2,55 +2,29 @@
     <div class="form_card d-flex justify-content-center">
         <div class="form-cont col d-flex justify-content-center mb-5">
             <form @submit.prevent="submitPayment">
-                <div class="billing-cont">
+                <div class="billing-cont  w-75">
                     <div class="billing-cont-top">
                         <div class="order">
-                            <!-- <ul class="order_item">
-                                <li>
-                                    <h4>
-                                        Riepilogo ordine
-                                    </h4>
-                                </li>
-                                <li>
-                                    Pizza 1
-                                </li>
-                                <li>
-                                    Pizza 2
-                                </li>
-                                <li>
-                                    Acqua
-                                </li>
-                                <li>
-                                    Tennent's
-                                </li>
-                                <li>
-                                    <h4 class="total">
-                                        Totale
-                                    </h4>
-                                </li>
-                            </ul>
-                            <ul class="order_money">
-                                <li>
-                                    7,50 &euro;
-                                </li>
-                                <li>
-                                    12,80 &euro;
-                                </li>
-                                <li>
-                                    1,90 &euro;
-                                </li>
-                                <li>
-                                    2,70 &euro;
-                                </li>
-                                <li>
-                                    <h4 class="total">
-                                        24,90 &euro;
-                                    </h4>
-                                </li>
-                            </ul> -->
+                            <div class="row">
+                                
+                                <h2>Riepilogo</h2>
 
-                            <ul>
-                                <li class="d-flex gap-3 justify-content-between align-items-center"
+                                <!-- <div class="info"> -->
+                                    <ul class="d-flex justify-content-between flex-wrap">
+                                        <li>                                            
+                                            <p>Nome: {{ order.clientName }}</p>
+                                            <p>Indirizzo: {{ order.address }}</p>
+                                        </li>                                            
+                                        <li>       
+                                            <p>Date: {{ order.date }}</p>
+                                            <p>Codice: {{ order.code }}</p>
+                                        </li>
+                                    </ul>
+                                    
+                                <!-- </div> -->
+                                
+                                <ul>
+                                    <li class="d-flex gap-3 justify-content-between align-items-center"
                                     v-for="(plate, index) in order.order">
                                     <p>
                                         {{ plate.quantity }} - {{ plate.plate.name }}
@@ -61,14 +35,16 @@
                                 </li>
 
                                 <li class="d-flex gap-3 justify-content-between align-items-center">
-                                    <p>
+                                    <h4>
                                         Totale
-                                    </p>
-                                    <p>
+                                    </h4>
+                                    <p class="fw-bold">
                                         &euro; {{ totalPrice() }}
                                     </p>
                                 </li>
                             </ul>
+
+                        </div>
 
 
                         </div>
@@ -83,7 +59,7 @@
                                 required>
                         </div>
                     </div>
-                    <div class="billing-cont-bottom">
+                    <div class="billing-cont-bottom justify-content-center">
                         <div class="form-group">
                             <label for="card-number">(MM/YY)</label>
                             <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
