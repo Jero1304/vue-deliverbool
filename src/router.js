@@ -15,7 +15,7 @@ const router = createRouter({
 	history,
 	routes: [
 		{
-			path: '/home',
+			path: '/',
 			name: 'home',
 			component: HomeUser,
 		},

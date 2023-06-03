@@ -11,17 +11,18 @@
 
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
-                    <h2 class="title-description">{{ restaurant.restaurant_name}}</h2>
-                    <h5> Dove siamo: {{ restaurant.address}}</h5>
-                    
-                    <ul v-for="(tipology, j) in restaurant.types" class="list-group m-3">
-                     <li class="list-group-item">{{ tipology.name }}</li>
-                    </ul>
-                    
-                    
-  
-                </div>
+                    <h2 class="title-description">{{ restaurant.restaurant_name }}</h2>
+                    <h5> Dove siamo: {{ restaurant.address }}</h5>
 
+                    <ul v-for="(tipology, j) in restaurant.types" class="list-group m-3">
+                        <li class="list-group-item">{{ tipology.name }}</li>
+                    </ul>
+
+
+                    <div class="col-4 description-image">
+                        <img :src="restaurant.image_path" alt="">
+                    </div>
+                </div>
 
 
                 <div class="plates p-3 col-6">
@@ -33,13 +34,18 @@
 
                         <div class="row col-10 justify-content-center p-2">
                             <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
+
                             <template v-for="(plate, index) in paginatePlates" :key="index">
                                 <div class="col-4 p-3" height="200px">
-                                    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning">
+                                    <!-- <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning"> -->
+                                    <img :src="plate.thumb_path" alt="">
                                     <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
                                     <span class="plate-ingredient">{{ plate.ingredient }}</span>
                                     <p class="mt-2">{{ plate.price }} &euro;</p>
-                                    <button class="carrello"><img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png" alt="carrello"></button>
+                                    <button class="carrello" @click="cartList(plate)">
+                                        <img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_1280.png"
+                                            alt="carrello">
+                                    </button>
                                 </div>
                             </template>
                         </div>
@@ -48,25 +54,43 @@
                             <img src="https://cdn.pixabay.com/photo/2012/04/13/00/20/arrow-31212_1280.png"
                                 alt="freccia-destra">
                         </div>
+                    </div>
 
+                    <div class="paginate">
+                        <template v-if="totalPagesPlate === 0">
+                            <div class="col-6 pagination text-center">
+                                <p> 0 di {{ totalPagesPlate }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                            </div>
+                        </template>
 
+                        <template v-if="totalPagesPlate > 0">
+                            <div class="col-6 pagination text-center">
+                                <p>{{ currentPagePlate }} di {{ totalPagesPlate }}</p>
+                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
+                            </div>
+                        </template>
                     </div>
                 </div>
 
-
             </div>
         </div>
-
     </div>
+    <Cart :cart="cart"></Cart>
 </template>
 
 <script>
 
-
-
 import axios from 'axios'
 
+import Cart from '../components/Cart.vue';
+
 export default {
+
+    components: {
+        Cart,
+    },
+
     data() {
         return {
 
@@ -77,7 +101,7 @@ export default {
             plates: [],
 
             restaurant: [],
-
+            cart: [],
 
         }
     },
@@ -93,10 +117,10 @@ export default {
 
                     this.plates = res.data.restaurant.products
                     // this.openingHours = res.data.restaurant.openingHours;
-                    console.log(this.plates);
+                    // console.log(this.plates);
 
                     this.restaurant = res.data.restaurant
-                    console.log (this.restaurant)
+                    // console.log(this.restaurant)
 
 
                 })
@@ -106,44 +130,53 @@ export default {
                 })
         },
 
+        cartList(currentPlate) {
+
+            const existingPlate = this.cart.find(item => item.plate === currentPlate);
+
+            if (existingPlate) {
+                existingPlate.quantity++;
+            } else {
+                this.cart.push({ plate: currentPlate, quantity: 1 });
+            }
+            console.log(this.cart);
+        },
 
 
+
+        /* PAGINATION*/
         previousPagePlate() {
             if (this.currentPagePlate > 1) {
                 this.currentPagePlate--;
+            } else if (this.currentPagePlate === 1) {
+                this.currentPagePlate = this.totalPagesPlate
             }
         },
         nextPagePlate() {
             if (this.currentPagePlate < this.totalPagesPlate) {
                 this.currentPagePlate++;
             }
+            else if (this.currentPagePlate === this.totalPagesPlate) {
+                this.currentPagePlate = 1
+            }
         },
-
-        // currentTypeRest() {
-        //     const resMenu = []
-        //     for (const plate of this.plates) {
-        //         // console.log(this.currentType);
-
-        //     }
-        //     // console.log('resMenu',resMenu);
-        //     return resMenu
-        // },
-
         pagesResest() {
             this.currentPagePlate = 1
         },
     },
 
     computed: {
-
+        /* PAGINATION*/
         paginatePlates() {
             const start = (this.currentPagePlate - 1) * this.itemsPerPagePlate;
             const end = start + this.itemsPerPagePlate;
+            // console.log(this.plates.slice(start, end))
             return this.plates.slice(start, end);
         },
         totalPagesPlate() {
-            return Math.ceil(this.plate.length / this.itemsPerPagePlate);
+            return Math.ceil(this.plates.length / this.itemsPerPagePlate);
         },
+
     }
 
 }
@@ -165,18 +198,19 @@ export default {
         background-color: rgba(255, 89, 0, 0.769);
         color: white;
         text-transform: uppercase;
-        
+
     }
 
-    .title-description{
-        color: rgb(255, 91, 0);;
+    .title-description {
+        color: rgb(255, 91, 0);
+        ;
     }
 
-    .description-image{
+    .description-image {
         width: 400px;
     }
 
-    .description-image img{
+    .description-image img {
         width: 200px;
     }
 }
@@ -210,23 +244,33 @@ export default {
         color: white;
         margin-bottom: 150px;
         /* Aggiunto spazio tra plates e footer */
+
+        .paginate {
+            display: flex;
+            justify-content: center;
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+            }
+        }
     }
 
-    .plate-ingredient{
+    .plate-ingredient {
         font-size: 9px;
         text-align: center;
-        
+
     }
 
-    .carrello{
+    .carrello {
         width: 30px;
         background-color: rgb(255, 255, 255);
         padding: 3px;
         margin-left: 35px;
-        
+
     }
 
-    .carrello:hover{
+    .carrello:hover {
         transform: scale(1.5);
     }
 
