@@ -34,6 +34,12 @@ export default {
     methods: {
 
         SelectedInfo() {
+            if (!this.clientName || !this.address || this.cart.length === 0) {
+                // Controlla se i campi "Nome cliente" e "Indirizzo" sono vuoti
+                // Se uno dei due campi è vuoto, restituisci showConfirmButton: true
+                this.showConfirmButton = true;
+                return;
+            }
             this.order = {
                 clientName: this.clientName,
                 date: this.date,
@@ -48,8 +54,8 @@ export default {
 
             // Verifica se il restaurantID corrisponde all'oggetto order esistente
             // if (existingOrder.restaurantId === this.restaurantId) {
-                // Salva l'oggetto order nel localStorage solo se il restaurantID corrisponde
-                // }
+            // Salva l'oggetto order nel localStorage solo se il restaurantID corrisponde
+            // }
             localStorage.setItem('order', JSON.stringify(this.order));
 
             console.log(this.order);
@@ -146,16 +152,20 @@ export default {
     <div class="cart">
 
         <div class="container container-table">
-            <h2 class="text-center pb-5 title">il tuo Carrello</h2>
+            <h2 class="text-center pb-5 title" style="color:rgb(255, 102, 0);">il tuo Carrello</h2>
             <div class="row">
+                <h4 class="d-flex justify-content-center pb-5">Inserisci i tuoi dati!</h4>
+                
                 <form class="d-flex align-items-center justify-content-center gap-5 pb-5">
                     <div class="form-group w-25">
                         <label for="clientName">Nome cliente</label>
-                        <input required type="text" class="form-control" id="clientName" v-model="clientName">
+                        <input required type="text" class="form-control" id="clientName" v-model="clientName" maxlength="50" pattern="[A-Za-z\s]{1,50}">
+                        <small class="text-danger" v-if="clientName && !isClientNameValid">Es. Giulia Bianchi</small>
                     </div>
                     <div class="form-group w-50">
                         <label for="address">Indirizzo</label>
-                        <input required type="text" class="form-control" id="address" rows="3" v-model="address">
+                        <input required type="text" class="form-control" id="address" rows="3" v-model="address" maxlength="100" pattern="[A-Za-z0-9\s]{1,100}">
+                        <small class="text-danger" v-if="address && !isAddressValid">Es. Via Roma 13</small>
                     </div>
                 </form>
             </div>
@@ -189,10 +199,7 @@ export default {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <h3>Totale</h3>
-                    </tr>
-                    <tr>
-                        <td></td>
+                        <td><h3>Totale</h3></td>
                         <td>pz. {{ totalQuantity() }}</td>
                         <td>€ {{ totalPrice() }}</td>
                         <td></td>
@@ -223,6 +230,11 @@ export default {
     background-color: #FCFCFB;
     padding: 50px 0;
 
+    .form-group{
+        small{
+            position: absolute;
+        }
+    }
     .remove-btn {
         height: 56px;
     }
