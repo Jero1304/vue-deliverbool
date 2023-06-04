@@ -8,19 +8,19 @@
     </main>
 
     <footer>
-        <Footer></Footer>
+        <FooterVue></FooterVue>
     </footer>
 </template>
 
 <script>
 import NavBar from '../components/NavBar.vue'
-import Footer from '../components/Footer.vue'
+import FooterVue from '../components/Footer.vue'
 import Blank from './Blank.vue';
 
 export default {
     components: {
         NavBar,
-        Footer,
+        FooterVue,
         Blank,
     }
 }
