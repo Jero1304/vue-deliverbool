@@ -173,7 +173,7 @@ export default {
                 <thead>
                     <tr>
                         <th scope="col">Piatto</th>
-                        <th scope="col">Quantità</th>
+                        <th scope="col" style="padding-left: 44px;">Quantità</th>
                         <th scope="col">Prezzo</th>
                         <th></th>
                     </tr>
@@ -200,8 +200,8 @@ export default {
                 <tfoot>
                     <tr>
                         <td><h3>Totale</h3></td>
-                        <td>pz. {{ totalQuantity() }}</td>
-                        <td>€ {{ totalPrice() }}</td>
+                        <td style="padding-left: 54px;">pz. {{ totalQuantity() }}</td>
+                        <td >€ {{ totalPrice() }}</td>
                         <td></td>
                     </tr>
                 </tfoot>
