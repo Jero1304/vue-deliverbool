@@ -131,7 +131,7 @@ export default {
             const data = {
                 order: this.order
             };
-            axios.post('/api/payment', data)
+            axios.post('http://127.0.0.1:8000/api/orders', data)
                 .then(response => {
                     console.log(response.data);
                 })
