@@ -272,7 +272,7 @@ export default {
     }
 
     .plate-ingredient {
-        font-size: 9px;
+        font-size: 7px;
         text-align: center;
 
     }
