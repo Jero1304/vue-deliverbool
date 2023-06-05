@@ -358,12 +358,12 @@ export default {
 
     .sx {
         right: auto;
-        left: 50px;
+        left: 150px;
     }
 
     .dx {
-        left:0;
-        right: 50px;
+        left: auto;
+        right: -60px;
     }
 
     .col-3.p-3:hover {
