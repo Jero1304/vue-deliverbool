@@ -1,5 +1,15 @@
 <template>
     <div class="form_card d-flex justify-content-center">
+
+        <!-- Pulsante back to Home -->
+
+        <button class="btn btn-primary mt-3 back-cart" @click="$router.push( `/menu/${order.restaurantId} `)">
+                <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
+                Torna al carrello</button>
+
+              
+
+
         <div class="form-cont col d-flex justify-content-center mb-5">
             <form @submit.prevent="submitPayment">
                 <div class="billing-cont  w-75">
@@ -197,6 +207,24 @@ export default {
   
 <style lang="scss">
 @import '../src/scss/variables.scss';
+
+// BUTTON CART RULES
+.back-cart {
+    background-color: rgb(255, 91, 0);
+    border: 1px solid rgb(255, 238, 99);
+    text-transform: uppercase;
+    width: 150px;
+    height: 50px;
+    font-size: 10px;
+    position: absolute;
+    left: 0;
+}
+
+.back-cart img {
+    width: 20px;
+}
+
+
 
 .form_card {
     background-color: $yellow;
