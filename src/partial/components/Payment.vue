@@ -19,7 +19,6 @@
 
                                 <h2>Riepilogo</h2>
 
-                                <!-- <div class="info"> -->
                                 <ul class="d-flex justify-content-between flex-wrap">
                                     <li>
                                         <p>Nome: {{ order.clientName }}</p>
@@ -30,8 +29,6 @@
                                         <p>Codice: {{ order.code }}</p>
                                     </li>
                                 </ul>
-
-                                <!-- </div> -->
 
                                 <ul>
                                     <li class="d-flex gap-3 justify-content-between align-items-center"
@@ -61,13 +58,12 @@
                         <div class="form-group ">
                             <label for="card-number">Nome del proprietario</label>
                             <input type="text" class="form-control" id="card-name" v-model="cardName" name="cardName"
-                                required>
-                            <div class="error-message">{{ errors.cardName }}</div>
+                                required pattern="[a-zA-Z\s]+" title="Inserisci un nome valido (solo lettere e spazi)">
                         </div>
                         <div class="form-group ">
                             <label for="card-number">Numero di carta</label>
                             <input type="text" class="form-control" id="card-number" v-model="cardNumber" name="cardNumber"
-                                required>
+                                required pattern="[0-9]{16}" title="Inserisci un numero di carta valido (16 cifre)">
                         </div>
                     </div>
                     <div class="billing-cont-bottom justify-content-center">
@@ -75,13 +71,12 @@
                             <label for="card-number">(MM/YY)</label>
                             <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
                                 name="expirationDate" required>
-                            <div class="error-message">{{ errors.cardNumber }}</div>
                         </div>
                         <div class="form-group">
                             <label for="card-number">CVV</label>
-                            <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required>
+                            <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required
+                                pattern="[0-9]{3}" title="Inserisci un CVV valido (3 cifre)">
                         </div>
-                        <div class="error-message">{{ errors.cvv }}</div>
                     </div>
                     <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
                 </div>
@@ -91,7 +86,6 @@
 </template>
   
 <script>
-import { createBraintree, tokenizeCard } from 'braintree-web';
 import axios from 'axios';
 export default {
     data() {
@@ -101,90 +95,24 @@ export default {
             expirationDate: '',
             cvv: '',
             order: JSON.parse(localStorage.getItem('order')),
-            errors: {
-                cardNumber: '',
-                cardName: '',
-                cvv: ''
-            }
         };
     },
-    // props: {
-    //     orderInfo: {
-    //         type: Object,
-    //         required: true
-    //     }
-    // },
-    mounted() {
-        // Inizializza Braintree
-        // createBraintree({
-        //     authorization: 'YOUR_BRAINTREE_AUTHORIZATION_TOKEN'
-        // }, (err, instance) => {
-        //     if (err) {
-        //         console.error(err);
-        //         return;
-        //     }
 
-        //     this.braintreeInstance = instance;
-        // });
-        // const order = JSON.parse(localStorage.getItem('order'));
+    mounted() {
         console.log(this.order)
     },
     methods: {
         submitPayment() {
-            if (this.validateForm()) {
-                // Tokenizza i dati della carta di credito utilizzando Braintree
-                // this.braintreeInstance.tokenizeCard({
-                //     cardNumber: this.cardNumber,
-                //     expirationDate: this.expirationDate,
-                //     cvv: this.cvv
-                // }, (err, nonce) => {
-                //     if (err) {
-                //         console.error(err);
-                //         return;
-                //     }
-
-                //     // Invia il nonce al server per elaborare il pagamento
-                //     this.processPayment(nonce);
-                // });
-
-                const data = {
-                    order: this.order
-                };
-                axios.post('http://127.0.0.1:8000/api/orders', data)
-                    .then(response => {
-                        console.log(response.data);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        },
-        validateForm() {
-            this.errors.cardNumber = '';
-            this.errors.cardName = '';
-            this.errors.cvv = '';
-
-            let isValid = true;
-
-            // Validazione numero di carta
-            if (!/^\d{16}$/.test(this.cardNumber)) {
-                this.errors.cardNumber = 'Il numero di carta deve essere composto da 16 cifre.';
-                isValid = false;
-            }
-
-            // Validazione nome del titolare della carta
-            if (!/^[a-zA-Z\s]+$/.test(this.cardName)) {
-                this.errors.cardName = 'Il nome del titolare della carta non deve contenere numeri o caratteri speciali.';
-                isValid = false;
-            }
-
-            // Validazione CVV
-            if (!/^\d{3}$/.test(this.cvv)) {
-                this.errors.cvv = 'Il CVV deve essere composto da 3 cifre.';
-                isValid = false;
-            }
-
-            return isValid;
+            const data = {
+                order: this.order
+            };
+            axios.post('http://127.0.0.1:8000/api/orders', data)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
 
         quantityPrice(price, quantity) {
