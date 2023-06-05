@@ -297,88 +297,69 @@ export default {
 
 // RESPONSIVE RULES
 @media (max-width: 768px) {
-    .description {
-        width: 80%;
-        margin-bottom: 20px;
-        background-color: rgba(255, 89, 0, 0.8);
-        color: white;
-        margin-top: 200px;
-    }
-
-    .title-description {
-        color: white;
-    }
-
-    .restaurant {
-        background-image: url(../components/img/pettern-hero-responsive.jpg);
-        
-
-
-
-    }
-
-    .plates {
-        
-        width: 90%;
-        height: 200px;
-        overflow-y: auto; 
-        margin: 0 auto; 
-    
-   
+  .description {
+    width: 80%;
+    margin-bottom: 20px;
+    background-color: rgba(255, 89, 0, 0.8);
+    color: white;
+    margin-top: 200px;
   }
 
-  .row-plates{
-        background-color: rgb(255, 202, 29);
-        border-radius: 50px;
-        height: 350px; 
-       
-        
-        
-    }
+  .title-description {
+    color: white;
+  }
 
+  .restaurant {
+    background-image: url(../components/img/pettern-hero-responsive.jpg);
+  }
 
+  .plates {
+    width: 90%;
+    height: 200px;
+    overflow-y: auto;
+    margin: 0 auto;
+  }
 
-   
+  .row-plates {
+    background-color: rgb(255, 202, 29);
+    border-radius: 50px;
+    height: 350px;
+  }
+
   .arrow {
-    position: absolute; 
-    bottom: 0; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    margin-bottom: 10px; 
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
   }
 
   .sx {
-    right: auto; 
-    left: 200px; 
+    right: auto;
+    left: 200px;
   }
 
   .dx {
-    left: auto; 
-    right: -40px; 
+    left: auto;
+    right: -40px;
   }
 
-    .col-3.p-3:hover {
-        box-shadow: 0 0 30px rgb(255, 91, 0);
-        transform: translateY(-5px);
-    }
-
-
-    .plate-ingredient{
-        display: none;
-    }
-
-    .carrello {
-        display: none;
-    }
-
-    .col-4{
-        display: inline-block;
+  .col-4 {
+    display: inline-block;
     width: 80px;
     margin: 10px;
-    vertical-align: top; 
-    }
+    vertical-align: top;
+  }
 
+  .plate-ingredient {
+    display: none;
+  }
+
+  .carrello {
+    display: none;
+  }
 }
+
 
 
 // RESPONSIVE TABLET
@@ -410,7 +391,7 @@ export default {
     .plates .row {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
-        
+        height: 400px;
 
     }
 
@@ -426,13 +407,14 @@ export default {
     .sx {
         position: relative;
         right: -130px;
-        margin-bottom: 150px;
+        margin-top: -100px;
 
     }
 
     .dx {
         position: relative;
-        left: -130px;
+        left: -150px;
+        margin-top: -100px;
     }
 
     .col-3.p-3:hover {
