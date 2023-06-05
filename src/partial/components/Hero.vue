@@ -21,15 +21,30 @@ export default{
             ],
 
             slideIndex: 0,
+            autoPlayId: null,
         };
+    },
+    
+    mounted(){
+         this.setAutoPlay()
     },
 
     methods: {
+        setAutoPlay(){
+            this.autoPlayId = setInterval(this.nextSlide, 7000)
+        },
+
+        resetAutoPlay(){
+            clearInterval(this.autoPlayId)
+            this.setAutoPlay()
+        },
+
         nextSlide(){
             this.slideIndex++
             if(this.slideIndex === this.slides.length){
                 this.slideIndex = 0
             }
+            this.resetAutoPlay()
         },
 
         prevSlide(){
@@ -37,8 +52,10 @@ export default{
             if(this.slideIndex < 0){
                 this.slideIndex = this.slides.length - 1
             }
+            this.resetAutoPlay()
         },
-    }
+    },
+
 }
 </script>
 
@@ -56,8 +73,8 @@ export default{
                 </figure>
             </div>
         </div>
-        <p @click="nextSlide" class="arrow-right"><font-awesome-icon :icon="['fas', 'chevron-right']" /></p>
-        <p @click="prevSlide" class="arrow-left"><font-awesome-icon :icon="['fas', 'chevron-left']" /></p>
+        <div @click="nextSlide" class="arrow arrow-right"><font-awesome-icon :icon="['fas', 'chevron-right']" /></div>
+        <div @click="prevSlide" class="arrow arrow-left"><font-awesome-icon :icon="['fas', 'chevron-left']" /></div>
         
     </div>
     
@@ -72,23 +89,25 @@ export default{
         padding: 300px 0;
         background-image: linear-gradient(to bottom right, $bordeaux, $orange, $yellow);
 
-        .arrow-right{
+        .arrow{
             position: absolute;
-            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
             color: white;
             font-size: 25px;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+        }
+        .arrow-right{     
+            right: 0px;
         }
 
         .arrow-left{
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            cursor: pointer;
-            color: white;
-            font-size: 25px;
+            left: 0px;
         }
     };
 
@@ -165,5 +184,104 @@ export default{
         display: flex;
     };
 
- 
+    @media (max-width: 1355px){
+
+        .hero{
+            padding: 200px;
+            .arrow{ 
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+        .hero_container{
+            flex-wrap: wrap;
+            gap: 30px;
+            .hero_description{
+                
+                flex-basis: 50%;
+                .title{
+                    font-size: 40px;
+                    margin-bottom: 15px;
+                }
+                
+                .description{
+                    font-size: 25px;
+                }
+                
+            }
+            .thumb{
+                width: 250px;
+            }
+            
+        }
+    }
+    
+    @media (max-width: 820px){
+
+        .hero{
+            padding: 150px;
+            .arrow{ 
+                font-size: 15px;
+                padding: 7px;
+            }
+        }
+        .hero_container{
+            flex-wrap: wrap;
+            gap: 30px;
+            .hero_description{
+                
+                flex-basis: 50%;
+                .title{
+                    font-size: 30px;
+                    margin-bottom: 15px;
+                }
+                
+                .description{
+                    font-size: 15px;
+                }
+                
+            }
+            .thumb{
+                width: 200px;
+            }
+            
+        }
+    }
+    
+    @media (max-width: 415px){
+    
+        .hero{
+            padding: 230px 0px;
+            .arrow{ 
+                font-size: 10px;
+                padding: 4px;
+            }
+        }
+        .hero_container{
+            gap: 10px;
+            padding: 15px 30px;
+            .hero_description{
+                flex-basis: 0%;
+                .title{
+                    font-size: 28px;
+                    margin-bottom: 5px;
+                }
+    
+                .description{
+                    font-size: 20px;
+                }
+    
+            }
+            .thumb{
+                width: 150px;
+            }
+    
+        }
+
+        .active{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
 </style>

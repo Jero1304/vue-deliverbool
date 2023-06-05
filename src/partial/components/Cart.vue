@@ -1,70 +1,143 @@
-<template>
-    <div class="container">
-        <div class="list-group">
-            <div v-for="(order, index) in orders" class="list-group-item list-group-item-action">
-                <!-- <div class="d-flex w-100 justify-content-between">
-                    <img class="w-25" :src="order.thumb" alt="">
-                    <h5 class="mb-1">{{ order.name }}</h5>
-                    <small>{{ order.price }} $</small>
-                </div>
-                <p class="mb-1">{{ order.ingredient }}</p> -->
-                <!-- <small>And some small print.</small> -->
 
-                <div class="row w-75">
-                    <div class="col">
-                        <img class="w-25" :src="order.thumb" alt="">
-                    </div>
-                    <div class="col">
-                        <h5 class="mb-1">{{ order.name }}</h5>
-                    </div>
-                </div>
-                
+<script>
+export default {
+    data() {
+        return {
+
+        }
+    },
+    props: {
+        cart: {
+            type: Object,
+            required: true,
+        }
+    },
+    methods: {
+        quantityPrice(price, quantity) {
+            let totalPrice = price * quantity
+            return totalPrice.toFixed(2)
+        },
+        removeFromCart(index) {
+            this.cart.splice(index, 1);
+        },
+        removeElement(product, index) {
+            if (product.quantity === 1) {
+                this.cart.splice(index, 1)
+            } else {
+                return product.quantity--
+            }
+        },
+        addElement(product) {
+            return product.quantity++
+        },
+        totalQuantity() {
+            let total = 0
+
+            for (let i = 0; i < this.cart.length; i++) {
+                total = this.cart[i].quantity + total
+            }
+            return total
+        },
+        totalPrice() {
+            let total = 0;
+            for (let i = 0; i < this.cart.length; i++) {
+                const product = this.cart[i];
+                total += product.plate.price * product.quantity;
+            }
+            return total.toFixed(2);
+        }
+
+    },
+}
+</script>
+
+
+<template>
+    <div class="cart">
+        <div class="container container-table">
+            <h2 class="text-center pb-5 title">il tuo Carrello</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Piatto</th>
+                        <th scope="col">Quantità</th>
+                        <th scope="col">Prezzo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(product, index) in cart">
+                        <!-- {{product.plate}} -->
+                        <td>{{ product.plate.name }}</td>
+
+                        <td>
+                            <span @click="removeElement(product, index)" class="btn btn-primary mx-3">-</span>
+                            {{ product.quantity }}
+                            <span @click="addElement(product)" class="btn btn-primary mx-3">+</span>
+                        </td>
+
+                        <!-- <td>€{{product.plate.price}}</td> -->
+                        <td>€ {{ quantityPrice(product.plate.price, product.quantity) }}</td>
+
+                        <td class="d-flex justify-content-end align-items-center remove-btn">
+                            <a class="btn btn-danger btn-sm " @click="removeFromCart(index)">Rimuovi dal carrello</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <h3>Totale</h3>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>pz. {{ totalQuantity() }}</td>
+                        <td>€ {{ totalPrice() }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="d-flex justify-content-center py-4">
+                <a class="btn cart-btn" href="">Procedi con il pagamento</a>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<style scoped lang="scss">
+@use '../src/scss/variables' as *;
 
-const orders = [
-    {
-        name: 'pizza',
-        ingredient: 'Sugo mozzarella olive ',
-        price: 12.77,
-        thumb: 'https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_1280.jpg',
-    },
-    {
-        name: 'pasta al sugo',
-        ingredient: 'Sugo ',
-        price: 7.29,
-        thumb: 'https://media.istockphoto.com/id/155433174/it/foto/penne-al-sugo.jpg?s=1024x1024&w=is&k=20&c=H-EzF23OGEsMrnJbnhvOgEk-tRI-TrzolJ66j5PSAN4=',
-    },
-    {
-        name: 'misto fritto',
-        ingredient: 'pesci fritti',
-        price: 10.47,
-        thumb: 'https://media.istockphoto.com/id/967914044/it/foto/pesce-di-mare-fritto-italiano.jpg?s=1024x1024&w=is&k=20&c=qswNhZ4qsMqU_-5NLC6_u__WPMaccPJYkHGNAta_uSo=',
-    },
-    {
-        name: 'carbonara',
-        ingredient: 'uovo pancetta pecorino ',
-        price: 11.58,
-        thumb: 'https://media.istockphoto.com/id/1312758295/it/foto/pasta-tradizionale-italiana-alla-carbonara-con-uova-di-guanciale-e-pecorino.jpg?s=1024x1024&w=is&k=20&c=jHGUnLVjnXYxYdEX8yQteyi9zaQBt7kHvtp6ADHYmMA=',
-    },
-    {
-        name: 'caffe\' ',
-        ingredient: 'caffe\' ',
-        price: 1.00,
-        thumb: 'https://cdn.pixabay.com/photo/2013/11/05/23/55/coffee-206142_1280.jpg',
-    },
-]
-export default {
-    data() {
-        return {
-            orders: orders
+.cart {
+    background-color: #FCFCFB;
+    padding: 50px 0;
+
+    .remove-btn {
+        height: 56px;
+    }
+
+    .container-table {
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        .title {
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-top: 30px;
         }
-    },
-}
-</script>
 
-<style lang="scss" scoped></style>
+        .cart-btn {
+            padding: 10px 0;
+            width: 30%;
+            text-transform: uppercase;
+            background-color: $orange;
+            color: white;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $yellow;
+            }
+        }
+    }
+}
+</style>
+
