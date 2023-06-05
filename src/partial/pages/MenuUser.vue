@@ -318,9 +318,9 @@ export default {
     }
 
     .plates {
-        position: relative; 
+        
         width: 90%;
-        max-height: 350px; 
+        height: 200px;
         overflow-y: auto; 
         margin: 0 auto; 
     
@@ -330,7 +330,7 @@ export default {
   .row-plates{
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
-        height: 300px;
+        height: 350px; 
        
         
         
@@ -389,7 +389,7 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
-        margin-top: 200px;
+        margin-top: 250px;
     }
 
     .restaurant {
@@ -438,6 +438,10 @@ export default {
     .col-3.p-3:hover {
         box-shadow: 0 0 30px rgb(255, 91, 0);
         transform: translateY(-5px);
+    }
+
+    .col-10{
+        height: 200px;
     }
 
 
