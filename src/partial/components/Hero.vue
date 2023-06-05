@@ -6,12 +6,12 @@ export default{
                 {
                     title: 'Consegna rapida e affidabile, direttamente a casa tua!',
                     text: 'Goditi il tuo cibo preferito comodamente a casa tua con la nostra consegna rapida e affidabile.',
-                    thumb: '/images/pizza-delivery2.png'
+                    thumb: '/images/delivery2.png'
                 },
                 {
                     title: 'Scegli tra una vasta selezione di cucine internazionali!',
                     text: 'Assaggia sapori da tutto il mondo, dalla pizza italiana al sushi giapponese, tutto a portata di click.',
-                    thumb: '/images/rice.png'
+                    thumb: '/images/curry.png'
                 },
                 {
                     title: 'Assicuriamo qualità e sicurezza per ogni consegna.',
@@ -86,7 +86,7 @@ export default{
 
     .hero{
         position: relative;
-        padding: 300px 0;
+        padding: 300px 0px;
         background-image: linear-gradient(to bottom right, $bordeaux, $orange, $yellow);
 
         .arrow{
@@ -121,6 +121,7 @@ export default{
         right: 0;
         bottom: 0;
         gap: 60px;
+        padding: 0 0px;
 
         .hero_description{
             flex-basis: 35%;
@@ -248,32 +249,32 @@ export default{
         }
     }
     
-    @media (max-width: 415px){
+    @media (max-width: 461px){
     
         .hero{
-            padding: 230px 0px;
+            padding: 250px 0px;
             .arrow{ 
-                font-size: 10px;
-                padding: 4px;
+                display: none;
             }
         }
         .hero_container{
             gap: 10px;
-            padding: 15px 30px;
+            padding: 20px 30px;
             .hero_description{
                 flex-basis: 0%;
+                text-align: center;
                 .title{
-                    font-size: 28px;
-                    margin-bottom: 5px;
+                    font-size: 38px;
+                    margin-bottom: 10px;
                 }
     
                 .description{
-                    font-size: 20px;
+                    font-size: 27px;
                 }
     
             }
             .thumb{
-                width: 150px;
+                display: none;
             }
     
         }
