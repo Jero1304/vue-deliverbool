@@ -272,7 +272,7 @@ export default {
     }
 
     .plate-ingredient {
-        font-size: 9px;
+        font-size: 7px;
         text-align: center;
 
     }
@@ -311,6 +311,7 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 237, 99, 0.696);
         color: white ;
+        margin-top: 200px;
         
     }
 
