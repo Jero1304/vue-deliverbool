@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="card-number">(MM/YY)</label>
                             <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
-                                name="expirationDate" required>
+                                name="expirationDate" required pattern="^[0-9\/\\]+$" title="Inserisci una data valida">
                         </div>
                         <div class="form-group">
                             <label for="card-number">CVV</label>
