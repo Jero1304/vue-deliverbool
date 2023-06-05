@@ -358,12 +358,12 @@ export default {
 
     .sx {
         right: auto;
-        left: 200px;
+        left: 150px;
     }
 
     .dx {
         left: auto;
-        right: -40px;
+        right: -60px;
     }
 
     .col-3.p-3:hover {
@@ -377,7 +377,8 @@ export default {
     }
 
     .carrello {
-        display: none;
+        display: block;
+        width: 5px;
     }
 
     .col-4 {
@@ -403,7 +404,7 @@ export default {
 
     .restaurant {
         background-image: url(../components/img/pettern-hero-responsive.jpg);
-        height: 1160px;
+        height: 1180px;
         margin-top: -200px;
 
 
