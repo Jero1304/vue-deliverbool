@@ -32,7 +32,6 @@ export default {
         this.code = this.orderCode();
     },
     methods: {
-
         SelectedInfo() {
             if (!this.clientName || !this.address || this.cart.length === 0) {
                 // Controlla se i campi "Nome cliente" e "Indirizzo" sono vuoti
@@ -41,12 +40,14 @@ export default {
                 return;
             }
             this.order = {
-                clientName: this.clientName,
+                client_name: this.clientName,
                 date: this.date,
                 code: this.code,
                 address: this.address,
                 restaurantId: this.restaurantId,
                 order: this.cart,
+                products_id: this.setProductsId(this.cart),
+                total_price: this.totalPrice()
             };
 
             // Recupera l'oggetto order esistente dal localStorage
@@ -60,7 +61,13 @@ export default {
 
             console.log(this.order);
         },
-
+        setProductsId(cart) {
+            const productsId = [];
+            cart.forEach(product => {
+                productsId.push(product.plate.id);
+            });
+            return productsId;
+        },
         getCurrentDate() {
             const now = new Date();
             const year = now.getFullYear();

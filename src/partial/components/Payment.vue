@@ -29,7 +29,7 @@
                                     <p>
                                         {{ plate.quantity }} - {{ plate.plate.name }}
                                     </p>
-                                    <p>
+                                    <p> 
                                         &euro; {{ quantityPrice(plate.plate.price, plate.quantity) }}
                                     </p>
                                 </li>
@@ -152,10 +152,6 @@ export default {
             }
             return total.toFixed(2);
         },
-
-        fetchPayment() {
-
-        }
 
 
     }
