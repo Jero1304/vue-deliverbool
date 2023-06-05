@@ -7,9 +7,6 @@
             <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
             Torna al carrello</button>
 
-
-
-
         <div class="form-cont col d-flex justify-content-center mb-5">
             <form @submit.prevent="submitPayment">
                 <div class="billing-cont  w-75">
