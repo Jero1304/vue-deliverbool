@@ -3,18 +3,15 @@
 
         <!-- Pulsante back to Home -->
 
-        <button class="btn btn-primary mt-3 back-cart" @click="$router.push( `/menu/${order.restaurantId} `)">
-                <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
-                Torna al carrello</button>
-
-              
-
+        <button class="btn btn-primary mt-3 back-cart" @click="$router.push(`/menu/${order.restaurantId} `)">
+            <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
+            Torna al carrello</button>
 
         <div class="form-cont col d-flex justify-content-center mb-5">
             <form @submit.prevent="submitPayment">
                 <div class="billing-cont  w-75">
                     <div class="billing-cont-top">
-                        <div class="order">
+                        <div class="order" :class="{'confirmed' : confirmedOrder === true}">
                             <div class="row">
 
                                 <h2>Riepilogo</h2>
@@ -51,35 +48,45 @@
                                     </li>
                                 </ul>
 
+                                <div v-if="confirmedOrder">
+                                    <div class="confirm-message">
+                                        {{ message }}!
+                                    </div>
+                                </div>
                             </div>
-
-
                         </div>
-                        <div class="form-group ">
-                            <label for="card-number">Nome del proprietario</label>
-                            <input type="text" class="form-control" id="card-name" v-model="cardName" name="cardName"
-                                required pattern="[a-zA-Z\s]+" title="Inserisci un nome valido (solo lettere e spazi)">
-                        </div>
-                        <div class="form-group ">
-                            <label for="card-number">Numero di carta</label>
-                            <input type="text" class="form-control" id="card-number" v-model="cardNumber" name="cardNumber"
-                                required pattern="[0-9]{16}" title="Inserisci un numero di carta valido (16 cifre)">
+
+                        <div class="container" v-if="confirmedOrder === false">
+                            <div>
+                                <div class="form-group ">
+                                    <label for="card-number">Nome del proprietario</label>
+                                    <input type="text" class="form-control" id="card-name" v-model="cardName"
+                                        name="cardName" required pattern="[a-zA-Z\s]+"
+                                        title="Inserisci un nome valido (solo lettere e spazi)">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="card-number">Numero di carta</label>
+                                    <input type="text" class="form-control" id="card-number" v-model="cardNumber"
+                                        name="cardNumber" required pattern="[0-9]{16}"
+                                        title="Inserisci un numero di carta valido (16 cifre)">
+                                </div>
+                            </div>
+                            <div class="billing-cont-bottom justify-content-center">
+                                <div class="form-group">
+                                    <label for="card-number">(MM/YY)</label>
+                                    <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
+                                        name="expirationDate" required pattern="^[0-9\/\\]+$"
+                                        title="Inserisci una data valida (MM/YY)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-number">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required
+                                        pattern="[0-9]{3}" title="Inserisci un CVV valido (3 cifre)">
+                                </div>
+                            </div>
+                            <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
                         </div>
                     </div>
-                    <div class="billing-cont-bottom justify-content-center">
-                        <div class="form-group">
-                            <label for="card-number">(MM/YY)</label>
-                            <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
-                                name="expirationDate" required pattern="^[0-9\/\\]+$"
-                                title="Inserisci una data valida (MM/YY)">
-                        </div>
-                        <div class="form-group">
-                            <label for="card-number">CVV</label>
-                            <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required
-                                pattern="[0-9]{3}" title="Inserisci un CVV valido (3 cifre)">
-                        </div>
-                    </div>
-                    <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
                 </div>
             </form>
         </div>
@@ -96,6 +103,8 @@ export default {
             expirationDate: '',
             cvv: '',
             order: JSON.parse(localStorage.getItem('order')),
+            confirmedOrder: false,
+            message: '',
         };
     },
 
@@ -110,9 +119,12 @@ export default {
             axios.post('http://127.0.0.1:8000/api/orders', data)
                 .then(response => {
                     console.log(response.data);
+                    this.confirmedOrder = response.data.success
+                    this.message = response.data.response
                 })
                 .catch(error => {
                     console.error(error);
+                    this.confirmedOrder = false
                 });
         },
 
@@ -231,6 +243,16 @@ export default {
 
 .total {
     margin-bottom: -10px
+}
+.confirm-message{
+    color: white;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirmed{
+    background-color: rgb(98, 160, 4);
 }
 </style>
   
