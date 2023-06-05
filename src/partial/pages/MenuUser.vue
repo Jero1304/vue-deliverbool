@@ -1,6 +1,14 @@
-<template>
+<template class="menu-hero">
     <div class="restaurant">
         <div class="container">
+
+            <!-- Pulsante back to Home -->
+
+            <button class="btn btn-primary mt-3" @click="$router.push('/')">Torna alla home</button>
+
+
+
+
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 description">
                     <h2 class="title-description">{{ restaurant.restaurant_name }}</h2>
@@ -10,13 +18,14 @@
                         <li class="list-group-item">{{ tipology.name }}</li>
                     </ul>
 
+
                     <div class="col-4 description-image">
-                        <img src="https://picsum.photos/200/300" alt="">
+                        <img :src="restaurant.image_path" alt="">
                     </div>
                 </div>
 
                 <div class="plates p-3 col-6">
-                    <div class="row p-1">
+                    <div class="row row-plates p-1">
                         <div class="col-1 arrow sx" @click="previousPagePlate" :disabled="currentPagePlate === 1">
                             <img src="https://cdn.pixabay.com/photo/2012/04/13/00/19/arrow-31203_1280.png"
                                 alt="freccia-destra">
@@ -27,8 +36,8 @@
 
                             <template v-for="(plate, index) in paginatePlates" :key="index">
                                 <div class="col-4 p-3" height="200px">
-                                    <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg"
-                                        alt="food" class=" border border-warning">
+                                    <!-- <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_1280.jpg" alt="food" class=" border border-warning"> -->
+                                    <img :src="plate.thumb_path" alt="">
                                     <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
                                     <span class="plate-ingredient">{{ plate.ingredient }}</span>
                                     <p class="mt-2">{{ plate.price }} &euro;</p>
@@ -288,49 +297,60 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
+        margin-top: 200px;
+    }
+
+    .title-description {
+        color: white;
     }
 
     .restaurant {
         background-image: url(../components/img/pettern-hero-responsive.jpg);
-
+        
 
 
 
     }
 
     .plates {
-        margin-top: -400px;
-        margin-right: 375px;
-        margin-bottom: 100px;
+        position: relative; 
+        width: 90%;
+        max-height: 350px; 
+        overflow-y: auto; 
+        margin: 0 auto; 
+    
+   
+  }
 
-    }
-
-    .plates .row {
+  .row-plates{
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
-
+        height: 300px;
+       
+        
+        
     }
 
 
 
-    .arrow {
-        width: 40px;
-        height: 30px;
-        margin-top: 100px;
-        background-color: rgba(255, 89, 0, 0.681);
-    }
+   
+  .arrow {
+    position: absolute; 
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    margin-bottom: 10px; 
+  }
 
-    .sx {
-        position: relative;
-        right: -130px;
-        margin-bottom: 150px;
+  .sx {
+    right: auto; 
+    left: 200px; 
+  }
 
-    }
-
-    .dx {
-        position: relative;
-        left: -130px;
-    }
+  .dx {
+    left: auto; 
+    right: -40px; 
+  }
 
     .col-3.p-3:hover {
         box-shadow: 0 0 30px rgb(255, 91, 0);
@@ -338,7 +358,20 @@ export default {
     }
 
 
+    .plate-ingredient{
+        display: none;
+    }
 
+    .carrello {
+        display: none;
+    }
+
+    .col-4{
+        display: inline-block;
+    width: 80px;
+    margin: 10px;
+    vertical-align: top; 
+    }
 
 }
 
@@ -351,11 +384,12 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
+        margin-top: 200px;
     }
 
     .restaurant {
         background-image: url(../components/img/pettern-hero-responsive.jpg);
-        height: 1000px;
+        height: 1160px;
         margin-top: -200px;
 
 
@@ -371,6 +405,7 @@ export default {
     .plates .row {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
+        
 
     }
 
