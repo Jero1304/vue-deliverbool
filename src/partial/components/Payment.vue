@@ -6,45 +6,45 @@
                     <div class="billing-cont-top">
                         <div class="order">
                             <div class="row">
-                                
+
                                 <h2>Riepilogo</h2>
 
                                 <!-- <div class="info"> -->
-                                    <ul class="d-flex justify-content-between flex-wrap">
-                                        <li>                                            
-                                            <p>Nome: {{ order.clientName }}</p>
-                                            <p>Indirizzo: {{ order.address }}</p>
-                                        </li>                                            
-                                        <li>       
-                                            <p>Date: {{ order.date }}</p>
-                                            <p>Codice: {{ order.code }}</p>
-                                        </li>
-                                    </ul>
-                                    
+                                <ul class="d-flex justify-content-between flex-wrap">
+                                    <li>
+                                        <p>Nome: {{ order.clientName }}</p>
+                                        <p>Indirizzo: {{ order.address }}</p>
+                                    </li>
+                                    <li>
+                                        <p>Date: {{ order.date }}</p>
+                                        <p>Codice: {{ order.code }}</p>
+                                    </li>
+                                </ul>
+
                                 <!-- </div> -->
-                                
+
                                 <ul>
                                     <li class="d-flex gap-3 justify-content-between align-items-center"
-                                    v-for="(plate, index) in order.order">
-                                    <p>
-                                        {{ plate.quantity }} - {{ plate.plate.name }}
-                                    </p>
-                                    <p> 
-                                        &euro; {{ quantityPrice(plate.plate.price, plate.quantity) }}
-                                    </p>
-                                </li>
+                                        v-for="(plate, index) in order.order">
+                                        <p>
+                                            {{ plate.quantity }} - {{ plate.plate.name }}
+                                        </p>
+                                        <p>
+                                            &euro; {{ quantityPrice(plate.plate.price, plate.quantity) }}
+                                        </p>
+                                    </li>
 
-                                <li class="d-flex gap-3 justify-content-between align-items-center">
-                                    <h4>
-                                        Totale
-                                    </h4>
-                                    <p class="fw-bold">
-                                        &euro; {{ totalPrice() }}
-                                    </p>
-                                </li>
-                            </ul>
+                                    <li class="d-flex gap-3 justify-content-between align-items-center">
+                                        <h4>
+                                            Totale
+                                        </h4>
+                                        <p class="fw-bold">
+                                            &euro; {{ totalPrice() }}
+                                        </p>
+                                    </li>
+                                </ul>
 
-                        </div>
+                            </div>
 
 
                         </div>
@@ -52,6 +52,7 @@
                             <label for="card-number">Nome del proprietario</label>
                             <input type="text" class="form-control" id="card-name" v-model="cardName" name="cardName"
                                 required>
+                            <div class="error-message">{{ errors.cardName }}</div>
                         </div>
                         <div class="form-group ">
                             <label for="card-number">Numero di carta</label>
@@ -64,11 +65,13 @@
                             <label for="card-number">(MM/YY)</label>
                             <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
                                 name="expirationDate" required>
+                            <div class="error-message">{{ errors.cardNumber }}</div>
                         </div>
                         <div class="form-group">
                             <label for="card-number">CVV</label>
                             <input type="text" class="form-control" id="cvv" v-model="cvv" name="cvv" required>
                         </div>
+                        <div class="error-message">{{ errors.cvv }}</div>
                     </div>
                     <button type="submit" class="pay_btn btn btn-primary ">Paga</button>
                 </div>
@@ -88,6 +91,11 @@ export default {
             expirationDate: '',
             cvv: '',
             order: JSON.parse(localStorage.getItem('order')),
+            errors: {
+                cardNumber: '',
+                cardName: '',
+                cvv: ''
+            }
         };
     },
     // props: {
@@ -113,31 +121,60 @@ export default {
     },
     methods: {
         submitPayment() {
-            // Tokenizza i dati della carta di credito utilizzando Braintree
-            // this.braintreeInstance.tokenizeCard({
-            //     cardNumber: this.cardNumber,
-            //     expirationDate: this.expirationDate,
-            //     cvv: this.cvv
-            // }, (err, nonce) => {
-            //     if (err) {
-            //         console.error(err);
-            //         return;
-            //     }
+            if (this.validateForm()) {
+                // Tokenizza i dati della carta di credito utilizzando Braintree
+                // this.braintreeInstance.tokenizeCard({
+                //     cardNumber: this.cardNumber,
+                //     expirationDate: this.expirationDate,
+                //     cvv: this.cvv
+                // }, (err, nonce) => {
+                //     if (err) {
+                //         console.error(err);
+                //         return;
+                //     }
 
-            //     // Invia il nonce al server per elaborare il pagamento
-            //     this.processPayment(nonce);
-            // });
+                //     // Invia il nonce al server per elaborare il pagamento
+                //     this.processPayment(nonce);
+                // });
 
-            const data = {
-                order: this.order
-            };
-            axios.post('http://127.0.0.1:8000/api/orders', data)
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+                const data = {
+                    order: this.order
+                };
+                axios.post('http://127.0.0.1:8000/api/orders', data)
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        },
+        validateForm() {
+            this.errors.cardNumber = '';
+            this.errors.cardName = '';
+            this.errors.cvv = '';
+
+            let isValid = true;
+
+            // Validazione numero di carta
+            if (!/^\d{16}$/.test(this.cardNumber)) {
+                this.errors.cardNumber = 'Il numero di carta deve essere composto da 16 cifre.';
+                isValid = false;
+            }
+
+            // Validazione nome del titolare della carta
+            if (!/^[a-zA-Z\s]+$/.test(this.cardName)) {
+                this.errors.cardName = 'Il nome del titolare della carta non deve contenere numeri o caratteri speciali.';
+                isValid = false;
+            }
+
+            // Validazione CVV
+            if (!/^\d{3}$/.test(this.cvv)) {
+                this.errors.cvv = 'Il CVV deve essere composto da 3 cifre.';
+                isValid = false;
+            }
+
+            return isValid;
         },
 
         quantityPrice(price, quantity) {
