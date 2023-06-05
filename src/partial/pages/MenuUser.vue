@@ -4,7 +4,7 @@
 
             <!-- Pulsante back to Home -->
 
-            <button class="btn btn-primary mt-3 back-home" @click="$router.push('/home')">
+            <button class="btn btn-primary mt-3 back-home" @click="$router.push('/')">
                 <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
                 Torna alla home</button>
 
