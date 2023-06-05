@@ -13,7 +13,6 @@ export default {
 
 <template>
     <Default/>
-    <!-- <router-view></router-view> -->
 </template>
 
 <style>
