@@ -4,7 +4,9 @@
 
             <!-- Pulsante back to Home -->
 
-            <button class="btn btn-primary mt-3" @click="$router.push('/')">Torna alla home</button>
+            <button class="btn btn-primary mt-3 back-home" @click="$router.push('/home')">
+                <img src="https://cdn.pixabay.com/photo/2021/07/22/00/43/back-6484174_1280.png" alt="go-back">
+                Torna alla home</button>
 
 
 
@@ -106,6 +108,10 @@ export default {
                 })
         },
 
+        goToHomePage() {
+            this.$router.push('/home'); // Sostituisci con il percorso corretto per la tua home
+        },
+
 
 
         previousPagePlate() {
@@ -152,6 +158,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+.back-home{
+    background-color: rgb(255, 91, 0);
+    border: 1px solid rgb(255, 238, 99);
+    text-transform: uppercase;
+    width: 150px;
+    height: 30px;
+    font-size: 10px;
+    position: absolute;
+    left: 0;
+}
+
+.back-home img {
+    width: 20px;
+}
 .description {
     background-color: rgba(255, 255, 255, 0.303);
     text-align: center;
