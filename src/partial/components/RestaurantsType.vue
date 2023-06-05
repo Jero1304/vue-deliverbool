@@ -8,10 +8,6 @@
                 <div class="types">
                     <h3 class="">Seleziona categorie </h3>
                 </div>
-
-                <!-- <div class="arrow">
-                    <img class="logo-arrow" src="./img/freccia.png" alt="">
-                </div> -->
             </template>
 
             <template v-else-if="selectedTypes.length > 0">
