@@ -58,7 +58,6 @@
                         <template v-if="totalPagesPlate === 0">
                             <div class="col-6 pagination text-center">
                                 <p> 0 di {{ totalPagesPlate }}</p>
-                                <!-- <p>{{ selectedTypes.join(', ') }}</p> -->
                             </div>
                         </template>
 
