@@ -37,7 +37,7 @@
                             <h2 class="title-responsive">Sfoglia il nostro menù!</h2>
 
                             <template v-for="(plate, index) in paginatePlates" :key="index">
-                                <div class="col-4 p-3" height="200px">
+                                <div class="col-3 p-3" height="200px">
                                     <img :src="plate.thumb_path" alt="">
                                     <h5 class="mt-3 text-uppercase">{{ plate.name }}</h5>
                                     <span class="plate-ingredient">{{ plate.ingredient }}</span>
@@ -309,8 +309,8 @@ export default {
     .description {
         width: 80%;
         margin-bottom: 20px;
-        background-color: rgba(255, 89, 0, 0.8);
-        color: white;
+        background-color: rgba(255, 237, 99, 0.696);
+        color: white ;
         
     }
 
@@ -396,7 +396,7 @@ export default {
     .description {
         width: 80%;
         margin-bottom: 20px;
-        background-color: rgba(255, 89, 0, 0.8);
+        background-color: rgba(255, 237, 99, 0.696);
         color: white;
         margin-top: 200px;
     }
