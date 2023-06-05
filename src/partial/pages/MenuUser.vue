@@ -311,6 +311,7 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 237, 99, 0.696);
         color: white ;
+        margin-top: 200px;
         
     }
 
@@ -357,12 +358,12 @@ export default {
 
     .sx {
         right: auto;
-        left: 150px;
+        left: 50px;
     }
 
     .dx {
-        left: auto;
-        right: -60px;
+        left:0;
+        right: 50px;
     }
 
     .col-3.p-3:hover {
