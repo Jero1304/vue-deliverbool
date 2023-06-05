@@ -21,7 +21,7 @@
 
                                 <ul class="d-flex justify-content-between flex-wrap">
                                     <li>
-                                        <p>Nome: {{ order.clientName }}</p>
+                                        <p>Nome: {{ order.client_name }}</p>
                                         <p>Indirizzo: {{ order.address }}</p>
                                     </li>
                                     <li>
@@ -70,7 +70,8 @@
                         <div class="form-group">
                             <label for="card-number">(MM/YY)</label>
                             <input type="text" class="form-control" id="expiration-date" v-model="expirationDate"
-                                name="expirationDate" required>
+                                name="expirationDate" required pattern="^[0-9\/\\]+$"
+                                title="Inserisci una data valida (MM/YY)">
                         </div>
                         <div class="form-group">
                             <label for="card-number">CVV</label>
