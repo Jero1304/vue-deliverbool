@@ -25,15 +25,15 @@
                             <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" aria-current="page" href="#">registrati o accedi</a>
                             </li> -->
-                            <li class="nav-item text-uppercase">
+                            <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="">I nostri ristoranti</a>
                             </li>
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="">Assistenza</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="">
-                                    <router-link to="/"> Home </router-link></a>
+                                    <router-link style="text-decoration:none;" to="/"> Home </router-link></a>
                             </li>
                             <!-- <li class="nav-item text-uppercase">
                                 <a class="nav-link nav-btn" href="#">
