@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <Cart :cart="cart" :restaurantID="restaurantID"></Cart> 
+    <Cart :cart="cart" :restaurantID="restaurantID"></Cart>
 </template>
 
 <script>
@@ -104,7 +104,7 @@ export default {
 
         }
     },
-    
+
     created() {
         console.log(this.fetchPost());
         console.log(this.cart);
@@ -131,6 +131,17 @@ export default {
                 })
         },
 
+        cartList(currentPlate) {
+
+            const existingPlate = this.cart.find(item => item.plate === currentPlate);
+
+            if (existingPlate) {
+                existingPlate.quantity++;
+            } else {
+                this.cart.push({ plate: currentPlate, quantity: 1 });
+            }
+            console.log(this.cart);
+        },
 
 
         /* PAGINATION*/
@@ -174,9 +185,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-.back-home{
+.back-home {
     background-color: rgb(255, 91, 0);
     border: 1px solid rgb(255, 238, 99);
     text-transform: uppercase;
@@ -190,6 +199,7 @@ export default {
 .back-home img {
     width: 20px;
 }
+
 .description {
     background-color: rgba(255, 255, 255, 0.303);
     text-align: center;
@@ -310,51 +320,51 @@ export default {
 
     .restaurant {
         background-image: url(../components/img/pettern-hero-responsive.jpg);
-        
+
 
 
 
     }
 
     .plates {
-        position: relative; 
+        position: relative;
         width: 90%;
-        max-height: 350px; 
-        overflow-y: auto; 
-        margin: 0 auto; 
-    
-   
-  }
+        max-height: 350px;
+        overflow-y: auto;
+        margin: 0 auto;
 
-  .row-plates{
+
+    }
+
+    .row-plates {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
         height: 300px;
-       
-        
-        
+
+
+
     }
 
 
 
-   
-  .arrow {
-    position: absolute; 
-    bottom: 0; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    margin-bottom: 10px; 
-  }
 
-  .sx {
-    right: auto; 
-    left: 200px; 
-  }
+    .arrow {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
 
-  .dx {
-    left: auto; 
-    right: -40px; 
-  }
+    .sx {
+        right: auto;
+        left: 200px;
+    }
+
+    .dx {
+        left: auto;
+        right: -40px;
+    }
 
     .col-3.p-3:hover {
         box-shadow: 0 0 30px rgb(255, 91, 0);
@@ -362,7 +372,7 @@ export default {
     }
 
 
-    .plate-ingredient{
+    .plate-ingredient {
         display: none;
     }
 
@@ -370,11 +380,11 @@ export default {
         display: none;
     }
 
-    .col-4{
+    .col-4 {
         display: inline-block;
-    width: 80px;
-    margin: 10px;
-    vertical-align: top; 
+        width: 80px;
+        margin: 10px;
+        vertical-align: top;
     }
 
 }
@@ -409,7 +419,7 @@ export default {
     .plates .row {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
-        
+
 
     }
 
