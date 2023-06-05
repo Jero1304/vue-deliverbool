@@ -80,24 +80,19 @@
                                     <router-link class="router" :to="{ name: 'menu', params: { id: restaurant.id } }">
                                         <div class="row restaurant-card">
                                             <div class="col-4 restaurant-image">
-                                                <img src="https://picsum.photos/200/300" alt="">
+                                                <img :src="restaurant.image_path" alt="" class="img-fluid">
                                             </div>
-                                            <div class="col-10 restaurant-info">
-                                                <div class="row justify-content-between align-items-center">
+                                            <div class="col-10 restaurant-info pt-4">
+                                                <div class="row justify-content-between justify-content-center align-items-center flex-column gap-3">
                                                     <div class="col-5">
-                                                        <p class="restaurant-title my-0">{{ restaurant.restaurant_name }}
-                                                        </p>
-                                                        {{ restaurant.id }}
-                                                        <ul v-for="(tipology, j) in restaurant.types">
-                                                            <li>{{ tipology.name }}</li>
-
-                                                        </ul>
+                                                        <p class="restaurant-title my-0">
+                                                            {{ restaurant.restaurant_name }}
+                                                        </p>                                                        
                                                     </div>
-                                                    <div class="col-6">
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                                                            ipsa
-                                                            natus mollitia.
-                                                        </p>
+                                                    <div class="col-5">
+                                                        <ul v-for="(tipology, j) in restaurant.types" class="badge badge-pill badge-warning">
+                                                            <li >{{ tipology.name }}</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,10 +314,6 @@ export default {
             font-size: 16px;
             margin: 0 5px;
         }
-
-        .badge {
-            margin-bottom: 20px;
-        }
     }
 
     .arrow {
@@ -345,7 +336,6 @@ export default {
 }
 
 .restaurant-type {
-    flex-direction: row;
     margin: 0;
     flex-wrap: nowrap;
     flex-shrink: 1;
@@ -506,9 +496,6 @@ export default {
                         background: linear-gradient(180deg, rgba(223, 82, 82, 1) 41%, rgba(214, 24, 24, 1) 87%);
                         margin: 0 10px 80px 10px;
                         border-radius: 40px;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: start;
                         position: relative;
                         min-height: 400px;
                         max-height: 800px;
@@ -529,11 +516,20 @@ export default {
                         }
 
                         .restaurant-image {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+                            
                             position: absolute;
-                            top: -80px;
+                            // top: -80px;
+                            // left: 50%;
+                            // transform: translateX(-50%);
+
+                            // position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+//   max-width: 100%;
+//   max-height: 100%;
+//   width: auto;
+//   height: auto;
 
                             img {
                                 aspect-ratio: 1/1;
@@ -550,6 +546,11 @@ export default {
                                 font-size: 28px;
                                 color: white;
                             }
+                            li {
+                                background-color: rgb(214, 24, 24);
+                                border-radius: 10px;
+                                padding: 10px;
+                            }
                         }
                     }
 
@@ -565,7 +566,7 @@ export default {
         flex-direction: column;
         margin: 0;
         flex-wrap: nowrap;
-        flex-shrink: 1;
+        flex-shrink: 0;
         height: auto;
 
         .aside {
@@ -623,7 +624,8 @@ export default {
 
 
                     img {
-                        max-width: 80%;
+                        -width: 100%;
+                        
                     }
 
                     img,
@@ -649,20 +651,18 @@ export default {
                 .router {
                     .restaurant-card {
                         .restaurant-image {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            // position: absolute;
-                            // top: -50px;
+                            top: 0px;
+                            left: 50%;
+                            transform: translateX(-50%);                          
 
                             position: relative;
 
                             img {
                                 aspect-ratio: 1/1;
                                 border-radius: 999px;
-                                width: 80%;
+                                width: 100%;
                                 position: absolute;
-                                top: 25px;
+                                top: -50px;
                             }
                         }
                     }
@@ -672,7 +672,144 @@ export default {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                   
+                    padding-bottom: 20px;
+                    margin: 0;
+                    color: white;
+
+                    &:hover {
+                        text-decoration-color: white;
+                        transition: transform 0.3s ease;
+                        transition: text-shadow 0.3s ease;
+                        text-shadow: 0 0 5px $yellow;
+                        font-weight: 800;
+                        color: $yellow;
+                    }
+
+                    img {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 30px;
+                        margin: 20px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:480px) {
+    .restaurant-type {
+        flex-direction: column;
+        margin: 0;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        height: auto;
+
+        .aside {
+            background: rgb(107, 0, 0);
+            background: linear-gradient(180deg, rgba(107, 0, 0, 1) 55%, rgba(214, 24, 24, 1) 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            border-radius: 200px 200px 0 0;
+
+            .aside_type {
+                gap: 38px;
+                margin: 0;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+                justify-content: end;
+                overflow-x: auto;
+
+
+                .aside_card {
+                    width: 200px;
+                    height: 100px;
+                    color: rgb(187, 184, 184);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     flex-direction: column;
+
+                    img {
+                        max-width: 80%;
+                    }
+                }
+
+                .active {
+                    background-color: rgb(214, 24, 24);
+                    // box-shadow: 10px 10px 5px rgb(214, 24, 24),
+                    // -10px -10px 5px rgb(214, 24, 24),
+                    // 10px -10px 5px rgb(214, 24, 24),
+                    // -10px 10px 5px rgb(214, 24, 24);
+                    border-radius: 20px 20px 0 0;
+                    box-shadow: none;
+                    text-decoration-color: white;
+                    transition: transform 0.3s ease;
+                    transition: text-shadow 0.3s ease;
+                    text-shadow: 0 0 5px white;
+                    font-weight: 600;
+                    color: white;
+                    // margin: 0 5px;
+                    padding: 10px;
+                    margin: 20px 20px 50px 20px;
+                    // // border: 1px solid black;
+
+
+                    img {
+                        -width: 100%;
+                        
+                    }
+
+                    img,
+                    p {
+                        transform: scale(1.2);
+                    }
+                }
+
+                button {
+                    padding: 20px;
+                    margin: 10px 0;
+                }
+            }
+        }
+
+        .restaurants {
+            background-color: rgb(214, 24, 24);
+            margin: 0;
+            padding: 50px 0;
+            width: 100%;
+
+            .restaurants_grid {
+                .router {
+                    .restaurant-card {
+                        .restaurant-image {
+                            top: 0px;
+                            left: 50%;
+                            transform: translateX(-50%);                          
+
+                            position: relative;
+
+                            img {
+                                aspect-ratio: 1/1;
+                                border-radius: 999px;
+                                width: 80%;
+                                position: absolute;
+                                top: -50px;
+                            }
+                        }
+                    }
+                }
+
+                .col-md-2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                   
                     padding-bottom: 20px;
                     margin: 0;
                     color: white;
