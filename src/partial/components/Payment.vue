@@ -76,7 +76,6 @@
 </template>
   
 <script>
-import { createBraintree, tokenizeCard } from 'braintree-web';
 import axios from 'axios';
 export default {
     data() {
