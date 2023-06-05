@@ -39,6 +39,22 @@
                                 <a class="nav-link nav-btn" href="#">
                                     <router-link to="/singlePlate"> Piatto Singolo </router-link></a>
                             </li> -->
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="http://127.0.0.1:8000/register">
+                                    Resgister
+                                </a>
+                            </li>
+                            <li class="nav-item text-uppercase">
+                                <a class="nav-link nav-btn" href="http://127.0.0.1:8000/login">
+                                    Login
+                                </a>
+                            </li>
+
+
+                            
+
+
+
                         </ul>
                     </div>
                 </div>
