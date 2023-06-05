@@ -11,7 +11,7 @@
 
                                 <ul class="d-flex justify-content-between flex-wrap">
                                     <li>
-                                        <p>Nome: {{ order.clientName }}</p>
+                                        <p>Nome: {{ order.client_name }}</p>
                                         <p>Indirizzo: {{ order.address }}</p>
                                     </li>
                                     <li>
