@@ -12,7 +12,7 @@
 
 
             <div class="row justify-content-center">
-                <div class="col-12 col-md-6 description">
+                <div class="col-12 col-md-6 description ">
                     <h2 class="title-description">{{ restaurant.restaurant_name }}</h2>
                     <h5> Dove siamo: {{ restaurant.address }}</h5>
 
@@ -311,7 +311,7 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(255, 89, 0, 0.8);
         color: white;
-        margin-top: 200px;
+        
     }
 
     .title-description {
@@ -330,7 +330,6 @@ export default {
         position: relative;
         width: 90%;
         max-height: 350px;
-        overflow-y: auto;
         margin: 0 auto;
 
 
@@ -420,6 +419,7 @@ export default {
     .plates .row {
         background-color: rgb(255, 202, 29);
         border-radius: 50px;
+        height: 400px;
 
 
     }
@@ -429,14 +429,14 @@ export default {
     .arrow {
         width: 40px;
         height: 30px;
-        margin-top: 100px;
+        margin-top: 200px;
         background-color: rgba(255, 89, 0, 0.681);
     }
 
     .sx {
         position: relative;
         right: -130px;
-        margin-bottom: 150px;
+        
 
     }
 
